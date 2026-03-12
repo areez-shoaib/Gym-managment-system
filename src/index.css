@@ -11,7 +11,7 @@ body {
 
 /* Custom utility classes for Material-UI */
 .gradient-text {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #263b46 0%, #141720 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -21,7 +21,7 @@ body {
 .glass-morphism {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(38, 59, 70, 0.1);
 }
 
 /* Animation utilities */
@@ -40,28 +40,28 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(38, 59, 70, 0.1);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(102, 126, 234, 0.5);
+  background: rgba(38, 59, 70, 0.5);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(102, 126, 234, 0.7);
+  background: rgba(38, 59, 70, 0.7);
 }
 
 /* Selection styles */
 ::selection {
-  background: rgba(102, 126, 234, 0.3);
-  color: #1a202c;
+  background: rgba(38, 59, 70, 0.3);
+  color: #141720;
 }
 
 /* Focus styles for accessibility */
 :focus-visible {
-  outline: 2px solid #667eea;
+  outline: 2px solid #263b46;
   outline-offset: 2px;
 }
 

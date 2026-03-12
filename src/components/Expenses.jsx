@@ -145,53 +145,71 @@ const Expenses = () => {
   const expensesByCategory = getExpensesByCategory()
 
   return (
-    <Box sx={{ minHeight: '100vh', background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', py: 4 }}>
+    <Box sx={{ minHeight: '100vh', background: 'linear-gradient(135deg, #263b46 0%, #141720 100%)', py: 4 }}>
       <Container maxWidth="xl">
         {/* Header */}
-        <Box sx={{ mb: 4 }}>
-          <Button
-            startIcon={<ArrowBack />}
-            onClick={() => navigate('/dashboard')}
-            sx={{ 
-              color: 'white',
-              mb: 2,
-              '&:hover': { backgroundColor: 'rgba(255, 255, 255, 0.1)' }
-            }}
-          >
-            Back to Dashboard
-          </Button>
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <Box>
-              <Typography 
-                variant="h3" 
-                component="h1"
+        <Paper 
+          elevation={3}
+          sx={{
+            backgroundColor: 'rgba(255, 255, 255, 0.15)',
+            backdropFilter: 'blur(20px)',
+            border: '1px solid rgba(255, 255, 255, 0.2)',
+            boxShadow: '0 20px 40px rgba(38, 59, 70, 0.15)',
+          }}
+        >
+          <Container maxWidth="xl">
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', py: 3 }}>
+              <Box>
+                <Typography 
+                  variant="h4" 
+                  component="h1"
+                  sx={{
+                    background: 'linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    fontWeight: 'bold'
+                  }}
+                >
+                  Expense Management
+                </Typography>
+                <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.9)' }}>
+                  Track and manage gym expenses
+                </Typography>
+              </Box>
+              <Button
+                variant="contained"
+                startIcon={<ArrowBack />}
+                onClick={() => navigate('/dashboard')}
                 sx={{
-                  color: 'white',
-                  fontWeight: 'bold',
-                  mb: 1
+                  background: 'linear-gradient(135deg, #6b7280 0%, #4b5563 100%)',
+                  '&:hover': {
+                    background: 'linear-gradient(135deg, #4b5563 0%, #374151 100%)',
+                  }
                 }}
               >
-                Expenses
-              </Typography>
-              <Typography variant="body1" color="white" sx={{ opacity: 0.9 }}>
-                Track and manage gym expenses
-              </Typography>
+                Back to Dashboard
+              </Button>
             </Box>
+          </Container>
+        </Paper>
+
+        <Container maxWidth="xl" sx={{ py: 4 }}>
+          {/* Add Expense Button */}
+          <Box sx={{ mb: 4, display: 'flex', justifyContent: 'flex-end' }}>
             <Button
               variant="contained"
               startIcon={<Add />}
               onClick={() => setShowExpenseForm(true)}
               sx={{
-                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
                 '&:hover': {
-                  background: 'linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%)',
+                  background: 'linear-gradient(135deg, #059669 0%, #047857 100%)',
                 }
               }}
             >
               Add Expense
             </Button>
           </Box>
-        </Box>
 
         {/* Stats Cards */}
         <Grid container spacing={3} sx={{ mb: 4 }}>
@@ -200,32 +218,37 @@ const Expenses = () => {
               elevation={3}
               sx={{
                 p: 3,
-                backgroundColor: 'rgba(255, 255, 255, 0.95)',
-                backdropFilter: 'blur(10px)',
-                border: '1px solid rgba(255, 255, 255, 0.18)',
-                transition: 'transform 0.3s ease',
+                backgroundColor: 'rgba(255, 255, 255, 0.15)',
+                backdropFilter: 'blur(20px)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                boxShadow: '0 20px 40px rgba(38, 59, 70, 0.15)',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                 '&:hover': {
                   transform: 'translateY(-5px)',
+                  boxShadow: '0 25px 50px rgba(38, 59, 70, 0.2)',
+                  backgroundColor: 'rgba(255, 255, 255, 0.2)',
                 }
               }}
             >
               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 <Box>
-                  <Typography variant="body2" color="text.secondary" gutterBottom>
+                  <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.9)' }} gutterBottom>
                     Total Expenses
                   </Typography>
                   <Typography 
                     variant="h4"
                     sx={{
-                      color: 'error.main',
+                      background: 'linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
                       fontWeight: 'bold'
                     }}
                   >
                     Rs :{getTotalExpenses()}
                   </Typography>
                 </Box>
-                <Box sx={{ backgroundColor: 'error.light', borderRadius: '50%', p: 2 }}>
-                  <Add sx={{ fontSize: 32, color: 'error.main' }} />
+                <Box sx={{ backgroundColor: 'rgba(255, 255, 255, 0.2)', borderRadius: '50%', p: 2 }}>
+                  <Add sx={{ fontSize: 32, color: 'white' }} />
                 </Box>
               </Box>
             </Paper>
@@ -236,23 +259,28 @@ const Expenses = () => {
               elevation={3}
               sx={{
                 p: 3,
-                backgroundColor: 'rgba(255, 255, 255, 0.95)',
-                backdropFilter: 'blur(10px)',
-                border: '1px solid rgba(255, 255, 255, 0.18)',
-                transition: 'transform 0.3s ease',
+                backgroundColor: 'rgba(255, 255, 255, 0.15)',
+                backdropFilter: 'blur(20px)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                boxShadow: '0 20px 40px rgba(38, 59, 70, 0.15)',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                 '&:hover': {
                   transform: 'translateY(-5px)',
+                  boxShadow: '0 25px 50px rgba(38, 59, 70, 0.2)',
+                  backgroundColor: 'rgba(255, 255, 255, 0.2)',
                 }
               }}
             >
               <Box>
-                <Typography variant="body2" color="text.secondary" gutterBottom>
+                <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.9)' }} gutterBottom>
                   This Month
                 </Typography>
                 <Typography 
                   variant="h4"
                   sx={{
-                    color: 'text.primary',
+                    background: 'linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
                     fontWeight: 'bold'
                   }}
                 >
@@ -274,28 +302,38 @@ const Expenses = () => {
               elevation={3}
               sx={{
                 p: 3,
-                backgroundColor: 'rgba(255, 255, 255, 0.95)',
-                backdropFilter: 'blur(10px)',
-                border: '1px solid rgba(255, 255, 255, 0.18)',
-                transition: 'transform 0.3s ease',
+                backgroundColor: 'rgba(255, 255, 255, 0.15)',
+                backdropFilter: 'blur(20px)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                boxShadow: '0 20px 40px rgba(38, 59, 70, 0.15)',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                 '&:hover': {
                   transform: 'translateY(-5px)',
+                  boxShadow: '0 25px 50px rgba(38, 59, 70, 0.2)',
+                  backgroundColor: 'rgba(255, 255, 255, 0.2)',
                 }
               }}
             >
-              <Box>
-                <Typography variant="body2" color="text.secondary" gutterBottom>
-                  Total Transactions
-                </Typography>
-                <Typography 
-                  variant="h4"
-                  sx={{
-                    color: 'text.primary',
-                    fontWeight: 'bold'
-                  }}
-                >
-                  {expenses.length}
-                </Typography>
+              <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <Box>
+                  <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.9)' }} gutterBottom>
+                    Total Transactions
+                  </Typography>
+                  <Typography 
+                    variant="h4"
+                    sx={{
+                      background: 'linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      fontWeight: 'bold'
+                    }}
+                  >
+                    {expenses.length}
+                  </Typography>
+                </Box>
+                <Box sx={{ backgroundColor: 'rgba(255, 255, 255, 0.2)', borderRadius: '50%', p: 2 }}>
+                  <Add sx={{ fontSize: 32, color: 'white' }} />
+                </Box>
               </Box>
             </Paper>
           </Grid>
@@ -308,50 +346,57 @@ const Expenses = () => {
               elevation={3}
               sx={{
                 p: 3,
-                backgroundColor: 'rgba(255, 255, 255, 0.95)',
-                backdropFilter: 'blur(10px)',
-                border: '1px solid rgba(255, 255, 255, 0.18)',
+                backgroundColor: 'rgba(255, 255, 255, 0.15)',
+                backdropFilter: 'blur(20px)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                boxShadow: '0 20px 40px rgba(38, 59, 70, 0.15)',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                '&:hover': {
+                  transform: 'translateY(-5px)',
+                  boxShadow: '0 25px 50px rgba(38, 59, 70, 0.2)',
+                  backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                }
               }}
             >
-              <Typography variant="h5" gutterBottom fontWeight="bold">
+              <Typography variant="h5" gutterBottom sx={{ color: 'white', fontWeight: 'bold' }}>
                 All Expenses
               </Typography>
               <TableContainer>
                 <Table>
                   <TableHead>
                     <TableRow>
-                      <TableCell>Date</TableCell>
-                      <TableCell>Description</TableCell>
-                      <TableCell>Category</TableCell>
-                      <TableCell>Amount</TableCell>
-                      <TableCell>Actions</TableCell>
+                      <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Date</TableCell>
+                      <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Description</TableCell>
+                      <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Category</TableCell>
+                      <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Amount</TableCell>
+                      <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Actions</TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
                     {expenses.length === 0 ? (
                       <TableRow>
-                        <TableCell colSpan={5} sx={{ textAlign: 'center', py: 4, color: 'text.secondary' }}>
+                        <TableCell colSpan={5} sx={{ textAlign: 'center', py: 4, color: 'rgba(255, 255, 255, 0.7)' }}>
                           No expenses recorded yet
                         </TableCell>
                       </TableRow>
                     ) : (
                       getRecentExpenses().map((expense) => (
                         <TableRow key={expense.id} hover>
-                          <TableCell>
+                          <TableCell sx={{ color: 'rgba(255, 255, 255, 0.8)' }}>
                             {new Date(expense.date).toLocaleDateString()}
                           </TableCell>
-                          <TableCell>
+                          <TableCell sx={{ color: 'white' }}>
                             {expense.description}
                           </TableCell>
                           <TableCell>
                             <Chip 
                               label={getCategoryLabel(expense.category)}
                               size="small"
-                              sx={{ backgroundColor: 'grey.100', color: 'grey.800' }}
+                              sx={{ backgroundColor: 'rgba(255, 255, 255, 0.2)', color: 'white' }}
                             />
                           </TableCell>
                           <TableCell>
-                            <Typography variant="body2" color="error.main" fontWeight="medium">
+                            <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.9)' }} fontWeight="medium">
                               Rs :{expense.amount}
                             </Typography>
                           </TableCell>
@@ -360,14 +405,14 @@ const Expenses = () => {
                               <IconButton
                                 size="small"
                                 onClick={() => handleEdit(expense)}
-                                sx={{ color: 'primary.main' }}
+                                sx={{ color: 'white' }}
                               >
                                 <Edit fontSize="small" />
                               </IconButton>
                               <IconButton
                                 size="small"
                                 onClick={() => handleDelete(expense.id)}
-                                sx={{ color: 'error.main' }}
+                                sx={{ color: 'rgba(255, 255, 255, 0.7)' }}
                               >
                                 <Delete fontSize="small" />
                               </IconButton>
@@ -388,17 +433,24 @@ const Expenses = () => {
               elevation={3}
               sx={{
                 p: 3,
-                backgroundColor: 'rgba(255, 255, 255, 0.95)',
-                backdropFilter: 'blur(10px)',
-                border: '1px solid rgba(255, 255, 255, 0.18)',
+                backgroundColor: 'rgba(255, 255, 255, 0.15)',
+                backdropFilter: 'blur(20px)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                boxShadow: '0 20px 40px rgba(38, 59, 70, 0.15)',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                '&:hover': {
+                  transform: 'translateY(-5px)',
+                  boxShadow: '0 25px 50px rgba(38, 59, 70, 0.2)',
+                  backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                }
               }}
             >
-              <Typography variant="h5" gutterBottom fontWeight="bold">
+              <Typography variant="h5" gutterBottom sx={{ color: 'white', fontWeight: 'bold' }}>
                 Expenses by Category
               </Typography>
               <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                 {Object.keys(expensesByCategory).length === 0 ? (
-                  <Typography variant="body2" color="text.secondary" sx={{ textAlign: 'center', py: 4 }}>
+                  <Typography variant="body2" sx={{ textAlign: 'center', py: 4, color: 'rgba(255, 255, 255, 0.7)' }}>
                     No expenses recorded
                   </Typography>
                 ) : (
@@ -410,14 +462,17 @@ const Expenses = () => {
                         justifyContent: 'space-between', 
                         alignItems: 'center',
                         p: 2,
-                        backgroundColor: 'grey.50',
-                        borderRadius: 2
+                        backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                        borderRadius: 2,
+                        '&:hover': {
+                          backgroundColor: 'rgba(255, 255, 255, 0.15)',
+                        }
                       }}
                     >
-                      <Typography variant="body2" fontWeight="medium">
+                      <Typography variant="body2" fontWeight="medium" sx={{ color: 'white' }}>
                         {getCategoryLabel(category)}
                       </Typography>
-                      <Typography variant="body2" color="error.main" fontWeight="bold">
+                      <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.9)' }} fontWeight="bold">
                         Rs :{amount}
                       </Typography>
                     </Box>
@@ -530,7 +585,9 @@ const Expenses = () => {
           </DialogActions>
         </Dialog>
       </Container>
+      </Container>
     </Box>
+   
   )
 }
 

@@ -9,18 +9,21 @@ import FeeManagement from './components/FeeManagement'
 import Expenses from './components/Expenses'
 import { AuthProvider } from './context/AuthContext'
 
-// Create a custom theme with gradient colors
+// Create a custom theme with professional dark colors
 const theme = createTheme({
   palette: {
+    mode: 'light',
     primary: {
-      main: '#667eea',
-      light: '#8b5cf6',
-      dark: '#5a67d8',
+      main: '#263b46',
+      light: '#3a5268',
+      dark: '#1a2833',
+      contrastText: '#ffffff',
     },
     secondary: {
-      main: '#764ba2',
-      light: '#9333ea',
-      dark: '#6b46c1',
+      main: '#141720',
+      light: '#2a2d3a',
+      dark: '#0a0c14',
+      contrastText: '#ffffff',
     },
     success: {
       main: '#10b981',
@@ -37,9 +40,18 @@ const theme = createTheme({
       light: '#dc2626',
       dark: '#b91c1c',
     },
+    info: {
+      main: '#3b82f6',
+      light: '#2563eb',
+      dark: '#1d4ed8',
+    },
     background: {
       default: '#f8fafc',
-      paper: 'rgba(255, 255, 255, 0.95)',
+      paper: '#ffffff',
+    },
+    text: {
+      primary: '#141720',
+      secondary: '#64748b',
     },
   },
   typography: {
@@ -72,6 +84,10 @@ const theme = createTheme({
         root: {
           textTransform: 'none',
           fontWeight: 600,
+          borderRadius: 8,
+        },
+        contained: {
+          boxShadow: '0 4px 6px rgba(38, 59, 70, 0.1)',
         },
       },
     },
@@ -80,7 +96,9 @@ const theme = createTheme({
         root: {
           backdropFilter: 'blur(10px)',
           backgroundColor: 'rgba(255, 255, 255, 0.95)',
-          border: '1px solid rgba(255, 255, 255, 0.18)',
+          border: '1px solid rgba(38, 59, 70, 0.1)',
+          borderRadius: 12,
+          boxShadow: '0 10px 25px rgba(38, 59, 70, 0.1)',
         },
       },
     },
@@ -89,7 +107,17 @@ const theme = createTheme({
         root: {
           backdropFilter: 'blur(10px)',
           backgroundColor: 'rgba(255, 255, 255, 0.95)',
-          border: '1px solid rgba(255, 255, 255, 0.18)',
+          border: '1px solid rgba(38, 59, 70, 0.1)',
+          borderRadius: 12,
+        },
+        elevation1: {
+          boxShadow: '0 2px 4px rgba(38, 59, 70, 0.1)',
+        },
+        elevation3: {
+          boxShadow: '0 4px 6px rgba(38, 59, 70, 0.1)',
+        },
+        elevation6: {
+          boxShadow: '0 10px 25px rgba(38, 59, 70, 0.1)',
         },
       },
     },
@@ -99,7 +127,30 @@ const theme = createTheme({
           '& .MuiOutlinedInput-root': {
             backdropFilter: 'blur(10px)',
             backgroundColor: 'rgba(255, 255, 255, 0.8)',
+            borderRadius: 8,
+            '&:hover': {
+              borderColor: '#263b46',
+            },
+            '&.Mui-focused': {
+              borderColor: '#263b46',
+              boxShadow: '0 0 0 2px rgba(38, 59, 70, 0.2)',
+            },
           },
+        },
+      },
+    },
+    MuiTableHead: {
+      styleOverrides: {
+        root: {
+          backgroundColor: 'rgba(38, 59, 70, 0.05)',
+        },
+      },
+    },
+    MuiChip: {
+      styleOverrides: {
+        root: {
+          fontWeight: 600,
+          borderRadius: 6,
         },
       },
     },

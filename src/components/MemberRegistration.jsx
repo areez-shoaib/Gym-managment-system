@@ -115,7 +115,7 @@ const MemberRegistration = () => {
   }
 
   return (
-    <Box sx={{ minHeight: '100vh', background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', py: 4 }}>
+    <Box sx={{ minHeight: '100vh', background: 'linear-gradient(135deg, #263b46 0%, #141720 100%)', py: 4 }}>
       <Container maxWidth="lg">
         {/* Header */}
         <Box sx={{ mb: 4 }}>
@@ -134,9 +134,12 @@ const MemberRegistration = () => {
             variant="h3" 
             component="h1"
             sx={{
-              color: 'white',
+              background: 'linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
               fontWeight: 'bold',
-              mb: 1
+              mb: 1,
+              fontFamily:"New Times roman,serif"
             }}
           >
             Register New Member
@@ -157,15 +160,22 @@ const MemberRegistration = () => {
           elevation={6}
           sx={{
             p: 4,
-            backgroundColor: 'rgba(255, 255, 255, 0.95)',
-            backdropFilter: 'blur(10px)',
-            border: '1px solid rgba(255, 255, 255, 0.18)',
+            backgroundColor: 'rgba(255, 255, 255, 0.15)',
+            backdropFilter: 'blur(20px)',
+            border: '1px solid rgba(255, 255, 255, 0.2)',
+            boxShadow: '0 20px 40px rgba(38, 59, 70, 0.15)',
+            transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+            '&:hover': {
+              transform: 'translateY(-5px)',
+              boxShadow: '0 25px 50px rgba(38, 59, 70, 0.2)',
+              backgroundColor: 'rgba(255, 255, 255, 0.2)',
+            }
           }}
         >
           <Box component="form" onSubmit={handleSubmit}>
             <Grid container spacing={3}>
               {/* Name */}
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12}>
                 <TextField
                   fullWidth
                   label="Full Name *"
@@ -178,7 +188,7 @@ const MemberRegistration = () => {
               </Grid>
 
               {/* Email */}
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12}>
                 <TextField
                   fullWidth
                   label="Email *"
@@ -192,7 +202,7 @@ const MemberRegistration = () => {
               </Grid>
 
               {/* Phone */}
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12}>
                 <TextField
                   fullWidth
                   label="Phone Number *"
@@ -207,7 +217,7 @@ const MemberRegistration = () => {
               </Grid>
 
               {/* Emergency Contact */}
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12}>
                 <TextField
                   fullWidth
                   label="Emergency Contact *"
@@ -237,7 +247,7 @@ const MemberRegistration = () => {
               </Grid>
 
               {/* Blood Group */}
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12}>
                 <FormControl fullWidth error={!!errors.bloodGroup}>
                   <InputLabel>Blood Group *</InputLabel>
                   <Select
@@ -265,7 +275,7 @@ const MemberRegistration = () => {
               </Grid>
 
               {/* Age */}
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12}>
                 <TextField
                   fullWidth
                   label="Age *"
@@ -280,7 +290,7 @@ const MemberRegistration = () => {
               </Grid>
 
               {/* Gender */}
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12}>
                 <FormControl fullWidth error={!!errors.gender}>
                   <InputLabel>Gender *</InputLabel>
                   <Select
@@ -303,7 +313,7 @@ const MemberRegistration = () => {
               </Grid>
 
               {/* Membership Type */}
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12}>
                 <FormControl fullWidth>
                   <InputLabel>Membership Type</InputLabel>
                   <Select
@@ -320,7 +330,7 @@ const MemberRegistration = () => {
               </Grid>
 
               {/* Join Date */}
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12}>
                 <TextField
                   fullWidth
                   label="Join Date"

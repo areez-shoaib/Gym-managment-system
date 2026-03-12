@@ -127,14 +127,15 @@ const FeeManagement = () => {
   }
 
   return (
-    <Box sx={{ minHeight: '100vh', background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }}>
+    <Box sx={{ minHeight: '100vh', background: 'linear-gradient(135deg, #263b46 0%, #141720 100%)' }}>
       {/* Header */}
       <Paper 
         elevation={3}
         sx={{
-          backgroundColor: 'rgba(255, 255, 255, 0.95)',
-          backdropFilter: 'blur(10px)',
-          border: '1px solid rgba(255, 255, 255, 0.18)',
+          backgroundColor: 'rgba(255, 255, 255, 0.15)',
+          backdropFilter: 'blur(20px)',
+          border: '1px solid rgba(255, 255, 255, 0.2)',
+          boxShadow: '0 20px 40px rgba(38, 59, 70, 0.15)',
         }}
       >
         <Container maxWidth="xl">
@@ -144,7 +145,7 @@ const FeeManagement = () => {
                 variant="h4" 
                 component="h1"
                 sx={{
-                  background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                  background: 'linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   fontWeight: 'bold'
@@ -152,8 +153,8 @@ const FeeManagement = () => {
               >
                 Fee Management
               </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Manage member fees and payments
+              <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.9)' }}>
+                Collect and track member fees
               </Typography>
             </Box>
             <Button
@@ -181,24 +182,27 @@ const FeeManagement = () => {
               elevation={3}
               sx={{
                 p: 3,
-                backgroundColor: 'rgba(255, 255, 255, 0.95)',
-                backdropFilter: 'blur(10px)',
-                border: '1px solid rgba(255, 255, 255, 0.18)',
-                transition: 'transform 0.3s ease',
+                backgroundColor: 'rgba(255, 255, 255, 0.15)',
+                backdropFilter: 'blur(20px)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                boxShadow: '0 20px 40px rgba(38, 59, 70, 0.15)',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                 '&:hover': {
                   transform: 'translateY(-5px)',
+                  boxShadow: '0 25px 50px rgba(38, 59, 70, 0.2)',
+                  backgroundColor: 'rgba(255, 255, 255, 0.2)',
                 }
               }}
             >
               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 <Box>
-                  <Typography variant="body2" color="text.secondary" gutterBottom>
+                  <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.9)' }} gutterBottom>
                     Total Revenue
                   </Typography>
                   <Typography 
                     variant="h4"
                     sx={{
-                      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                      background: 'linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%)',
                       WebkitBackgroundClip: 'text',
                       WebkitTextFillColor: 'transparent',
                       fontWeight: 'bold'
@@ -207,8 +211,8 @@ const FeeManagement = () => {
                     Rs :{getTotalRevenue()}
                   </Typography>
                 </Box>
-                <Box sx={{ backgroundColor: 'success.light', borderRadius: '50%', p: 2 }}>
-                  <CheckCircle sx={{ fontSize: 32, color: 'success.main' }} />
+                <Box sx={{ backgroundColor: 'rgba(255, 255, 255, 0.2)', borderRadius: '50%', p: 2 }}>
+                  <CheckCircle sx={{ fontSize: 32, color: 'white' }} />
                 </Box>
               </Box>
             </Paper>
@@ -219,24 +223,27 @@ const FeeManagement = () => {
               elevation={3}
               sx={{
                 p: 3,
-                backgroundColor: 'rgba(255, 255, 255, 0.95)',
-                backdropFilter: 'blur(10px)',
-                border: '1px solid rgba(255, 255, 255, 0.18)',
-                transition: 'transform 0.3s ease',
+                backgroundColor: 'rgba(255, 255, 255, 0.15)',
+                backdropFilter: 'blur(20px)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                boxShadow: '0 20px 40px rgba(38, 59, 70, 0.15)',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                 '&:hover': {
                   transform: 'translateY(-5px)',
+                  boxShadow: '0 25px 50px rgba(38, 59, 70, 0.2)',
+                  backgroundColor: 'rgba(255, 255, 255, 0.2)',
                 }
               }}
             >
               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 <Box>
-                  <Typography variant="body2" color="text.secondary" gutterBottom>
+                  <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.9)' }} gutterBottom>
                     Pending Fees
                   </Typography>
                   <Typography 
                     variant="h4"
                     sx={{
-                      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                      background: 'linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%)',
                       WebkitBackgroundClip: 'text',
                       WebkitTextFillColor: 'transparent',
                       fontWeight: 'bold'
@@ -245,8 +252,8 @@ const FeeManagement = () => {
                     Rs :{getPendingFees()}
                   </Typography>
                 </Box>
-                <Box sx={{ backgroundColor: 'warning.light', borderRadius: '50%', p: 2 }}>
-                  <AccessTime sx={{ fontSize: 32, color: 'warning.main' }} />
+                <Box sx={{ backgroundColor: 'rgba(255, 255, 255, 0.2)', borderRadius: '50%', p: 2 }}>
+                  <AccessTime sx={{ fontSize: 32, color: 'white' }} />
                 </Box>
               </Box>
             </Paper>
@@ -257,24 +264,27 @@ const FeeManagement = () => {
               elevation={3}
               sx={{
                 p: 3,
-                backgroundColor: 'rgba(255, 255, 255, 0.95)',
-                backdropFilter: 'blur(10px)',
-                border: '1px solid rgba(255, 255, 255, 0.18)',
-                transition: 'transform 0.3s ease',
+                backgroundColor: 'rgba(255, 255, 255, 0.15)',
+                backdropFilter: 'blur(20px)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                boxShadow: '0 20px 40px rgba(38, 59, 70, 0.15)',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                 '&:hover': {
                   transform: 'translateY(-5px)',
+                  boxShadow: '0 25px 50px rgba(38, 59, 70, 0.2)',
+                  backgroundColor: 'rgba(255, 255, 255, 0.2)',
                 }
               }}
             >
               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 <Box>
-                  <Typography variant="body2" color="text.secondary" gutterBottom>
+                  <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.9)' }} gutterBottom>
                     Total Payments
                   </Typography>
                   <Typography 
                     variant="h4"
                     sx={{
-                      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                      background: 'linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%)',
                       WebkitBackgroundClip: 'text',
                       WebkitTextFillColor: 'transparent',
                       fontWeight: 'bold'
@@ -283,8 +293,8 @@ const FeeManagement = () => {
                     {fees.length}
                   </Typography>
                 </Box>
-                <Box sx={{ backgroundColor: 'info.light', borderRadius: '50%', p: 2 }}>
-                  <Add sx={{ fontSize: 32, color: 'info.main' }} />
+                <Box sx={{ backgroundColor: 'rgba(255, 255, 255, 0.2)', borderRadius: '50%', p: 2 }}>
+                  <Add sx={{ fontSize: 32, color: 'white' }} />
                 </Box>
               </Box>
             </Paper>
@@ -298,26 +308,24 @@ const FeeManagement = () => {
               elevation={3}
               sx={{
                 p: 3,
-                backgroundColor: 'rgba(255, 255, 255, 0.95)',
-                backdropFilter: 'blur(10px)',
-                border: '1px solid rgba(255, 255, 255, 0.18)',
+                backgroundColor: 'rgba(255, 255, 255, 0.15)',
+                backdropFilter: 'blur(20px)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                boxShadow: '0 20px 40px rgba(38, 59, 70, 0.15)',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                '&:hover': {
+                  transform: 'translateY(-5px)',
+                  boxShadow: '0 25px 50px rgba(38, 59, 70, 0.2)',
+                  backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                }
               }}
             >
-              <Typography 
-                variant="h5" 
-                gutterBottom
-                sx={{
-                  background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  fontWeight: 'bold'
-                }}
-              >
-                Members Fee Status
+              <Typography variant="h6" gutterBottom sx={{ color: 'white', fontWeight: 'bold' }}>
+                Member Fee Status
               </Typography>
               <Box sx={{ maxHeight: 400, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: 2 }}>
                 {members.length === 0 ? (
-                  <Typography variant="body2" color="text.secondary" sx={{ textAlign: 'center', py: 4 }}>
+                  <Typography variant="body2" sx={{ textAlign: 'center', py: 4, color: 'rgba(255, 255, 255, 0.7)' }}>
                     No members registered yet
                   </Typography>
                 ) : (
@@ -381,16 +389,23 @@ const FeeManagement = () => {
               elevation={3}
               sx={{
                 p: 3,
-                backgroundColor: 'rgba(255, 255, 255, 0.95)',
-                backdropFilter: 'blur(10px)',
-                border: '1px solid rgba(255, 255, 255, 0.18)',
+                backgroundColor: 'rgba(255, 255, 255, 0.15)',
+                backdropFilter: 'blur(20px)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                boxShadow: '0 20px 40px rgba(38, 59, 70, 0.15)',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                '&:hover': {
+                  transform: 'translateY(-5px)',
+                  boxShadow: '0 25px 50px rgba(38, 59, 70, 0.2)',
+                  backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                }
               }}
             >
               <Typography 
                 variant="h5" 
                 gutterBottom
                 sx={{
-                  background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                  background: 'linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   fontWeight: 'bold'
@@ -402,17 +417,17 @@ const FeeManagement = () => {
                 <Table>
                   <TableHead>
                     <TableRow>
-                      <TableCell>Member</TableCell>
-                      <TableCell>Month</TableCell>
-                      <TableCell>Date</TableCell>
-                      <TableCell>Amount</TableCell>
-                      <TableCell>Type</TableCell>
+                      <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Member</TableCell>
+                      <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Month</TableCell>
+                      <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Date</TableCell>
+                      <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Amount</TableCell>
+                      <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Type</TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
                     {fees.length === 0 ? (
                       <TableRow>
-                        <TableCell colSpan={5} sx={{ textAlign: 'center', py: 4, color: 'text.secondary' }}>
+                        <TableCell colSpan={5} sx={{ textAlign: 'center', py: 4, color: 'rgba(255, 255, 255, 0.7)' }}>
                           No payments recorded yet
                         </TableCell>
                       </TableRow>
@@ -421,13 +436,13 @@ const FeeManagement = () => {
                         const member = members.find(m => m.id === fee.memberId)
                         return (
                           <TableRow key={fee.id} hover>
-                            <TableCell>
+                            <TableCell sx={{ color: 'white' }}>
                               {member?.name || 'Unknown'}
                             </TableCell>
-                            <TableCell>
+                            <TableCell sx={{ color: 'rgba(255, 255, 255, 0.8)' }}>
                               {fee.month}
                             </TableCell>
-                            <TableCell>
+                            <TableCell sx={{ color: 'rgba(255, 255, 255, 0.8)' }}>
                               {new Date(fee.paymentDate).toLocaleDateString()}
                             </TableCell>
                             <TableCell>
@@ -442,7 +457,7 @@ const FeeManagement = () => {
                               <Chip 
                                 label={fee.paymentType}
                                 size="small"
-                                sx={{ backgroundColor: 'grey.100', color: 'grey.800' }}
+                                sx={{ backgroundColor: 'rgba(255, 255, 255, 0.2)', color: 'white' }}
                               />
                             </TableCell>
                           </TableRow>
