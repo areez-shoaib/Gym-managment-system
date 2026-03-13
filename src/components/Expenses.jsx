@@ -30,7 +30,11 @@ import {
   ArrowBack,
   Add,
   Delete,
-  Edit
+  Edit,
+  People,
+  AccountBalanceWallet,
+  CalendarMonth,
+  ReceiptLong
 } from '@mui/icons-material'
 
 const Expenses = () => {
@@ -38,6 +42,7 @@ const Expenses = () => {
   const [expenses, setExpenses] = useState([])
   const [showExpenseForm, setShowExpenseForm] = useState(false)
   const [editingExpense, setEditingExpense] = useState(null)
+  const [deletingExpense, setDeletingExpense] = useState(null)
   const [expenseData, setExpenseData] = useState({
     description: '',
     amount: '',
@@ -98,6 +103,23 @@ const Expenses = () => {
     setEditingExpense(null)
   }
 
+  const handleDeleteExpense = (expense) => {
+    setDeletingExpense(expense)
+  }
+
+  const confirmDeleteExpense = () => {
+    if (deletingExpense) {
+      const updatedExpenses = expenses.filter(expense => expense.id !== deletingExpense.id)
+      setExpenses(updatedExpenses)
+      localStorage.setItem('expenses', JSON.stringify(updatedExpenses))
+      setDeletingExpense(null)
+    }
+  }
+
+  const cancelDelete = () => {
+    setDeletingExpense(null)
+  }
+
   const handleEdit = (expense) => {
     setEditingExpense(expense)
     setExpenseData({
@@ -145,55 +167,94 @@ const Expenses = () => {
   const expensesByCategory = getExpensesByCategory()
 
   return (
-    <Box sx={{ minHeight: '100vh', background: 'linear-gradient(135deg, #263b46 0%, #141720 100%)', py: 4 }}>
-      <Container maxWidth="xl">
-        {/* Header */}
-        <Paper 
-          elevation={3}
-          sx={{
-            backgroundColor: 'rgba(255, 255, 255, 0.15)',
-            backdropFilter: 'blur(20px)',
-            border: '1px solid rgba(255, 255, 255, 0.2)',
-            boxShadow: '0 20px 40px rgba(38, 59, 70, 0.15)',
-          }}
-        >
-          <Container maxWidth="xl">
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', py: 3 }}>
+    <Box sx={{ minHeight: '100vh', background: 'linear-gradient(135deg, #263b46 0%, #141720 100%)', py: 0 }}>
+      {/* Header - Full Width */}
+      <Paper 
+        elevation={3}
+        sx={{
+          backgroundColor: 'rgba(255, 255, 255, 0.15)',
+          backdropFilter: 'blur(20px)',
+          border: '1px solid rgba(255, 255, 255, 0.2)',
+          boxShadow: '0 20px 40px rgba(38, 59, 70, 0.15)',
+        }}
+      >
+        <Container maxWidth="xl">
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', py: 3 }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: { xs: 1, sm: 2 } }}>
+              <Button
+                variant="text"
+                startIcon={<ArrowBack />}
+                onClick={() => navigate('/dashboard')}
+                sx={{
+                  color: 'white',
+                  minWidth: { xs: 'auto', sm: 'auto' },
+                  px: { xs: 1, sm: 2 },
+                  '&:hover': { backgroundColor: 'rgba(200, 200, 200, 0.15)' },
+                }}
+              >
+              </Button>
               <Box>
                 <Typography 
-                  variant="h4" 
+                  variant={window.innerWidth < 600 ? "h5" : "h4"}
                   component="h1"
                   sx={{
                     background: 'linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%)',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
-                    fontWeight: 'bold'
+                    fontWeight: 'bold',
+                    fontFamily: 'new times roman,serif',
+                    fontSize: { xs: '1.5rem', sm: '2rem', md: '2.25rem' }
                   }}
                 >
                   Expense Management
                 </Typography>
-                <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.9)' }}>
+                <Typography variant="body2" sx={{ 
+                  color: 'rgba(255, 255, 255, 0.9)',
+                  fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                  display: { xs: 'none', sm: 'block' }
+                }}>
                   Track and manage gym expenses
                 </Typography>
               </Box>
-              <Button
-                variant="contained"
-                startIcon={<ArrowBack />}
-                onClick={() => navigate('/dashboard')}
-                sx={{
-                  background: 'linear-gradient(135deg, #6b7280 0%, #4b5563 100%)',
-                  '&:hover': {
-                    background: 'linear-gradient(135deg, #4b5563 0%, #374151 100%)',
-                  }
-                }}
-              >
-                Back to Dashboard
-              </Button>
             </Box>
-          </Container>
-        </Paper>
+            <Button
+              variant="contained"
+              startIcon={<People />}
+              onClick={() => navigate('/members')}
+              sx={{
+                background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+                color: 'white',
+                fontWeight: 'bold',
+                px: { xs: 1.5, sm: 2, md: 3 },
+                py: { xs: 0.75, sm: 1 },
+                borderRadius: '8px',
+                transition: 'all 0.3s ease',
+                transform: 'translateY(0)',
+                boxShadow: '0 4px 15px rgba(16, 185, 129, 0.3)',
+                fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                minWidth: { xs: 'auto', sm: 'auto' },
+                '&:hover': {
+                  background: 'linear-gradient(135deg, #059669 0%, #047857 100%)',
+                  transform: 'translateY(-2px)',
+                  boxShadow: '0 8px 25px rgba(16, 185, 129, 0.4)',
+                  '& .MuiSvgIcon-root': {
+                    transform: 'scale(1.1)',
+                    transition: 'transform 0.3s ease',
+                  }
+                },
+                '&:active': {
+                  transform: 'translateY(0)',
+                  boxShadow: '0 4px 15px rgba(16, 185, 129, 0.3)',
+                }
+              }}
+            >
+              {window.innerWidth < 600 ? 'View' : 'View Members'}
+            </Button>
+          </Box>
+        </Container>
+      </Paper>
 
-        <Container maxWidth="xl" sx={{ py: 4 }}>
+      <Container maxWidth="xl" sx={{ py: 4 }}>
           {/* Add Expense Button */}
           <Box sx={{ mb: 4, display: 'flex', justifyContent: 'flex-end' }}>
             <Button
@@ -202,8 +263,26 @@ const Expenses = () => {
               onClick={() => setShowExpenseForm(true)}
               sx={{
                 background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+                color: 'white',
+                fontWeight: 'bold',
+                px: 3,
+                py: 1,
+                borderRadius: '8px',
+                transition: 'all 0.3s ease',
+                transform: 'translateY(0)',
+                boxShadow: '0 4px 15px rgba(16, 185, 129, 0.3)',
                 '&:hover': {
                   background: 'linear-gradient(135deg, #059669 0%, #047857 100%)',
+                  transform: 'translateY(-2px)',
+                  boxShadow: '0 8px 25px rgba(16, 185, 129, 0.4)',
+                  '& .MuiSvgIcon-root': {
+                    transform: 'scale(1.1)',
+                    transition: 'transform 0.3s ease',
+                  }
+                },
+                '&:active': {
+                  transform: 'translateY(0)',
+                  boxShadow: '0 4px 15px rgba(16, 185, 129, 0.3)',
                 }
               }}
             >
@@ -212,7 +291,7 @@ const Expenses = () => {
           </Box>
 
         {/* Stats Cards */}
-        <Grid container spacing={3} sx={{ mb: 4 }}>
+        <Grid container spacing={3} sx={{ mb: 4,display:"flex",justifyContent:"center" }}>
           <Grid item xs={12} sm={6} lg={4}>
             <Paper 
               elevation={3}
@@ -241,14 +320,16 @@ const Expenses = () => {
                       background: 'linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%)',
                       WebkitBackgroundClip: 'text',
                       WebkitTextFillColor: 'transparent',
+                      fontSize:"25px",
+                      fontFamily:"Times new roman,serif",
                       fontWeight: 'bold'
                     }}
                   >
                     Rs :{getTotalExpenses()}
                   </Typography>
                 </Box>
-                <Box sx={{ backgroundColor: 'rgba(255, 255, 255, 0.2)', borderRadius: '50%', p: 2 }}>
-                  <Add sx={{ fontSize: 32, color: 'white' }} />
+                <Box sx={{ backgroundColor: '#ef4444', borderRadius: '50%', p: 1.5, ml: 2 }}>
+                  <AccountBalanceWallet sx={{ fontSize: 24, color: 'white' }} />
                 </Box>
               </Box>
             </Paper>
@@ -271,17 +352,20 @@ const Expenses = () => {
                 }
               }}
             >
-              <Box>
-                <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.9)' }} gutterBottom>
-                  This Month
-                </Typography>
+              <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <Box>
+                  <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.9)' }} gutterBottom>
+                    This Month
+                  </Typography>
                 <Typography 
                   variant="h4"
                   sx={{
                     background: 'linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%)',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
-                    fontWeight: 'bold'
+                    fontWeight: 'bold',
+                          fontSize:"25px",
+                      fontFamily:"Times new roman,serif",
                   }}
                 >
                   Rs :{expenses
@@ -293,6 +377,10 @@ const Expenses = () => {
                     })
                     .reduce((sum, expense) => sum + parseFloat(expense.amount), 0)}
                 </Typography>
+              </Box>
+              <Box sx={{ backgroundColor: '#f59e0b', borderRadius: '50%', p: 1.5, ml: 2 }}>
+                <CalendarMonth sx={{ fontSize: 24, color: 'white' }} />
+              </Box>
               </Box>
             </Paper>
           </Grid>
@@ -325,23 +413,25 @@ const Expenses = () => {
                       background: 'linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%)',
                       WebkitBackgroundClip: 'text',
                       WebkitTextFillColor: 'transparent',
-                      fontWeight: 'bold'
+                      fontWeight: 'bold',
+                            fontSize:"25px",
+                      fontFamily:"Times new roman,serif",
                     }}
                   >
                     {expenses.length}
                   </Typography>
                 </Box>
-                <Box sx={{ backgroundColor: 'rgba(255, 255, 255, 0.2)', borderRadius: '50%', p: 2 }}>
-                  <Add sx={{ fontSize: 32, color: 'white' }} />
+                <Box sx={{ backgroundColor: '#3b82f6', borderRadius: '50%', p: 1.5, ml: 2 }}>
+                  <ReceiptLong sx={{ fontSize: 24, color: 'white' }} />
                 </Box>
               </Box>
             </Paper>
           </Grid>
         </Grid>
 
-        <Grid container spacing={4}>
+        <Grid container spacing={4} sx={{ flexDirection: 'column' }}>
           {/* Expenses List */}
-          <Grid item xs={12} lg={8}>
+          <Grid item xs={12} sx={{ width: '100%' }}>
             <Paper 
               elevation={3}
               sx={{
@@ -396,7 +486,8 @@ const Expenses = () => {
                             />
                           </TableCell>
                           <TableCell>
-                            <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.9)' }} fontWeight="medium">
+                            <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.9)',      fontSize:"15px",
+                      fontFamily:"Times new roman,serif", }} fontWeight="medium">
                               Rs :{expense.amount}
                             </Typography>
                           </TableCell>
@@ -411,7 +502,7 @@ const Expenses = () => {
                               </IconButton>
                               <IconButton
                                 size="small"
-                                onClick={() => handleDelete(expense.id)}
+                                onClick={() => handleDeleteExpense(expense)}
                                 sx={{ color: 'rgba(255, 255, 255, 0.7)' }}
                               >
                                 <Delete fontSize="small" />
@@ -428,7 +519,7 @@ const Expenses = () => {
           </Grid>
 
           {/* Category Breakdown */}
-          <Grid item xs={12} lg={4}>
+          <Grid item xs={12} sx={{ width: '100%' }}>
             <Paper 
               elevation={3}
               sx={{
@@ -462,7 +553,7 @@ const Expenses = () => {
                         justifyContent: 'space-between', 
                         alignItems: 'center',
                         p: 2,
-                        backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                        backgroundColor: 'rgba(200, 200, 200, 0.15)',
                         borderRadius: 2,
                         '&:hover': {
                           backgroundColor: 'rgba(255, 255, 255, 0.15)',
@@ -489,37 +580,129 @@ const Expenses = () => {
           onClose={() => setShowExpenseForm(false)}
           maxWidth="sm"
           fullWidth
+          PaperProps={{
+            sx: {
+              backgroundColor: 'rgba(200, 200, 200, 0.15)',
+              backdropFilter: 'blur(25px)',
+              border: '1px solid rgba(255, 255, 255, 0.3)',
+              boxShadow: '0 25px 50px rgba(38, 59, 70, 0.2)',
+            }
+          }}
         >
-          <DialogTitle>
+          <DialogTitle sx={{ textAlign: 'center', color: 'white', fontWeight: 'bold' }}>
             {editingExpense ? 'Edit Expense' : 'Add New Expense'}
           </DialogTitle>
           <DialogContent>
             <Box component="form" onSubmit={handleSubmit} sx={{ display: 'flex', flexDirection: 'column', gap: 3, pt: 1 }}>
               <TextField
-                label="Description"
+                placeholder="e.g., New treadmill"
                 value={expenseData.description}
                 onChange={(e) => setExpenseData(prev => ({ ...prev, description: e.target.value }))}
-                placeholder="e.g., New treadmill"
                 fullWidth
                 required
+             sx={{
+    '& .MuiOutlinedInput-root': {
+      backgroundColor: 'rgba(200, 200, 200, 0.15)',
+      backdropFilter: 'blur(10px)',
+      border: '1px solid rgba(255, 255, 255, 0.3)',
+      borderRadius: '8px',
+
+      '&:hover': {
+        backgroundColor: 'rgba(255, 255, 255, 0.15)',
+        border: '1px solid rgba(255, 255, 255, 0.4)',
+      },
+
+      '&.Mui-focused': {
+        backgroundColor: 'rgba(255, 255, 255, 0.2)',
+        border: '1px solid rgba(255, 255, 255, 0.5)',
+      },
+
+      '& fieldset': {
+        border: 'none',
+      },
+    },
+
+    '& input': {
+      color: 'white',
+      '&::placeholder': {
+        color: 'rgba(255,255,255,0.7)',
+      },
+    },
+  }}
               />
 
-              <TextField
-                label="Amount"
-                type="number"
-                value={expenseData.amount}
-                onChange={(e) => setExpenseData(prev => ({ ...prev, amount: e.target.value }))}
-                placeholder="0.00"
-                fullWidth
-                required
-              />
+       <TextField
+  placeholder="0.00"
+  type="number"
+  value={expenseData.amount}
+  onChange={(e) =>
+    setExpenseData((prev) => ({ ...prev, amount: e.target.value }))
+  }
+  fullWidth
+  required
+  sx={{
+    '& .MuiOutlinedInput-root': {
+      backgroundColor: 'rgba(200, 200, 200, 0.15)',
+      backdropFilter: 'blur(10px)',
+      border: '1px solid rgba(255, 255, 255, 0.3)',
+      borderRadius: '8px',
+
+      '&:hover': {
+        backgroundColor: 'rgba(255, 255, 255, 0.15)',
+        border: '1px solid rgba(255, 255, 255, 0.4)',
+      },
+
+      '&.Mui-focused': {
+        backgroundColor: 'rgba(255, 255, 255, 0.2)',
+        border: '1px solid rgba(255, 255, 255, 0.5)',
+      },
+
+      '& fieldset': {
+        border: 'none',
+      },
+    },
+
+    '& input': {
+      color: 'white',
+      '&::placeholder': {
+        color: 'rgba(255,255,255,0.7)',
+      },
+    },
+  }}
+/>
 
               <FormControl fullWidth>
-                <InputLabel>Category</InputLabel>
+              
                 <Select
                   value={expenseData.category}
                   onChange={(e) => setExpenseData(prev => ({ ...prev, category: e.target.value }))}
                   label="Category"
+                  sx={{
+                    backgroundColor: 'rgba(200, 200, 200, 0.15)',
+                    backdropFilter: 'blur(10px)',
+                    border: '1px solid rgba(255, 255, 255, 0.3)',
+                    borderRadius: '8px',
+                    '&:hover': {
+                      backgroundColor: 'rgba(255, 255, 255, 0.15)',
+                      border: '1px solid rgba(255, 255, 255, 0.4)',
+                    },
+                    '&.Mui-focused': {
+                      backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                      border: '1px solid rgba(255, 255, 255, 0.5)',
+                    },
+                    '& .MuiOutlinedInput-notchedOutline': {
+                      border: 'none'
+                    },
+                    '& .MuiSelect-select': {
+                      color: 'white'
+                    },
+                    '& .MuiInputLabel-root': {
+                      color: 'rgba(255, 255, 255, 0.9)',
+                      '&.Mui-focused': {
+                        color: 'white'
+                      }
+                    }
+                  }}
                 >
                   {categories.map(category => (
                     <MenuItem key={category.value} value={category.value}>
@@ -530,21 +713,74 @@ const Expenses = () => {
               </FormControl>
 
               <TextField
-                label="Date"
                 type="date"
                 value={expenseData.date}
                 onChange={(e) => setExpenseData(prev => ({ ...prev, date: e.target.value }))}
                 fullWidth
                 InputLabelProps={{ shrink: true }}
                 required
+           sx={{
+    '& .MuiOutlinedInput-root': {
+      backgroundColor: 'rgba(200, 200, 200, 0.15)',
+      backdropFilter: 'blur(10px)',
+      border: '1px solid rgba(255, 255, 255, 0.3)',
+      borderRadius: '8px',
+
+      '&:hover': {
+        backgroundColor: 'rgba(255, 255, 255, 0.15)',
+        border: '1px solid rgba(255, 255, 255, 0.4)',
+      },
+
+      '&.Mui-focused': {
+        backgroundColor: 'rgba(255, 255, 255, 0.2)',
+        border: '1px solid rgba(255, 255, 255, 0.5)',
+      },
+
+      '& fieldset': {
+        border: 'none',
+      },
+    },
+
+    '& input': {
+      color: 'white',
+      '&::placeholder': {
+        color: 'rgba(255,255,255,0.7)',
+      },
+    },
+  }}
               />
 
               <FormControl fullWidth>
-                <InputLabel>Payment Method</InputLabel>
                 <Select
                   value={expenseData.paymentMethod}
                   onChange={(e) => setExpenseData(prev => ({ ...prev, paymentMethod: e.target.value }))}
                   label="Payment Method"
+                  sx={{
+                    backgroundColor: 'rgba(200, 200, 200, 0.15)',
+                    backdropFilter: 'blur(10px)',
+                    border: '1px solid rgba(255, 255, 255, 0.3)',
+                    borderRadius: '8px',
+                    '&:hover': {
+                      backgroundColor: 'rgba(255, 255, 255, 0.15)',
+                      border: '1px solid rgba(255, 255, 255, 0.4)',
+                    },
+                    '&.Mui-focused': {
+                      backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                      border: '1px solid rgba(255, 255, 255, 0.5)',
+                    },
+                    '& .MuiOutlinedInput-notchedOutline': {
+                      border: 'none'
+                    },
+                    '& .MuiSelect-select': {
+                      color: 'white'
+                    },
+                    '& .MuiInputLabel-root': {
+                      color: 'rgba(255, 255, 255, 0.9)',
+                      '&.Mui-focused': {
+                        color: 'white'
+                      }
+                    }
+                  }}
                 >
                   <MenuItem value="cash">Cash</MenuItem>
                   <MenuItem value="card">Card</MenuItem>
@@ -554,7 +790,7 @@ const Expenses = () => {
               </FormControl>
             </Box>
           </DialogContent>
-          <DialogActions sx={{ p: 3 }}>
+          <DialogActions sx={{ justifyContent: 'center', gap: 2, p: 3 }}>
             <Button
               onClick={() => {
                 setShowExpenseForm(false)
@@ -567,6 +803,15 @@ const Expenses = () => {
                   paymentMethod: 'cash'
                 })
               }}
+              variant="outlined"
+              sx={{
+                borderColor: 'rgba(255, 255, 255, 0.5)',
+                color: 'white',
+                '&:hover': {
+                  borderColor: 'rgba(255, 255, 255, 0.7)',
+                  backgroundColor: 'rgba(200, 200, 200, 0.15)',
+                }
+              }}
             >
               Cancel
             </Button>
@@ -574,9 +819,9 @@ const Expenses = () => {
               onClick={handleSubmit}
               variant="contained"
               sx={{
-                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                background: 'linear-gradient(135deg, #263b46 0%, #141720 100%)',
                 '&:hover': {
-                  background: 'linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%)',
+                  background: 'linear-gradient(135deg, #1a2833 0%, #0a0c14 100%)',
                 }
               }}
             >
@@ -584,8 +829,126 @@ const Expenses = () => {
             </Button>
           </DialogActions>
         </Dialog>
+      
+      {/* Delete Confirmation Modal */}
+      <Dialog 
+        open={!!deletingExpense} 
+        onClose={cancelDelete}
+        maxWidth="sm"
+        fullWidth
+        PaperProps={{
+          sx: {
+            backgroundColor: 'rgba(200, 200, 200, 0.15)',
+            backdropFilter: 'blur(25px)',
+            border: '1px solid rgba(255, 255, 255, 0.3)',
+            boxShadow: '0 25px 50px rgba(38, 59, 70, 0.2)',
+          }
+        }}
+      >
+        <DialogTitle sx={{ textAlign: 'center', color: 'white', fontWeight: 'bold' }}>
+          ⚠️ Delete Expense
+        </DialogTitle>
+        <DialogContent>
+          <Box sx={{ textAlign: 'center', py: 2 }}>
+            <Typography variant="h6" sx={{ color: 'white', mb: 2 }}>
+              Are you sure you want to delete this expense?
+            </Typography>
+            {deletingExpense && (
+              <Box sx={{ 
+                backgroundColor: 'rgba(200, 200, 200, 0.15)', 
+                p: 2, 
+                borderRadius: 2, 
+                mb: 2 
+              }}>
+                <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.8)' }}>
+                  <strong>Description:</strong> {deletingExpense.description}
+                </Typography>
+                <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.8)' }}>
+                  <strong>Amount:</strong> Rs :{deletingExpense.amount}
+                </Typography>
+                <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.8)' }}>
+                  <strong>Date:</strong> {new Date(deletingExpense.date).toLocaleDateString()}
+                </Typography>
+              </Box>
+            )}
+            <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.7)' }}>
+              This action cannot be undone.
+            </Typography>
+          </Box>
+        </DialogContent>
+        <DialogActions sx={{ justifyContent: 'center', gap: 2, p: 3 }}>
+          <Button
+            onClick={cancelDelete}
+            variant="outlined"
+            sx={{
+              borderColor: 'rgba(255, 255, 255, 0.5)',
+              color: 'white',
+              fontWeight: 'bold',
+              borderRadius: '8px',
+              transition: 'all 0.3s ease',
+              transform: 'translateY(0)',
+              '&:hover': {
+                borderColor: 'rgba(255, 255, 255, 0.8)',
+                backgroundColor: 'rgba(200, 200, 200, 0.15)',
+                transform: 'translateY(-2px)',
+                boxShadow: '0 8px 25px rgba(255, 255, 255, 0.2)',
+              }
+            }}
+          >
+            Cancel
+          </Button>
+          <Button
+            onClick={confirmDeleteExpense}
+            variant="contained"
+            sx={{
+              background: 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)',
+              color: 'white',
+              fontWeight: 'bold',
+              borderRadius: '8px',
+              transition: 'all 0.3s ease',
+              transform: 'translateY(0)',
+              boxShadow: '0 4px 15px rgba(239, 68, 68, 0.3)',
+              '&:hover': {
+                background: 'linear-gradient(135deg, #dc2626 0%, #b91c1c 100%)',
+                transform: 'translateY(-2px)',
+                boxShadow: '0 8px 25px rgba(239, 68, 68, 0.4)',
+              }
+            }}
+          >
+            Delete
+          </Button>
+        </DialogActions>
+      </Dialog>
       </Container>
-      </Container>
+
+      {/* Footer */}
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          py: 2,
+          px: 2,
+          mx: 'auto',
+          maxWidth: '600px',
+          backgroundColor: 'rgba(0, 0, 0, 0.3)',
+          borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+          borderRadius: '50px',
+          mt: 4,
+          mb: 2
+        }}
+      >
+        <Typography
+          variant="body2"
+          sx={{
+            textAlign: 'center',
+            color: 'rgba(255, 255, 255, 0.6)',
+            fontSize: '0.75rem',
+            fontFamily: 'Times New Roman, serif'
+          }}
+        >
+          © 2026 | Areez Korai Gym Management System | All Rights Reserved
+        </Typography>
+      </Box>
     </Box>
    
   )

@@ -14,7 +14,9 @@ import {
   Divider,
   Grid,
   IconButton,
-  InputAdornment
+  InputAdornment,
+  Backdrop,
+  Fade
 } from '@mui/material'
 import {
   Visibility,
@@ -29,6 +31,7 @@ const Login = () => {
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [showPassword, setShowPassword] = useState(false)
+  const [showSuccessAnimation, setShowSuccessAnimation] = useState(false)
   const { login } = useAuth()
   const navigate = useNavigate()
 
@@ -38,8 +41,11 @@ const Login = () => {
 
     // Simple authentication (in production, use proper authentication)
     if (email === 'admin@gym.com' && password === 'admin123') {
-      login({ email, name: 'Admin' })
-      navigate('/dashboard')
+      setShowSuccessAnimation(true)
+      setTimeout(() => {
+        login({ email, name: 'Admin' })
+        navigate('/dashboard')
+      }, 3000)
     } else {
       setError('Invalid email or password')
     }
@@ -60,9 +66,84 @@ const Login = () => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        p: 3
+        p: 3,
+        position: 'relative'
       }}
     >
+      {/* Success Animation Overlay */}
+      <Backdrop
+        sx={{ 
+          color: '#fff', 
+          zIndex: (theme) => theme.zIndex.drawer + 1,
+          backgroundColor: 'rgba(0, 0, 0, 0.8)',
+          backdropFilter: 'blur(10px)'
+        }}
+        open={showSuccessAnimation}
+      >
+        <Fade in={showSuccessAnimation}>
+          <Box
+            sx={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              textAlign: 'center',
+              color: 'white',
+              animation: 'fadeInScale 0.8s ease-in-out'
+            }}
+          >
+            <Typography
+              variant="h2"
+              sx={{
+                background: 'linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                fontWeight: 'bold',
+                fontFamily: 'cursive',
+                mb: 2,
+                fontSize: { xs: '2rem', md: '3rem' }
+              }}
+            >
+              Hi Admin 👋
+            </Typography>
+            <Typography
+              variant="h5"
+              sx={{
+                color: 'rgba(255, 255, 255, 0.9)',
+                mb: 3,
+                fontFamily: 'Times New Roman, serif',
+                fontSize: { xs: '1rem', md: '1.2rem' }
+              }}
+            >
+              Hope your day goes well!
+            </Typography>
+            <Box
+              sx={{
+                width: 60,
+                height: 60,
+                border: '3px solid rgba(255, 255, 255, 0.3)',
+                borderRadius: '50%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                mx: 'auto',
+                animation: 'pulse 2s infinite'
+              }}
+            >
+              <Typography
+                variant="h4"
+                sx={{
+                  color: 'white',
+                  fontWeight: 'bold'
+                }}
+              >
+                ✓
+              </Typography>
+            </Box>
+          </Box>
+        </Fade>
+      </Backdrop>
+
       <Container maxWidth="sm">
         <Box sx={{ textAlign: 'center', mb: 6 }}>
           <Typography 
@@ -283,6 +364,39 @@ const Login = () => {
       </Container>
     </Box>
   )
+}
+
+// Add CSS animations
+const style = document.createElement('style')
+style.textContent = `
+  @keyframes fadeInScale {
+    0% {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.8);
+    }
+    100% {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.1);
+      opacity: 0.8;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+`
+
+if (typeof document !== 'undefined') {
+  document.head.appendChild(style)
 }
 
 export default Login

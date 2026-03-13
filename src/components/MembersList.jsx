@@ -195,40 +195,79 @@ const MembersList = () => {
           backdropFilter: 'blur(20px)',
           border: '1px solid rgba(255, 255, 255, 0.2)',
           boxShadow: '0 20px 40px rgba(38, 59, 70, 0.15)',
+          borderRadius: "0 0 8px 8px",
+          animation: 'slideInLeft 0.6s ease-out',
         }}
       >
         <Container maxWidth="xl">
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', py: 3 }}>
-            <Box>
-              <Typography 
-                variant="h4" 
-                component="h1"
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', py: { xs: 2, sm: 3 } }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: { xs: 1, sm: 2 } }}>
+              <Button
+                variant="text"
+                startIcon={<ArrowBack />}
+                onClick={() => navigate('/dashboard')}
                 sx={{
-                  background: 'linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  fontWeight: 'bold',
-                  fontFamily:"New Times roman,saerif"
+                  color: 'white',
+                  minWidth: { xs: 'auto', sm: 'auto' },
+                  px: { xs: 0.5, sm: 2 },
+                  py: { xs: 0.5, sm: 1 },
+                  '&:hover': { backgroundColor: 'rgba(255, 255, 255, 0.1)' },
                 }}
               >
-                Members List
-              </Typography>
-              <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.9)' }}>
-                Manage all gym members
-              </Typography>
+              </Button>
+              <Box>
+                <Typography 
+                  variant="h5"
+                  component="h1"
+                  sx={{
+                    background: 'linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    fontWeight: 'bold',
+                    fontFamily:"New Times roman,saerif",
+                    fontSize: { xs: '1.25rem', sm: '1.5rem', md: '2rem' }
+                  }}
+                >
+                  Members List
+                </Typography>
+                <Typography 
+                  variant="body2"
+                  sx={{ 
+                    color: 'rgba(255, 255, 255, 0.9)',
+                    fontSize: { xs: '0.7rem', sm: '0.75rem', md: '0.875rem' },
+                    display: { xs: 'none', sm: 'block' }
+                  }}
+                >
+                  Manage all gym members
+                </Typography>
+              </Box>
             </Box>
             <Button
               variant="contained"
               startIcon={<PersonAdd />}
               onClick={() => navigate('/register-member')}
               sx={{
-                background: 'linear-gradient(135deg, #141720 0%, #1417204b 100%)',
+                background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+                color: 'white',
+                fontWeight: 'bold',
+                px: { xs: 1, sm: 1.5, md: 3 },
+                py: { xs: 0.5, sm: 0.75, md: 1 },
+                borderRadius: '8px',
+                transition: 'all 0.3s ease',
+                transform: 'translateY(0)',
+                boxShadow: '0 4px 15px rgba(16, 185, 129, 0.3)',
+                fontSize: { xs: '0.7rem', sm: '0.75rem', md: '0.875rem' },
+                minWidth: { xs: 'auto', sm: 'auto' },
                 '&:hover': {
-                  background: 'linear-gradient(135deg, #14172098 0%, #141720 100%)',
-                }
+                  background: 'linear-gradient(135deg, #059669 0%, #047857 100%)',
+                  transform: 'translateY(-2px)',
+                  boxShadow: '0 8px 25px rgba(16, 185, 129, 0.4)',
+                  '& .MuiSvgIcon-root': { transform: 'scale(1.1)', transition: 'transform 0.3s ease' }
+                },
+                '&:active': { transform: 'translateY(0)', boxShadow: '0 4px 15px rgba(16, 185, 129, 0.3)' }
               }}
             >
-              Add New Member
+              {window.innerWidth < 600 ? 'Add' : 'Add New Member'}
             </Button>
           </Box>
         </Container>
@@ -239,55 +278,47 @@ const MembersList = () => {
         <Paper 
           elevation={3}
           sx={{
-            p: 3,
+            p: { xs: 2, sm: 3 },
             mb: 3,
             backgroundColor: 'rgba(38, 59, 70, 0.15)',
             backdropFilter: 'blur(20px)',
             border: '1px solid rgba(255, 255, 255, 0.2)',
             boxShadow: '0 20px 40px rgba(38, 59, 70, 0.15)',
+            animation: 'slideInRight 0.8s ease-out',
           }}
         >
           <TextField
             fullWidth
-            placeholder="Search by name, email, phone, or member ID..."
+            placeholder="Search members..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <Search sx={{ color: 'white' }} />
-                </InputAdornment>
-              ),
-              sx: {
+            size="small"
+            sx={{
+              '& .MuiInputBase-input': {
+                fontSize: { xs: '0.875rem', sm: '1rem' },
+                py: { xs: 1, sm: 1.5 },
+              },
+              '& .MuiInputBase-root': {
                 backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                backdropFilter: 'blur(10px)',
-                border: '1px solid rgba(255, 255, 255, 0.3)',
                 borderRadius: '8px',
                 '&:hover': {
                   backgroundColor: 'rgba(255, 255, 255, 0.15)',
-                  border: '1px solid rgba(255, 255, 255, 0.4)',
                 },
-                '&.Mui-focused': {
-                  backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                  border: '1px solid rgba(255, 255, 255, 0.5)',
+              },
+            }}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <Search sx={{ fontSize: { xs: 18, sm: 20 }, color: 'rgba(255, 255, 255, 0.7)' }} />
+                </InputAdornment>
+              ),
+              sx: {
+                color: 'white',
+                '&::placeholder': {
+                  color: 'rgba(255, 255, 255, 0.5)',
+                  fontSize: { xs: '0.875rem', sm: '1rem' },
                 },
-                '& .MuiOutlinedInput-notchedOutline': {
-                  border: 'none'
-                },
-                '& input': {
-                  color: 'white',
-               
-                  '&::placeholder': {
-                    color: 'black'
-                  }
-                },
-                '& .MuiInputLabel-root': {
-                  color: 'black',
-                  '&.Mui-focused': {
-                    color: 'white'
-                  }
-                }
-              }
+              },
             }}
           />
         </Paper>
@@ -382,8 +413,8 @@ const MembersList = () => {
         </Paper>
 
         {/* Summary Stats */}
-        <Grid container spacing={3} sx={{ mt: 3 }}>
-          <Grid item xs={12} sm={6} lg={4}>
+        <Grid container spacing={3} sx={{ mt: 3, justifyContent: 'center' }}>
+          <Grid item xs={12} sm={6} md={4}>
             <Paper 
               elevation={3}
               sx={{
@@ -393,11 +424,20 @@ const MembersList = () => {
                 border: '1px solid rgba(255, 255, 255, 0.2)',
                 boxShadow: '0 20px 40px rgba(38, 59, 70, 0.15)',
                 transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                animation: 'fadeInUp 0.6s ease-out',
                 '&:hover': {
                   transform: 'translateY(-5px)',
                   boxShadow: '0 25px 50px rgba(38, 59, 70, 0.2)',
                   backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                }
+                },
+                width: '100%',
+                minWidth: 250,
+                maxWidth: 300,
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                textAlign: 'center'
               }}
             >
               <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.9)' }} gutterBottom>
@@ -409,7 +449,8 @@ const MembersList = () => {
                   background: 'linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
-                  fontWeight: 'bold'
+                  fontWeight: 'bold',
+                  fontSize: { xs: '1.5rem', sm: '2rem', md: '2.25rem' }
                 }}
               >
                 {members.length}
@@ -417,7 +458,7 @@ const MembersList = () => {
             </Paper>
           </Grid>
 
-          <Grid item xs={12} sm={6} lg={4}>
+          <Grid item xs={12} sm={6} md={4}>
             <Paper 
               elevation={3}
               sx={{
@@ -431,7 +472,15 @@ const MembersList = () => {
                   transform: 'translateY(-5px)',
                   boxShadow: '0 25px 50px rgba(38, 59, 70, 0.2)',
                   backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                }
+                },
+                width: '100%',
+                minWidth: 250,
+                maxWidth: 300,
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                textAlign: 'center'
               }}
             >
               <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.9)' }} gutterBottom>
@@ -441,7 +490,8 @@ const MembersList = () => {
                 variant="h4"
                 sx={{
                   color: 'success.main',
-                  fontWeight: 'bold'
+                  fontWeight: 'bold',
+                  fontSize: { xs: '1.5rem', sm: '2rem', md: '2.25rem' }
                 }}
               >
                 {members.filter(m => getMemberFeeStatus(m.id) === 'paid').length}
@@ -449,7 +499,7 @@ const MembersList = () => {
             </Paper>
           </Grid>
 
-          <Grid item xs={12} sm={6} lg={4}>
+          <Grid item xs={12} sm={6} md={4}>
             <Paper 
               elevation={3}
               sx={{
@@ -463,7 +513,15 @@ const MembersList = () => {
                   transform: 'translateY(-5px)',
                   boxShadow: '0 25px 50px rgba(38, 59, 70, 0.2)',
                   backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                }
+                },
+                width: '100%',
+                minWidth: 250,
+                maxWidth: 300,
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                textAlign: 'center'
               }}
             >
               <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.9)' }} gutterBottom>
@@ -473,7 +531,8 @@ const MembersList = () => {
                 variant="h4"
                 sx={{
                   color: 'warning.main',
-                  fontWeight: 'bold'
+                  fontWeight: 'bold',
+                  fontSize: { xs: '1.5rem', sm: '2rem', md: '2.25rem' }
                 }}
               >
                 {members.filter(m => getMemberFeeStatus(m.id) === 'inactive').length}
@@ -491,7 +550,7 @@ const MembersList = () => {
         fullWidth
         PaperProps={{
           sx: {
-            backgroundColor: 'rgba(255, 255, 255, 0.1)',
+            backgroundColor: 'rgba(200, 200, 200, 0.15)',
             backdropFilter: 'blur(25px)',
             border: '1px solid rgba(255, 255, 255, 0.3)',
             boxShadow: '0 25px 50px rgba(38, 59, 70, 0.2)',
@@ -518,7 +577,7 @@ const MembersList = () => {
               color: 'white',
               '&:hover': {
                 borderColor: 'rgba(255, 255, 255, 0.7)',
-                backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                backgroundColor: 'rgba(200, 200, 200, 0.15)',
               }
             }}
           >
@@ -547,7 +606,7 @@ const MembersList = () => {
         fullWidth
         PaperProps={{
           sx: {
-            backgroundColor: 'rgba(255, 255, 255, 0.1)',
+            backgroundColor: 'rgba(200, 200, 200, 0.15)',
             backdropFilter: 'blur(25px)',
             border: '1px solid rgba(255, 255, 255, 0.3)',
             boxShadow: '0 25px 50px rgba(38, 59, 70, 0.2)',
@@ -568,7 +627,7 @@ const MembersList = () => {
                   value={editFormData.name}
                   onChange={handleEditFormChange}
                   sx={{
-                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    backgroundColor: 'rgba(200, 200, 200, 0.15)',
                     backdropFilter: 'blur(10px)',
                     border: '1px solid rgba(255, 255, 255, 0.3)',
                     borderRadius: '8px',
@@ -601,7 +660,7 @@ const MembersList = () => {
                   value={editFormData.email}
                   onChange={handleEditFormChange}
                   sx={{
-                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    backgroundColor: 'rgba(200, 200, 200, 0.15)',
                     backdropFilter: 'blur(10px)',
                     border: '1px solid rgba(255, 255, 255, 0.3)',
                     borderRadius: '8px',
@@ -633,7 +692,7 @@ const MembersList = () => {
                   value={editFormData.phone}
                   onChange={handleEditFormChange}
                   sx={{
-                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    backgroundColor: 'rgba(200, 200, 200, 0.15)',
                     backdropFilter: 'blur(10px)',
                     border: '1px solid rgba(255, 255, 255, 0.3)',
                     borderRadius: '8px',
@@ -665,7 +724,7 @@ const MembersList = () => {
                   value={editFormData.emergencyContact}
                   onChange={handleEditFormChange}
                   sx={{
-                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    backgroundColor: 'rgba(200, 200, 200, 0.15)',
                     backdropFilter: 'blur(10px)',
                     border: '1px solid rgba(255, 255, 255, 0.3)',
                     borderRadius: '8px',
@@ -699,7 +758,7 @@ const MembersList = () => {
                   multiline
                   rows={2}
                   sx={{
-                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    backgroundColor: 'rgba(200, 200, 200, 0.15)',
                     backdropFilter: 'blur(10px)',
                     border: '1px solid rgba(255, 255, 255, 0.3)',
                     borderRadius: '8px',
@@ -732,7 +791,7 @@ const MembersList = () => {
                     displayEmpty
                     renderValue={(value) => value ? value : "Select Blood Group"}
                     sx={{
-                      backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                      backgroundColor: 'rgba(200, 200, 200, 0.15)',
                       backdropFilter: 'blur(10px)',
                       border: '1px solid rgba(255, 255, 255, 0.3)',
                       borderRadius: '8px',
@@ -777,7 +836,7 @@ const MembersList = () => {
                   value={editFormData.age}
                   onChange={handleEditFormChange}
                   sx={{
-                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    backgroundColor: 'rgba(200, 200, 200, 0.15)',
                     backdropFilter: 'blur(10px)',
                     border: '1px solid rgba(255, 255, 255, 0.3)',
                     borderRadius: '8px',
@@ -810,7 +869,7 @@ const MembersList = () => {
                     displayEmpty
                     renderValue={(value) => value ? value.charAt(0).toUpperCase() + value.slice(1) : "Select Gender"}
                     sx={{
-                      backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                      backgroundColor: 'rgba(200, 200, 200, 0.15)',
                       backdropFilter: 'blur(10px)',
                       border: '1px solid rgba(255, 255, 255, 0.3)',
                       borderRadius: '8px',
@@ -847,7 +906,7 @@ const MembersList = () => {
                     displayEmpty
                     renderValue={(value) => value ? value.charAt(0).toUpperCase() + value.slice(1) : "Select Membership Type"}
                     sx={{
-                      backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                      backgroundColor: 'rgba(200, 200, 200, 0.15)',
                       backdropFilter: 'blur(10px)',
                       border: '1px solid rgba(255, 255, 255, 0.3)',
                       borderRadius: '8px',
@@ -887,7 +946,7 @@ const MembersList = () => {
               color: 'white',
               '&:hover': {
                 borderColor: 'rgba(255, 255, 255, 0.7)',
-                backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                backgroundColor: 'rgba(200, 200, 200, 0.15)',
               }
             }}
           >
@@ -907,6 +966,35 @@ const MembersList = () => {
           </Button>
         </DialogActions>
       </Dialog>
+
+      {/* Footer */}
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          py: 2,
+          px: 2,
+          mx: 'auto',
+          maxWidth: '600px',
+          backgroundColor: 'rgba(0, 0, 0, 0.3)',
+          borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+          borderRadius: '50px',
+          mt: 4,
+          mb: 2
+        }}
+      >
+        <Typography
+          variant="body2"
+          sx={{
+            textAlign: 'center',
+            color: 'rgba(255, 255, 255, 0.6)',
+            fontSize: '0.75rem',
+            fontFamily: 'Times New Roman, serif'
+          }}
+        >
+          © 2026 | Areez Korai Gym Management System | All Rights Reserved
+        </Typography>
+      </Box>
     </Box>
   )
 }
