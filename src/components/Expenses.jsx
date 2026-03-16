@@ -167,7 +167,14 @@ const Expenses = () => {
   const expensesByCategory = getExpensesByCategory()
 
   return (
-    <Box sx={{ minHeight: '100vh', background: 'linear-gradient(135deg, #263b46 0%, #141720 100%)', py: 0 }}>
+ <Box
+  sx={{
+    minHeight: "100vh",
+    display: "flex",
+    flexDirection: "column",
+    background: "linear-gradient(135deg, #263b46 0%, #141720 100%)",
+  }}
+>
       {/* Header - Full Width */}
       <Paper 
         elevation={3}

@@ -26,7 +26,13 @@ import {
   Chip,
   Alert,
 } from "@mui/material";
-import { ArrowBack, Add, CheckCircle, AccessTime, People } from "@mui/icons-material";
+import {
+  ArrowBack,
+  Add,
+  CheckCircle,
+  AccessTime,
+  People,
+} from "@mui/icons-material";
 
 const FeeManagement = () => {
   const navigate = useNavigate();
@@ -136,12 +142,14 @@ const FeeManagement = () => {
   };
 
   return (
-    <Box
-      sx={{
-        minHeight: "100vh",
-        background: "linear-gradient(135deg, #263b46 0%, #141720 100%)",
-      }}
-    >
+<Box
+  sx={{
+    minHeight: "100vh",
+    display: "flex",
+    flexDirection: "column",
+    background: "linear-gradient(135deg, #263b46 0%, #141720 100%)",
+  }}
+>
       {/* Header */}
       <Paper
         elevation={3}
@@ -151,43 +159,48 @@ const FeeManagement = () => {
           border: "1px solid rgba(255, 255, 255, 0.2)",
           boxShadow: "0 20px 40px rgba(38, 59, 70, 0.15)",
           borderRadius: "0 0 8px 8px",
-          animation: 'bounceIn 0.8s ease-out',
+          animation: "bounceIn 0.8s ease-out",
         }}
       >
         <Container maxWidth="xl">
           <Box
             sx={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
               py: { xs: 2, sm: 3 },
             }}
           >
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: { xs: 1, sm: 2 } }}>
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: { xs: 1, sm: 2 },
+              }}
+            >
               <Button
                 variant="text"
                 startIcon={<ArrowBack />}
-                onClick={() => navigate('/dashboard')}
+                onClick={() => navigate("/dashboard")}
                 sx={{
-                  color: 'white',
-                  minWidth: { xs: 'auto', sm: 'auto' },
+                  color: "white",
+                  minWidth: { xs: "auto", sm: "auto" },
                   px: { xs: 1, sm: 2 },
-                  '&:hover': { backgroundColor: 'rgba(200, 200, 200, 0.15)' },
+                  "&:hover": { backgroundColor: "rgba(200, 200, 200, 0.15)" },
                 }}
-              >
-              </Button>
+              ></Button>
               <Box>
                 <Typography
                   variant="h5"
                   component="h1"
                   sx={{
                     background:
-                      'linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    fontWeight: 'bold',
-                    fontFamily: 'new times roman,serif',
-                    fontSize: { xs: '1.25rem', sm: '1.5rem', md: '2rem' }
+                      "linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    fontWeight: "bold",
+                    fontFamily: "new times roman,serif",
+                    fontSize: { xs: "1.25rem", sm: "1.5rem", md: "2rem" },
                   }}
                 >
                   Fee Management
@@ -195,9 +208,9 @@ const FeeManagement = () => {
                 <Typography
                   variant="body2"
                   sx={{
-                    color: 'rgba(255, 255, 255, 0.9)',
-                    fontSize: { xs: '0.7rem', sm: '0.75rem', md: '0.875rem' },
-                    display: { xs: 'none', sm: 'block' }
+                    color: "rgba(255, 255, 255, 0.9)",
+                    fontSize: { xs: "0.7rem", sm: "0.75rem", md: "0.875rem" },
+                    display: { xs: "none", sm: "block" },
                   }}
                 >
                   Manage member fees and payments
@@ -207,35 +220,36 @@ const FeeManagement = () => {
             <Button
               variant="contained"
               startIcon={<People />}
-              onClick={() => navigate('/members')}
+              onClick={() => navigate("/members")}
               sx={{
-                background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
-                color: 'white',
-                fontWeight: 'bold',
+                background: "linear-gradient(135deg, #10b981 0%, #059669 100%)",
+                color: "white",
+                fontWeight: "bold",
                 px: { xs: 1.5, sm: 2, md: 3 },
                 py: { xs: 0.75, sm: 1 },
-                borderRadius: '8px',
-                transition: 'all 0.3s ease',
-                transform: 'translateY(0)',
-                boxShadow: '0 4px 15px rgba(16, 185, 129, 0.3)',
-                fontSize: { xs: '0.75rem', sm: '0.875rem' },
-                minWidth: { xs: 'auto', sm: 'auto' },
-                '&:hover': {
-                  background: 'linear-gradient(135deg, #059669 0%, #047857 100%)',
-                  transform: 'translateY(-2px)',
-                  boxShadow: '0 8px 25px rgba(16, 185, 129, 0.4)',
-                  '& .MuiSvgIcon-root': {
-                    transform: 'scale(1.1)',
-                    transition: 'transform 0.3s ease',
-                  }
+                borderRadius: "8px",
+                transition: "all 0.3s ease",
+                transform: "translateY(0)",
+                boxShadow: "0 4px 15px rgba(16, 185, 129, 0.3)",
+                fontSize: { xs: "0.75rem", sm: "0.875rem" },
+                minWidth: { xs: "auto", sm: "auto" },
+                "&:hover": {
+                  background:
+                    "linear-gradient(135deg, #059669 0%, #047857 100%)",
+                  transform: "translateY(-2px)",
+                  boxShadow: "0 8px 25px rgba(16, 185, 129, 0.4)",
+                  "& .MuiSvgIcon-root": {
+                    transform: "scale(1.1)",
+                    transition: "transform 0.3s ease",
+                  },
                 },
-                '&:active': {
-                  transform: 'translateY(0)',
-                  boxShadow: '0 4px 15px rgba(16, 185, 129, 0.3)',
-                }
+                "&:active": {
+                  transform: "translateY(0)",
+                  boxShadow: "0 4px 15px rgba(16, 185, 129, 0.3)",
+                },
               }}
             >
-              {window.innerWidth < 600 ? 'View' : 'View Members'}
+              {window.innerWidth < 600 ? "View" : "View Members"}
             </Button>
           </Box>
         </Container>
@@ -243,8 +257,14 @@ const FeeManagement = () => {
 
       <Container maxWidth="xl" sx={{ py: 4 }}>
         {/* Stats Cards */}
-        <Grid container spacing={3} sx={{ mb: 4, justifyContent: 'center' }}>
-          <Grid item xs={12} sm={6} lg={4} sx={{ display: 'flex', justifyContent: 'center' }}>
+        <Grid container spacing={3} sx={{ mb: 4, justifyContent: "center" }}>
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            lg={4}
+            sx={{ display: "flex", justifyContent: "center" }}
+          >
             <Paper
               elevation={3}
               sx={{
@@ -259,14 +279,14 @@ const FeeManagement = () => {
                   boxShadow: "0 25px 50px rgba(38, 59, 70, 0.2)",
                   backgroundColor: "rgba(255, 255, 255, 0.2)",
                 },
-                width: '100%',
+                width: "100%",
                 minWidth: 250,
                 maxWidth: 300,
-                height: '100%',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                textAlign: 'center'
+                height: "100%",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                textAlign: "center",
               }}
             >
               <Box
@@ -274,9 +294,9 @@ const FeeManagement = () => {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "space-between",
-                  flexDirection: { xs: 'column', sm: 'row' },
+                  flexDirection: { xs: "column", sm: "row" },
                   gap: 2,
-                  textAlign: 'center'
+                  textAlign: "center",
                 }}
               >
                 <Box>
@@ -288,8 +308,9 @@ const FeeManagement = () => {
                     Total Revenue
                   </Typography>
                   <Typography
-                    variant="h4"
+                    variant="h5"
                     sx={{
+                      fontFamily: "Times New Roman, serif",
                       background:
                         "linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%)",
                       WebkitBackgroundClip: "text",
@@ -297,7 +318,8 @@ const FeeManagement = () => {
                       fontWeight: "bold",
                     }}
                   >
-                    <span style={{ fontFamily: 'Times New Roman, serif', fontSize: { xs: '0.75rem', sm: '1rem', md: '1.125rem' } }}>Rs :</span>{getTotalRevenue()}
+                    <span style={{}}>Rs :</span>
+                    {getTotalRevenue()}
                   </Typography>
                 </Box>
                 <Box
@@ -307,18 +329,29 @@ const FeeManagement = () => {
                     p: { xs: 1.5, sm: 2 },
                     width: { xs: 48, sm: 56, md: 64 },
                     height: { xs: 48, sm: 56, md: 64 },
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center'
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
                   }}
                 >
-                  <CheckCircle sx={{ fontSize: { xs: 24, sm: 28, md: 32 }, color: "#10b981" }} />
+                  <CheckCircle
+                    sx={{
+                      fontSize: { xs: 24, sm: 28, md: 32 },
+                      color: "#10b981",
+                    }}
+                  />
                 </Box>
               </Box>
             </Paper>
           </Grid>
 
-          <Grid item xs={12} sm={6} lg={4} sx={{ display: 'flex', justifyContent: 'center' }}>
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            lg={4}
+            sx={{ display: "flex", justifyContent: "center" }}
+          >
             <Paper
               elevation={3}
               sx={{
@@ -333,14 +366,14 @@ const FeeManagement = () => {
                   boxShadow: "0 25px 50px rgba(38, 59, 70, 0.2)",
                   backgroundColor: "rgba(255, 255, 255, 0.2)",
                 },
-                width: '100%',
+                width: "100%",
                 minWidth: 250,
                 maxWidth: 300,
-                height: '100%',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                textAlign: 'center'
+                height: "100%",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                textAlign: "center",
               }}
             >
               <Box
@@ -348,9 +381,9 @@ const FeeManagement = () => {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "space-between",
-                  flexDirection: { xs: 'column', sm: 'row' },
+                  flexDirection: { xs: "column", sm: "row" },
                   gap: 2,
-                  textAlign: 'center'
+                  textAlign: "center",
                 }}
               >
                 <Box>
@@ -362,8 +395,9 @@ const FeeManagement = () => {
                     Pending Fees
                   </Typography>
                   <Typography
-                    variant="h4"
+                    variant="h5"
                     sx={{
+                      fontFamily: "Times New Roman, serif",
                       background:
                         "linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%)",
                       WebkitBackgroundClip: "text",
@@ -371,7 +405,19 @@ const FeeManagement = () => {
                       fontWeight: "bold",
                     }}
                   >
-                    <span style={{ fontFamily: 'Times New Roman, serif', fontSize: { xs: '0.75rem', sm: '1rem', md: '1.125rem' } }}>Rs :</span>{getPendingFees()}
+                    <span
+                      style={{}}
+                      sx={{
+                        fontSize: {
+                          xs: "0.75rem",
+                          sm: "1rem",
+                          md: "1.125rem",
+                        },
+                      }}
+                    >
+                      Rs :
+                    </span>
+                    {getPendingFees()}
                   </Typography>
                 </Box>
                 <Box
@@ -381,18 +427,29 @@ const FeeManagement = () => {
                     p: { xs: 1.5, sm: 2 },
                     width: { xs: 48, sm: 56, md: 64 },
                     height: { xs: 48, sm: 56, md: 64 },
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center'
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
                   }}
                 >
-                  <AccessTime sx={{ fontSize: { xs: 24, sm: 28, md: 32 }, color: "#f59e0b" }} />
+                  <AccessTime
+                    sx={{
+                      fontSize: { xs: 24, sm: 28, md: 32 },
+                      color: "#f59e0b",
+                    }}
+                  />
                 </Box>
               </Box>
             </Paper>
           </Grid>
 
-          <Grid item xs={12} sm={6} lg={4} sx={{ display: 'flex', justifyContent: 'center' }}>
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            lg={4}
+            sx={{ display: "flex", justifyContent: "center" }}
+          >
             <Paper
               elevation={3}
               sx={{
@@ -407,14 +464,14 @@ const FeeManagement = () => {
                   boxShadow: "0 25px 50px rgba(38, 59, 70, 0.2)",
                   backgroundColor: "rgba(255, 255, 255, 0.2)",
                 },
-                width: '100%',
+                width: "100%",
                 minWidth: 250,
                 maxWidth: 300,
-                height: '100%',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                textAlign: 'center'
+                height: "100%",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                textAlign: "center",
               }}
             >
               <Box
@@ -422,25 +479,25 @@ const FeeManagement = () => {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "space-between",
-                  flexDirection: { xs: 'column', sm: 'row' },
+                  flexDirection: { xs: "column", sm: "row" },
                   gap: 2,
-                  textAlign: 'center'
+                  textAlign: "center",
                 }}
               >
                 <Box>
                   <Typography
                     variant="body2"
-                    sx={{ 
+                    sx={{
                       color: "rgba(255, 255, 255, 0.9)",
                       fontFamily: "Times New Roman, serif",
-                      fontWeight: "bold"
+                      fontWeight: "bold",
                     }}
                     gutterBottom
                   >
                     Total Payments
                   </Typography>
                   <Typography
-                    variant="h4"
+                    variant="h5"
                     sx={{
                       background:
                         "linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%)",
@@ -459,21 +516,26 @@ const FeeManagement = () => {
                     p: { xs: 1.5, sm: 2 },
                     width: { xs: 48, sm: 56, md: 64 },
                     height: { xs: 48, sm: 56, md: 64 },
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center'
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
                   }}
                 >
-                  <Add sx={{ fontSize: { xs: 24, sm: 28, md: 32 }, color: "#3b82f6" }} />
+                  <Add
+                    sx={{
+                      fontSize: { xs: 24, sm: 28, md: 32 },
+                      color: "#3b82f6",
+                    }}
+                  />
                 </Box>
               </Box>
             </Paper>
           </Grid>
         </Grid>
 
-        <Grid container spacing={4} sx={{ flexDirection: 'column' }}>
+        <Grid container spacing={4} sx={{ flexDirection: "column" }}>
           {/* Members Fee Status */}
-          <Grid item xs={12} sx={{ width: '100%' }}>
+          <Grid item xs={12} sx={{ width: "100%" }}>
             <Paper
               elevation={3}
               sx={{
@@ -536,10 +598,18 @@ const FeeManagement = () => {
                         }}
                       >
                         <Box sx={{ flex: 1 }}>
-                          <Typography variant="body1" fontWeight="medium" sx={{ fontFamily: 'Times New Roman, serif' }}>
+                          <Typography
+                            variant="body1"
+                            fontWeight="medium"
+                            sx={{ fontFamily: "Times New Roman, serif" }}
+                          >
                             {member.name}
                           </Typography>
-                          <Typography variant="body2" color="text.secondary" sx={{ fontFamily: 'Times New Roman, serif' }}>
+                          <Typography
+                            variant="body2"
+                            color="text.secondary"
+                            sx={{ fontFamily: "Times New Roman, serif" }}
+                          >
                             {member.id}
                           </Typography>
                         </Box>
@@ -577,7 +647,7 @@ const FeeManagement = () => {
           </Grid>
 
           {/* Recent Payments */}
-          <Grid item xs={12} sx={{ width: '100%' }}>
+          <Grid item xs={12} sx={{ width: "100%" }}>
             <Paper
               elevation={3}
               sx={{
@@ -664,7 +734,23 @@ const FeeManagement = () => {
                             </TableCell>
                             <TableCell>
                               <Chip
-                                label={<span><span style={{ fontFamily: 'Times New Roman, serif', fontSize: { xs: '0.625rem', sm: '0.875rem', md: '1rem' } }}>Rs :</span>{fee.amount}</span>}
+                                label={
+                                  <span>
+                                    <span
+                                      style={{
+                                        fontFamily: "Times New Roman, serif",
+                                        fontSize: {
+                                          xs: "0.625rem",
+                                          sm: "0.875rem",
+                                          md: "1rem",
+                                        },
+                                      }}
+                                    >
+                                      Rs :
+                                    </span>
+                                    {fee.amount}
+                                  </span>
+                                }
                                 size="small"
                                 color="success"
                                 sx={{ fontWeight: "bold" }}
@@ -697,21 +783,37 @@ const FeeManagement = () => {
           onClose={() => setShowPaymentForm(false)}
           maxWidth="sm"
           fullWidth
+          PaperProps={{
+            sx: {
+              backgroundColor: "rgba(200,200,200,0.15)",
+              backdropFilter: "blur(25px)",
+              border: "1px solid rgba(255,255,255,0.3)",
+              boxShadow: "0 25px 50px rgba(38, 59, 70, 0.2)",
+            },
+          }}
         >
-          <DialogTitle sx={{ fontFamily: 'Times New Roman, serif' }}>Record Payment</DialogTitle>
+          <DialogTitle
+            sx={{ fontFamily: "Times New Roman, serif", color: "white" }}
+          >
+            Record Payment
+          </DialogTitle>
           <DialogContent>
             {selectedMember && (
               <Alert severity="info" sx={{ mb: 3 }}>
-                <Typography variant="body2" fontWeight="medium" sx={{ fontFamily: 'Times New Roman, serif' }}>
+                <Typography
+                  variant="body2"
+                  fontWeight="medium"
+                  sx={{ fontFamily: "Times New Roman, serif" }}
+                >
                   {selectedMember.name}
                 </Typography>
-                <Typography variant="caption" color="text.secondary" sx={{ fontFamily: 'Times New Roman, serif' }}>
+                <Typography
+                  variant="caption"
+                  color="text.secondary"
+                  sx={{ fontFamily: "Times New Roman, serif" }}
+                >
                   {selectedMember.id} • Membership:{" "}
                   {selectedMember.membershipType}
-                </Typography>
-                <Typography variant="body2" color="error.main" sx={{ mt: 1, fontFamily: 'Times New Roman, serif' }}>
-                  Pending Amount: <span style={{ fontFamily: 'Times New Roman, serif', fontSize: { xs: '0.75rem', sm: '1rem', md: '1.125rem' } }}>Rs :</span>
-                  {getFeeAmount(selectedMember.membershipType)}
                 </Typography>
               </Alert>
             )}
@@ -722,7 +824,6 @@ const FeeManagement = () => {
               sx={{ display: "flex", flexDirection: "column", gap: 3, pt: 1 }}
             >
               <TextField
-                label="Amount"
                 type="number"
                 value={paymentData.amount}
                 onChange={(e) =>
@@ -733,11 +834,42 @@ const FeeManagement = () => {
                 }
                 fullWidth
                 required
-                InputLabelProps={{ sx: { fontFamily: 'Times New Roman, serif' } }}
+                InputLabelProps={{
+                  sx: { fontFamily: "Times New Roman, serif", color: "white" },
+                }}
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    backgroundColor: "rgba(200, 200, 200, 0.15)",
+                    backdropFilter: "blur(10px)",
+                    border: "1px solid rgba(255, 255, 255, 0.3)",
+                    borderRadius: "8px",
+
+                    "&:hover": {
+                      backgroundColor: "rgba(255, 255, 255, 0.15)",
+                      border: "1px solid rgba(255, 255, 255, 0.4)",
+                    },
+
+                    "&.Mui-focused": {
+                      backgroundColor: "rgba(255, 255, 255, 0.2)",
+                      border: "1px solid rgba(255, 255, 255, 0.5)",
+                    },
+
+                    "& fieldset": {
+                      border: "none",
+                    },
+                  },
+
+                  "& input": {
+                    color: "white",
+                    fontFamily: "Times New Roman, serif",
+                    "&::placeholder": {
+                      color: "rgba(255,255,255,0.7)",
+                    },
+                  },
+                }}
               />
 
               <TextField
-                label="Payment Date"
                 type="date"
                 value={paymentData.paymentDate}
                 onChange={(e) =>
@@ -747,12 +879,44 @@ const FeeManagement = () => {
                   }))
                 }
                 fullWidth
-                InputLabelProps={{ shrink: true, sx: { fontFamily: 'Times New Roman, serif' } }}
+                InputLabelProps={{
+                  shrink: true,
+                  sx: { fontFamily: "Times New Roman, serif" },
+                }}
                 required
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    backgroundColor: "rgba(200, 200, 200, 0.15)",
+                    backdropFilter: "blur(10px)",
+                    border: "1px solid rgba(255, 255, 255, 0.3)",
+                    borderRadius: "8px",
+
+                    "&:hover": {
+                      backgroundColor: "rgba(255, 255, 255, 0.15)",
+                      border: "1px solid rgba(255, 255, 255, 0.4)",
+                    },
+
+                    "&.Mui-focused": {
+                      backgroundColor: "rgba(255, 255, 255, 0.2)",
+                      border: "1px solid rgba(255, 255, 255, 0.5)",
+                    },
+
+                    "& fieldset": {
+                      border: "none",
+                    },
+                  },
+
+                  "& input": {
+                    color: "white",
+                    fontFamily: "Times New Roman, serif",
+                    "&::placeholder": {
+                      color: "rgba(255,255,255,0.7)",
+                    },
+                  },
+                }}
               />
 
               <TextField
-                label="Month"
                 value={paymentData.month}
                 onChange={(e) =>
                   setPaymentData((prev) => ({ ...prev, month: e.target.value }))
@@ -760,20 +924,80 @@ const FeeManagement = () => {
                 placeholder="e.g., January 2024"
                 fullWidth
                 required
-                InputLabelProps={{ sx: { fontFamily: 'Times New Roman, serif' } }}
+                InputLabelProps={{
+                  sx: { fontFamily: "Times New Roman, serif" },
+                }}
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    backgroundColor: "rgba(200, 200, 200, 0.15)",
+                    backdropFilter: "blur(10px)",
+                    border: "1px solid rgba(255, 255, 255, 0.3)",
+                    borderRadius: "8px",
+
+                    "&:hover": {
+                      backgroundColor: "rgba(255, 255, 255, 0.15)",
+                      border: "1px solid rgba(255, 255, 255, 0.4)",
+                    },
+
+                    "&.Mui-focused": {
+                      backgroundColor: "rgba(255, 255, 255, 0.2)",
+                      border: "1px solid rgba(255, 255, 255, 0.5)",
+                    },
+
+                    "& fieldset": {
+                      border: "none",
+                    },
+                  },
+
+                  "& input": {
+                    color: "white",
+                    fontFamily: "Times New Roman, serif",
+                    "&::placeholder": {
+                      color: "rgba(255,255,255,0.7)",
+                    },
+                  },
+                }}
               />
 
               <FormControl fullWidth>
-                <InputLabel sx={{ fontFamily: 'Times New Roman, serif' }}>Payment Type</InputLabel>
                 <Select
                   value={paymentData.paymentType}
+                  label="Payment Type"
                   onChange={(e) =>
                     setPaymentData((prev) => ({
                       ...prev,
                       paymentType: e.target.value,
                     }))
                   }
-                  label="Payment Type"
+                  sx={{
+                    backgroundColor: "rgba(200, 200, 200, 0.15)",
+                    backdropFilter: "blur(10px)",
+                    border: "1px solid rgba(255, 255, 255, 0.3)",
+                    borderRadius: "8px",
+
+                    "&:hover": {
+                      backgroundColor: "rgba(255, 255, 255, 0.15)",
+                      border: "1px solid rgba(255, 255, 255, 0.4)",
+                    },
+
+                    "&.Mui-focused": {
+                      backgroundColor: "rgba(255, 255, 255, 0.2)",
+                      border: "1px solid rgba(255, 255, 255, 0.5)",
+                    },
+
+                    "& .MuiOutlinedInput-notchedOutline": {
+                      border: "none",
+                    },
+
+                    "& .MuiSelect-select": {
+                      color: "white",
+                      fontFamily: "Times New Roman, serif",
+                    },
+
+                    "& .MuiSvgIcon-root": {
+                      color: "white",
+                    },
+                  }}
                 >
                   <MenuItem value="cash">Cash</MenuItem>
                   <MenuItem value="card">Card</MenuItem>
@@ -783,11 +1007,19 @@ const FeeManagement = () => {
               </FormControl>
             </Box>
           </DialogContent>
-          <DialogActions sx={{ p: 3 }}>
+          <DialogActions sx={{ p: 3, gap: 1 }}>
             <Button
               onClick={() => {
                 setShowPaymentForm(false);
                 setSelectedMember(null);
+              }}
+              sx={{
+                background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+                color: "white",
+                "&:hover": {
+                  background:
+                    "linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%)",
+                },
               }}
             >
               Cancel
@@ -812,26 +1044,26 @@ const FeeManagement = () => {
       {/* Footer */}
       <Box
         sx={{
-          display: 'flex',
-          justifyContent: 'center',
+          display: "flex",
+          justifyContent: "center",
           py: 2,
           px: 2,
-          mx: 'auto',
-          maxWidth: '600px',
-          backgroundColor: 'rgba(0, 0, 0, 0.3)',
-          borderTop: '1px solid rgba(255, 255, 255, 0.1)',
-          borderRadius: '50px',
+          mx: "auto",
+          maxWidth: "600px",
+          backgroundColor: "rgba(0, 0, 0, 0.3)",
+          borderTop: "1px solid rgba(255, 255, 255, 0.1)",
+          borderRadius: "50px",
           mt: 4,
-          mb: 2
+          mb: 2,
         }}
       >
         <Typography
           variant="body2"
           sx={{
-            textAlign: 'center',
-            color: 'rgba(255, 255, 255, 0.6)',
-            fontSize: '0.75rem',
-            fontFamily: 'Times New Roman, serif'
+            textAlign: "center",
+            color: "rgba(255, 255, 255, 0.6)",
+            fontSize: "0.75rem",
+            fontFamily: "Times New Roman, serif",
           }}
         >
           © 2026 | Areez Korai Gym Management System | All Rights Reserved

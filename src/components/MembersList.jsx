@@ -186,7 +186,14 @@ const MembersList = () => {
   }
 
   return (
-    <Box sx={{ minHeight: '100vh', background: 'linear-gradient(135deg, #263b46 0%, #141720 100%)' }}>
+   <Box
+  sx={{
+    minHeight: "100vh",
+    display: "flex",
+    flexDirection: "column",
+    background: "linear-gradient(135deg, #263b46 0%, #141720 100%)",
+  }}
+>
       {/* Header */}
       <Paper 
         elevation={3}
@@ -627,28 +634,34 @@ const MembersList = () => {
                   value={editFormData.name}
                   onChange={handleEditFormChange}
                   sx={{
-                    backgroundColor: 'rgba(200, 200, 200, 0.15)',
-                    backdropFilter: 'blur(10px)',
-                    border: '1px solid rgba(255, 255, 255, 0.3)',
-                    borderRadius: '8px',
-                    '&:hover': {
-                      backgroundColor: 'rgba(255, 255, 255, 0.15)',
-                      border: '1px solid rgba(255, 255, 255, 0.4)',
+                  "& .MuiOutlinedInput-root": {
+                    backgroundColor: "rgba(200, 200, 200, 0.15)",
+                    backdropFilter: "blur(10px)",
+                    border: "1px solid rgba(255, 255, 255, 0.3)",
+                    borderRadius: "8px",
+
+                    "&:hover": {
+                      backgroundColor: "rgba(255, 255, 255, 0.15)",
+                      border: "1px solid rgba(255, 255, 255, 0.4)",
                     },
-                    '&.Mui-focused': {
-                      backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                      border: '1px solid rgba(255, 255, 255, 0.5)',
+
+                    "&.Mui-focused": {
+                      backgroundColor: "rgba(255, 255, 255, 0.2)",
+                      border: "1px solid rgba(255, 255, 255, 0.5)",
                     },
-                    '& .MuiOutlinedInput-notchedOutline': {
-                      border: 'none'
+
+                    "& fieldset": {
+                      border: "none",
                     },
-                    '& input': {
-                      color: 'white',
-                      '&::placeholder': {
-                        color: 'rgba(255, 255, 255, 0.7)'
-                      }
-                    }
-                  }}
+                  },
+
+                  "& input": {
+                    color: "white",
+                    "&::placeholder": {
+                      color: "rgba(255,255,255,0.7)",
+                    },
+                  },
+                }}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -659,29 +672,35 @@ const MembersList = () => {
                   type="email"
                   value={editFormData.email}
                   onChange={handleEditFormChange}
-                  sx={{
-                    backgroundColor: 'rgba(200, 200, 200, 0.15)',
-                    backdropFilter: 'blur(10px)',
-                    border: '1px solid rgba(255, 255, 255, 0.3)',
-                    borderRadius: '8px',
-                    '&:hover': {
-                      backgroundColor: 'rgba(255, 255, 255, 0.15)',
-                      border: '1px solid rgba(255, 255, 255, 0.4)',
+                   sx={{
+                  "& .MuiOutlinedInput-root": {
+                    backgroundColor: "rgba(200, 200, 200, 0.15)",
+                    backdropFilter: "blur(10px)",
+                    border: "1px solid rgba(255, 255, 255, 0.3)",
+                    borderRadius: "8px",
+
+                    "&:hover": {
+                      backgroundColor: "rgba(255, 255, 255, 0.15)",
+                      border: "1px solid rgba(255, 255, 255, 0.4)",
                     },
-                    '&.Mui-focused': {
-                      backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                      border: '1px solid rgba(255, 255, 255, 0.5)',
+
+                    "&.Mui-focused": {
+                      backgroundColor: "rgba(255, 255, 255, 0.2)",
+                      border: "1px solid rgba(255, 255, 255, 0.5)",
                     },
-                    '& .MuiOutlinedInput-notchedOutline': {
-                      border: 'none'
+
+                    "& fieldset": {
+                      border: "none",
                     },
-                    '& input': {
-                      color: 'white',
-                      '&::placeholder': {
-                        color: 'rgba(255, 255, 255, 0.7)'
-                      }
-                    }
-                  }}
+                  },
+
+                  "& input": {
+                    color: "white",
+                    "&::placeholder": {
+                      color: "rgba(255,255,255,0.7)",
+                    },
+                  },
+                }}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -692,28 +711,34 @@ const MembersList = () => {
                   value={editFormData.phone}
                   onChange={handleEditFormChange}
                   sx={{
-                    backgroundColor: 'rgba(200, 200, 200, 0.15)',
-                    backdropFilter: 'blur(10px)',
-                    border: '1px solid rgba(255, 255, 255, 0.3)',
-                    borderRadius: '8px',
-                    '&:hover': {
-                      backgroundColor: 'rgba(255, 255, 255, 0.15)',
-                      border: '1px solid rgba(255, 255, 255, 0.4)',
+                  "& .MuiOutlinedInput-root": {
+                    backgroundColor: "rgba(200, 200, 200, 0.15)",
+                    backdropFilter: "blur(10px)",
+                    border: "1px solid rgba(255, 255, 255, 0.3)",
+                    borderRadius: "8px",
+
+                    "&:hover": {
+                      backgroundColor: "rgba(255, 255, 255, 0.15)",
+                      border: "1px solid rgba(255, 255, 255, 0.4)",
                     },
-                    '&.Mui-focused': {
-                      backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                      border: '1px solid rgba(255, 255, 255, 0.5)',
+
+                    "&.Mui-focused": {
+                      backgroundColor: "rgba(255, 255, 255, 0.2)",
+                      border: "1px solid rgba(255, 255, 255, 0.5)",
                     },
-                    '& .MuiOutlinedInput-notchedOutline': {
-                      border: 'none'
+
+                    "& fieldset": {
+                      border: "none",
                     },
-                    '& input': {
-                      color: 'white',
-                      '&::placeholder': {
-                        color: 'rgba(255, 255, 255, 0.7)'
-                      }
-                    }
-                  }}
+                  },
+
+                  "& input": {
+                    color: "white",
+                    "&::placeholder": {
+                      color: "rgba(255,255,255,0.7)",
+                    },
+                  },
+                }}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -723,29 +748,35 @@ const MembersList = () => {
                   name="emergencyContact"
                   value={editFormData.emergencyContact}
                   onChange={handleEditFormChange}
-                  sx={{
-                    backgroundColor: 'rgba(200, 200, 200, 0.15)',
-                    backdropFilter: 'blur(10px)',
-                    border: '1px solid rgba(255, 255, 255, 0.3)',
-                    borderRadius: '8px',
-                    '&:hover': {
-                      backgroundColor: 'rgba(255, 255, 255, 0.15)',
-                      border: '1px solid rgba(255, 255, 255, 0.4)',
+                 sx={{
+                  "& .MuiOutlinedInput-root": {
+                    backgroundColor: "rgba(200, 200, 200, 0.15)",
+                    backdropFilter: "blur(10px)",
+                    border: "1px solid rgba(255, 255, 255, 0.3)",
+                    borderRadius: "8px",
+
+                    "&:hover": {
+                      backgroundColor: "rgba(255, 255, 255, 0.15)",
+                      border: "1px solid rgba(255, 255, 255, 0.4)",
                     },
-                    '&.Mui-focused': {
-                      backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                      border: '1px solid rgba(255, 255, 255, 0.5)',
+
+                    "&.Mui-focused": {
+                      backgroundColor: "rgba(255, 255, 255, 0.2)",
+                      border: "1px solid rgba(255, 255, 255, 0.5)",
                     },
-                    '& .MuiOutlinedInput-notchedOutline': {
-                      border: 'none'
+
+                    "& fieldset": {
+                      border: "none",
                     },
-                    '& input': {
-                      color: 'white',
-                      '&::placeholder': {
-                        color: 'rgba(255, 255, 255, 0.7)'
-                      }
-                    }
-                  }}
+                  },
+
+                  "& input": {
+                    color: "white",
+                    "&::placeholder": {
+                      color: "rgba(255,255,255,0.7)",
+                    },
+                  },
+                }}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -757,29 +788,35 @@ const MembersList = () => {
                   onChange={handleEditFormChange}
                   multiline
                   rows={2}
-                  sx={{
-                    backgroundColor: 'rgba(200, 200, 200, 0.15)',
-                    backdropFilter: 'blur(10px)',
-                    border: '1px solid rgba(255, 255, 255, 0.3)',
-                    borderRadius: '8px',
-                    '&:hover': {
-                      backgroundColor: 'rgba(255, 255, 255, 0.15)',
-                      border: '1px solid rgba(255, 255, 255, 0.4)',
+                 sx={{
+                  "& .MuiOutlinedInput-root": {
+                    backgroundColor: "rgba(200, 200, 200, 0.15)",
+                    backdropFilter: "blur(10px)",
+                    border: "1px solid rgba(255, 255, 255, 0.3)",
+                    borderRadius: "8px",
+
+                    "&:hover": {
+                      backgroundColor: "rgba(255, 255, 255, 0.15)",
+                      border: "1px solid rgba(255, 255, 255, 0.4)",
                     },
-                    '&.Mui-focused': {
-                      backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                      border: '1px solid rgba(255, 255, 255, 0.5)',
+
+                    "&.Mui-focused": {
+                      backgroundColor: "rgba(255, 255, 255, 0.2)",
+                      border: "1px solid rgba(255, 255, 255, 0.5)",
                     },
-                    '& .MuiOutlinedInput-notchedOutline': {
-                      border: 'none'
+
+                    "& fieldset": {
+                      border: "none",
                     },
-                    '& textarea': {
-                      color: 'white',
-                      '&::placeholder': {
-                        color: 'rgba(255, 255, 255, 0.7)'
-                      }
-                    }
-                  }}
+                  },
+
+                  "& input": {
+                    color: "white",
+                    "&::placeholder": {
+                      color: "rgba(255,255,255,0.7)",
+                    },
+                  },
+                }}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -835,29 +872,35 @@ const MembersList = () => {
                   type="number"
                   value={editFormData.age}
                   onChange={handleEditFormChange}
-                  sx={{
-                    backgroundColor: 'rgba(200, 200, 200, 0.15)',
-                    backdropFilter: 'blur(10px)',
-                    border: '1px solid rgba(255, 255, 255, 0.3)',
-                    borderRadius: '8px',
-                    '&:hover': {
-                      backgroundColor: 'rgba(255, 255, 255, 0.15)',
-                      border: '1px solid rgba(255, 255, 255, 0.4)',
+                     sx={{
+                  "& .MuiOutlinedInput-root": {
+                    backgroundColor: "rgba(200, 200, 200, 0.15)",
+                    backdropFilter: "blur(10px)",
+                    border: "1px solid rgba(255, 255, 255, 0.3)",
+                    borderRadius: "8px",
+
+                    "&:hover": {
+                      backgroundColor: "rgba(255, 255, 255, 0.15)",
+                      border: "1px solid rgba(255, 255, 255, 0.4)",
                     },
-                    '&.Mui-focused': {
-                      backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                      border: '1px solid rgba(255, 255, 255, 0.5)',
+
+                    "&.Mui-focused": {
+                      backgroundColor: "rgba(255, 255, 255, 0.2)",
+                      border: "1px solid rgba(255, 255, 255, 0.5)",
                     },
-                    '& .MuiOutlinedInput-notchedOutline': {
-                      border: 'none'
+
+                    "& fieldset": {
+                      border: "none",
                     },
-                    '& input': {
-                      color: 'white',
-                      '&::placeholder': {
-                        color: 'rgba(255, 255, 255, 0.7)'
-                      }
-                    }
-                  }}
+                  },
+
+                  "& input": {
+                    color: "white",
+                    "&::placeholder": {
+                      color: "rgba(255,255,255,0.7)",
+                    },
+                  },
+                }}
                 />
               </Grid>
               <Grid item xs={12}>
