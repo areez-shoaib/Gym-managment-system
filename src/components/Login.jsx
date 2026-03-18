@@ -66,14 +66,14 @@ const Login = () => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        p: 3,
+        p: { xs: 1, md: 3 },
         position: 'relative'
       }}
     >
       {/* Success Animation Overlay */}
       <Backdrop
-        sx={{ 
-          color: '#fff', 
+        sx={{
+          color: '#fff',
           zIndex: (theme) => theme.zIndex.drawer + 1,
           backgroundColor: 'rgba(0, 0, 0, 0.8)',
           backdropFilter: 'blur(10px)'
@@ -146,8 +146,8 @@ const Login = () => {
 
       <Container maxWidth="sm">
         <Box sx={{ textAlign: 'center', mb: 6 }}>
-          <Typography 
-            variant="h3" 
+          <Typography
+            variant="h3"
             component="h1"
             sx={{
               background: 'linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%)',
@@ -155,24 +155,29 @@ const Login = () => {
               WebkitTextFillColor: 'transparent',
               fontWeight: 'bold',
               mb: 1,
-              fontFamily:"New times roman,serif"
+              fontFamily: "New times roman,serif",
+              fontSize: { xs: "20px", sm: "40px", md: "50px" }
             }}
           >
-           Indus Gym Management
+            Indus Gym Management
           </Typography>
-          <Typography 
-            variant="h6" 
+          <Typography
+            variant="h6"
             color="white"
-            sx={{ opacity: 0.9 }}
+            sx={{
+              opacity: 0.9,
+              fontSize: { xs: "10px", sm: "20px", md: "20px" }
+
+            }}
           >
             Premium Fitness Management System
           </Typography>
         </Box>
 
-        <Card 
+        <Card
           elevation={24}
           sx={{
-            p: 4,
+            p: { xs: 2, sm: 3, md: 4 },
             backdropFilter: 'blur(20px)',
             backgroundColor: 'rgba(255, 255, 255, 0.15)',
             border: '1px solid rgba(255, 255, 255, 0.2)',
@@ -186,7 +191,8 @@ const Login = () => {
           }}
         >
           <CardContent>
-            <Typography variant="h5" component="h2" gutterBottom textAlign="center" fontWeight="bold" color="white">
+            <Typography variant="h5" component="h2" gutterBottom textAlign="center" fontWeight="bold" color="white" sx={{ fontSize: { xs: "20px", sm: "30px", md: "30px" } }}
+            >
               Welcome Back
             </Typography>
             <Typography variant="body2" color="rgba(255, 255, 255, 0.9)" textAlign="center" sx={{ mb: 3 }}>
@@ -205,7 +211,7 @@ const Login = () => {
                 id="email"
                 name="email"
                 type="email"
-             
+
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 margin="normal"
@@ -217,6 +223,7 @@ const Login = () => {
                     </InputAdornment>
                   ),
                   sx: {
+                    height: { xs: 40, sm: 60 },
                     backgroundColor: 'rgba(255, 255, 255, 0.1)',
                     backdropFilter: 'blur(10px)',
                     border: '1px solid rgba(255, 255, 255, 0.3)',
@@ -232,9 +239,10 @@ const Login = () => {
                     },
                     '& .MuiOutlinedInput-notchedOutline': {
                       border: 'none'
-                      
+
                     },
                     '& input': {
+                      height: { xs: 6, sm: 20 },
                       color: 'white',
                       '&::placeholder': {
                         color: 'rgba(255, 255, 255, 0.7)'
@@ -256,7 +264,7 @@ const Login = () => {
                 id="password"
                 name="password"
                 type={showPassword ? 'text' : 'password'}
-       
+
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 margin="normal"
@@ -280,6 +288,7 @@ const Login = () => {
                     </InputAdornment>
                   ),
                   sx: {
+                    height: { xs: 40, sm: 60 },
                     backgroundColor: 'rgba(255, 255, 255, 0.1)',
                     backdropFilter: 'blur(10px)',
                     border: '1px solid rgba(255, 255, 255, 0.3)',
@@ -297,6 +306,7 @@ const Login = () => {
                       border: 'none'
                     },
                     '& input': {
+                      height: { xs: 6, sm: 20 },
                       color: 'white',
                       '&::placeholder': {
                         color: 'rgba(255, 255, 255, 0.7)'
@@ -319,9 +329,9 @@ const Login = () => {
                 variant="contained"
                 size="large"
                 sx={{
-                  mt: 3,
+                  mt:{xs:2,md:3},
                   mb: 2,
-                  py: 1.5,
+                  py:{xs:1,sm:1.5},
                   background: 'linear-gradient(135deg, #263b46 0%, #141720 100%)',
                   '&:hover': {
                     background: 'linear-gradient(135deg, #1a2833 0%, #0a0c14 100%)',
@@ -336,12 +346,12 @@ const Login = () => {
                 Sign In
               </Button>
 
-              <Divider sx={{ my: 2, borderColor: 'rgba(38, 59, 70, 0.2)' }} />
+              <Divider sx={{ my: {xs:0.5,sm:2}, borderColor: 'rgba(38, 59, 70, 0.2)' }} />
 
-              <Paper 
-                elevation={1} 
-                sx={{ 
-                  p: 2, 
+              <Paper
+                elevation={1}
+                sx={{
+                  p: 2,
                   backgroundColor: 'rgba(255, 255, 255, 0.08)',
                   border: '1px solid rgba(255, 255, 255, 0.2)',
                   backdropFilter: 'blur(10px)',

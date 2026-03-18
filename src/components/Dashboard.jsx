@@ -528,7 +528,7 @@ const Dashboard = () => {
 
           <Grid container spacing={3} >
             {menuItems.map((item, index) => (
-              <Grid item xs={12} key={index} sx={{ width: '100%', minHeight: "35px" }} >
+              <Grid item xs={12} key={index} sx={{ width: '100%', minHeight: "30px" }} >
                 <Paper
                   elevation={2}
                   sx={{
@@ -567,7 +567,7 @@ const Dashboard = () => {
                         sx={{
                           backgroundColor: item.color,
                           borderRadius: "50%",
-                          p: 1,
+                          p: 0.5,
                           mr: 2,
                         }}
                       >
@@ -578,7 +578,7 @@ const Dashboard = () => {
                           variant="h6"
                           sx={{ 
                             color: "white",
-                            fontSize: { xs: '0.9rem', sm: '1rem' },
+                            fontSize: { xs: '0.5rem', sm: '1rem' },
                             fontWeight: "bold"
                           }}
                         >
@@ -588,7 +588,7 @@ const Dashboard = () => {
                           variant="body2"
                           sx={{ 
                             color: "rgba(255, 255, 255, 0.7)",
-                            fontSize: { xs: '0.7rem', sm: '0.75rem' }
+                            fontSize: { xs: '0.3rem', sm: '0.75rem' }
                           }}
                         >
                           {item.description}
