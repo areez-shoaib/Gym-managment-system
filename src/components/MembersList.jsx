@@ -33,6 +33,7 @@ import {
   Delete,
   PersonAdd
 } from '@mui/icons-material'
+import Footer from './Footer'
 
 const MembersList = () => {
   const navigate = useNavigate()
@@ -125,8 +126,8 @@ const MembersList = () => {
 
   const confirmEdit = () => {
     if (memberToEdit) {
-      const updatedMembers = members.map(member => 
-        member.id === memberToEdit.id 
+      const updatedMembers = members.map(member =>
+        member.id === memberToEdit.id
           ? { ...member, ...editFormData, updatedAt: new Date().toISOString() }
           : member
       )
@@ -154,13 +155,13 @@ const MembersList = () => {
     setEditFormData({
       name: '',
       email: '',
-        phone: '',
-        address: '',
-        bloodGroup: '',
-        age: '',
-        gender: '',
-        emergencyContact: '',
-        membershipType: 'monthly'
+      phone: '',
+      address: '',
+      bloodGroup: '',
+      age: '',
+      gender: '',
+      emergencyContact: '',
+      membershipType: 'monthly'
     })
   }
 
@@ -186,16 +187,16 @@ const MembersList = () => {
   }
 
   return (
-   <Box
-  sx={{
-    minHeight: "100vh",
-    display: "flex",
-    flexDirection: "column",
-    background: "linear-gradient(135deg, #263b46 0%, #141720 100%)",
-  }}
->
+    <Box
+      sx={{
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        background: "linear-gradient(135deg, #263b46 0%, #141720 100%)",
+      }}
+    >
       {/* Header */}
-      <Paper 
+      <Paper
         elevation={3}
         sx={{
           backgroundColor: 'rgba(255, 255, 255, 0.15)',
@@ -223,7 +224,7 @@ const MembersList = () => {
               >
               </Button>
               <Box>
-                <Typography 
+                <Typography
                   variant="h5"
                   component="h1"
                   sx={{
@@ -231,15 +232,15 @@ const MembersList = () => {
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                     fontWeight: 'bold',
-                    fontFamily:"New Times roman,saerif",
+                    fontFamily: "New Times roman,saerif",
                     fontSize: { xs: '1.25rem', sm: '1.5rem', md: '2rem' }
                   }}
                 >
                   Members List
                 </Typography>
-                <Typography 
+                <Typography
                   variant="body2"
-                  sx={{ 
+                  sx={{
                     color: 'rgba(255, 255, 255, 0.9)',
                     fontSize: { xs: '0.7rem', sm: '0.75rem', md: '0.875rem' },
                     display: { xs: 'none', sm: 'block' }
@@ -282,7 +283,7 @@ const MembersList = () => {
 
       <Container maxWidth="xl" sx={{ py: 4 }}>
         {/* Search Bar */}
-        <Paper 
+        <Paper
           elevation={3}
           sx={{
             p: { xs: 2, sm: 3 },
@@ -331,7 +332,7 @@ const MembersList = () => {
         </Paper>
 
         {/* Members Table */}
-        <Paper 
+        <Paper
           elevation={3}
           sx={{
             backgroundColor: 'rgba(255, 255, 255, 0.15)',
@@ -345,14 +346,14 @@ const MembersList = () => {
             <Table>
               <TableHead>
                 <TableRow>
-                  <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Member ID</TableCell>
-                  <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Name</TableCell>
-                  <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Email</TableCell>
-                  <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Phone</TableCell>
-                  <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Membership</TableCell>
-                  <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Fee Status</TableCell>
-                  <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Join Date</TableCell>
-                  <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Actions</TableCell>
+                  <TableCell sx={{ color: 'white', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Member ID</TableCell>
+                  <TableCell sx={{ color: 'white', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Name</TableCell>
+                  <TableCell sx={{ color: 'white', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Email</TableCell>
+                  <TableCell sx={{ color: 'white', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Phone</TableCell>
+                  <TableCell sx={{ color: 'white', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Membership</TableCell>
+                  <TableCell sx={{ color: 'white', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Fee Status</TableCell>
+                  <TableCell sx={{ color: 'white', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Join Date</TableCell>
+                  <TableCell sx={{ color: 'white', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Actions</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -383,7 +384,7 @@ const MembersList = () => {
                         </Typography>
                       </TableCell>
                       <TableCell>
-                        <Chip 
+                        <Chip
                           label={getMemberFeeStatus(member.id) === 'paid' ? 'Paid' : 'Pending'}
                           size="small"
                           color={getStatusColor(getMemberFeeStatus(member.id))}
@@ -421,8 +422,8 @@ const MembersList = () => {
 
         {/* Summary Stats */}
         <Grid container spacing={3} sx={{ mt: 3, justifyContent: 'center' }}>
-          <Grid item xs={12} sm={6} md={4}>
-            <Paper 
+          <Grid item size={{ xs: 12, sm: 4, md: 4 }}>
+            <Paper
               elevation={3}
               sx={{
                 p: 3,
@@ -438,8 +439,6 @@ const MembersList = () => {
                   backgroundColor: 'rgba(255, 255, 255, 0.2)',
                 },
                 width: '100%',
-                minWidth: 250,
-                maxWidth: 300,
                 height: '100%',
                 display: 'flex',
                 flexDirection: 'column',
@@ -450,7 +449,7 @@ const MembersList = () => {
               <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.9)' }} gutterBottom>
                 Total Members
               </Typography>
-              <Typography 
+              <Typography
                 variant="h4"
                 sx={{
                   background: 'linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%)',
@@ -465,8 +464,8 @@ const MembersList = () => {
             </Paper>
           </Grid>
 
-          <Grid item xs={12} sm={6} md={4}>
-            <Paper 
+          <Grid item size={{ xs: 12, sm: 4, md: 4 }}>
+            <Paper
               elevation={3}
               sx={{
                 p: 3,
@@ -481,8 +480,6 @@ const MembersList = () => {
                   backgroundColor: 'rgba(255, 255, 255, 0.2)',
                 },
                 width: '100%',
-                minWidth: 250,
-                maxWidth: 300,
                 height: '100%',
                 display: 'flex',
                 flexDirection: 'column',
@@ -493,7 +490,7 @@ const MembersList = () => {
               <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.9)' }} gutterBottom>
                 Paid Members
               </Typography>
-              <Typography 
+              <Typography
                 variant="h4"
                 sx={{
                   color: 'success.main',
@@ -506,8 +503,8 @@ const MembersList = () => {
             </Paper>
           </Grid>
 
-          <Grid item xs={12} sm={6} md={4}>
-            <Paper 
+          <Grid item size={{ xs: 12, sm: 4, md: 4 }}>
+            <Paper
               elevation={3}
               sx={{
                 p: 3,
@@ -522,8 +519,6 @@ const MembersList = () => {
                   backgroundColor: 'rgba(255, 255, 255, 0.2)',
                 },
                 width: '100%',
-                minWidth: 250,
-                maxWidth: 300,
                 height: '100%',
                 display: 'flex',
                 flexDirection: 'column',
@@ -534,7 +529,7 @@ const MembersList = () => {
               <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.9)' }} gutterBottom>
                 Pending Members
               </Typography>
-              <Typography 
+              <Typography
                 variant="h4"
                 sx={{
                   color: 'warning.main',
@@ -609,7 +604,7 @@ const MembersList = () => {
       <Dialog
         open={editModalOpen}
         onClose={cancelEdit}
-        maxWidth="lg"
+        maxWidth="md"
         fullWidth
         PaperProps={{
           sx: {
@@ -626,7 +621,7 @@ const MembersList = () => {
         <DialogContent>
           <Box component="form" sx={{ mt: 2 }}>
             <Grid container spacing={2}>
-              <Grid item xs={12}>
+              <Grid item size={{ xs: 12 }}>
                 <TextField
                   fullWidth
                   placeholder="Full Name"
@@ -634,37 +629,41 @@ const MembersList = () => {
                   value={editFormData.name}
                   onChange={handleEditFormChange}
                   sx={{
-                  "& .MuiOutlinedInput-root": {
-                    backgroundColor: "rgba(200, 200, 200, 0.15)",
-                    backdropFilter: "blur(10px)",
-                    border: "1px solid rgba(255, 255, 255, 0.3)",
-                    borderRadius: "8px",
+                    "& .MuiOutlinedInput-root": {
+                      backgroundColor: "rgba(200, 200, 200, 0.15)",
+                      backdropFilter: "blur(10px)",
+                      border: "1px solid rgba(255, 255, 255, 0.3)",
+                      borderRadius: "8px",
 
-                    "&:hover": {
-                      backgroundColor: "rgba(255, 255, 255, 0.15)",
-                      border: "1px solid rgba(255, 255, 255, 0.4)",
+                      "&:hover": {
+                        backgroundColor: "rgba(255, 255, 255, 0.15)",
+                        border: "1px solid rgba(255, 255, 255, 0.4)",
+                      },
+
+                      "&.Mui-focused": {
+                        backgroundColor: "rgba(255, 255, 255, 0.2)",
+                        border: "1px solid rgba(255, 255, 255, 0.5)",
+                      },
+
+                      "& fieldset": {
+                        border: "none",
+                      },
                     },
 
-                    "&.Mui-focused": {
-                      backgroundColor: "rgba(255, 255, 255, 0.2)",
-                      border: "1px solid rgba(255, 255, 255, 0.5)",
-                    },
+                    "& input": {
+                      color: "white",
+                      fontSize: { xs: "12px", sm: "16px" },
 
-                    "& fieldset": {
-                      border: "none",
-                    },
-                  },
+                      "&::placeholder": {
+                        color: "rgba(255,255,255,0.7)",
+                        fontSize: { xs: "12px", sm: "16px" },
 
-                  "& input": {
-                    color: "white",
-                    "&::placeholder": {
-                      color: "rgba(255,255,255,0.7)",
+                      },
                     },
-                  },
-                }}
+                  }}
                 />
               </Grid>
-              <Grid item xs={12}>
+              <Grid item size={{ xs: 12 }}>
                 <TextField
                   fullWidth
                   placeholder="Email"
@@ -672,38 +671,42 @@ const MembersList = () => {
                   type="email"
                   value={editFormData.email}
                   onChange={handleEditFormChange}
-                   sx={{
-                  "& .MuiOutlinedInput-root": {
-                    backgroundColor: "rgba(200, 200, 200, 0.15)",
-                    backdropFilter: "blur(10px)",
-                    border: "1px solid rgba(255, 255, 255, 0.3)",
-                    borderRadius: "8px",
+                  sx={{
+                    "& .MuiOutlinedInput-root": {
+                      backgroundColor: "rgba(200, 200, 200, 0.15)",
+                      backdropFilter: "blur(10px)",
+                      border: "1px solid rgba(255, 255, 255, 0.3)",
+                      borderRadius: "8px",
 
-                    "&:hover": {
-                      backgroundColor: "rgba(255, 255, 255, 0.15)",
-                      border: "1px solid rgba(255, 255, 255, 0.4)",
+                      "&:hover": {
+                        backgroundColor: "rgba(255, 255, 255, 0.15)",
+                        border: "1px solid rgba(255, 255, 255, 0.4)",
+                      },
+
+                      "&.Mui-focused": {
+                        backgroundColor: "rgba(255, 255, 255, 0.2)",
+                        border: "1px solid rgba(255, 255, 255, 0.5)",
+                      },
+
+                      "& fieldset": {
+                        border: "none",
+                      },
                     },
 
-                    "&.Mui-focused": {
-                      backgroundColor: "rgba(255, 255, 255, 0.2)",
-                      border: "1px solid rgba(255, 255, 255, 0.5)",
-                    },
+                    "& input": {
+                      color: "white",
+                      fontSize: { xs: "12px", sm: "16px" },
 
-                    "& fieldset": {
-                      border: "none",
-                    },
-                  },
+                      "&::placeholder": {
+                        color: "rgba(255,255,255,0.7)",
+                        fontSize: { xs: "12px", sm: "16px" },
 
-                  "& input": {
-                    color: "white",
-                    "&::placeholder": {
-                      color: "rgba(255,255,255,0.7)",
+                      },
                     },
-                  },
-                }}
+                  }}
                 />
               </Grid>
-              <Grid item xs={12}>
+              <Grid item size={{ xs: 12 }}>
                 <TextField
                   fullWidth
                   placeholder="Phone"
@@ -711,75 +714,82 @@ const MembersList = () => {
                   value={editFormData.phone}
                   onChange={handleEditFormChange}
                   sx={{
-                  "& .MuiOutlinedInput-root": {
-                    backgroundColor: "rgba(200, 200, 200, 0.15)",
-                    backdropFilter: "blur(10px)",
-                    border: "1px solid rgba(255, 255, 255, 0.3)",
-                    borderRadius: "8px",
+                    "& .MuiOutlinedInput-root": {
+                      backgroundColor: "rgba(200, 200, 200, 0.15)",
+                      backdropFilter: "blur(10px)",
+                      border: "1px solid rgba(255, 255, 255, 0.3)",
+                      borderRadius: "8px",
 
-                    "&:hover": {
-                      backgroundColor: "rgba(255, 255, 255, 0.15)",
-                      border: "1px solid rgba(255, 255, 255, 0.4)",
+                      "&:hover": {
+                        backgroundColor: "rgba(255, 255, 255, 0.15)",
+                        border: "1px solid rgba(255, 255, 255, 0.4)",
+                      },
+
+                      "&.Mui-focused": {
+                        backgroundColor: "rgba(255, 255, 255, 0.2)",
+                        border: "1px solid rgba(255, 255, 255, 0.5)",
+                      },
+
+                      "& fieldset": {
+                        border: "none",
+                      },
                     },
 
-                    "&.Mui-focused": {
-                      backgroundColor: "rgba(255, 255, 255, 0.2)",
-                      border: "1px solid rgba(255, 255, 255, 0.5)",
-                    },
+                    "& input": {
+                      color: "white",
+                      fontSize: { xs: "12px", sm: "16px" },
 
-                    "& fieldset": {
-                      border: "none",
-                    },
-                  },
+                      "&::placeholder": {
+                        color: "rgba(255,255,255,0.7)",
+                        fontSize: { xs: "12px", sm: "16px" },
 
-                  "& input": {
-                    color: "white",
-                    "&::placeholder": {
-                      color: "rgba(255,255,255,0.7)",
+                      },
                     },
-                  },
-                }}
+                  }}
                 />
               </Grid>
-              <Grid item xs={12}>
+              <Grid item size={{ xs: 12 }}>
                 <TextField
                   fullWidth
                   placeholder="Emergency Contact"
                   name="emergencyContact"
                   value={editFormData.emergencyContact}
                   onChange={handleEditFormChange}
-                 sx={{
-                  "& .MuiOutlinedInput-root": {
-                    backgroundColor: "rgba(200, 200, 200, 0.15)",
-                    backdropFilter: "blur(10px)",
-                    border: "1px solid rgba(255, 255, 255, 0.3)",
-                    borderRadius: "8px",
+                  sx={{
+                    "& .MuiOutlinedInput-root": {
+                      backgroundColor: "rgba(200, 200, 200, 0.15)",
+                      backdropFilter: "blur(10px)",
+                      border: "1px solid rgba(255, 255, 255, 0.3)",
+                      borderRadius: "8px",
 
-                    "&:hover": {
-                      backgroundColor: "rgba(255, 255, 255, 0.15)",
-                      border: "1px solid rgba(255, 255, 255, 0.4)",
-                    },
+                      "&:hover": {
+                        backgroundColor: "rgba(255, 255, 255, 0.15)",
+                        border: "1px solid rgba(255, 255, 255, 0.4)",
+                      },
 
-                    "&.Mui-focused": {
-                      backgroundColor: "rgba(255, 255, 255, 0.2)",
-                      border: "1px solid rgba(255, 255, 255, 0.5)",
-                    },
+                      "&.Mui-focused": {
+                        backgroundColor: "rgba(255, 255, 255, 0.2)",
+                        border: "1px solid rgba(255, 255, 255, 0.5)",
+                      },
 
-                    "& fieldset": {
-                      border: "none",
+                      "& fieldset": {
+                        border: "none",
+                      },
                     },
-                  },
+                    "& input": {
+                      color: "white",
+                      fontSize: { xs: "12px", sm: "16px" },
 
-                  "& input": {
-                    color: "white",
-                    "&::placeholder": {
-                      color: "rgba(255,255,255,0.7)",
+                      "&::placeholder": {
+                        color: "rgba(255,255,255,0.7)",
+                        fontSize: { xs: "12px", sm: "16px" },
+
+                      },
                     },
-                  },
-                }}
+                  }}
                 />
               </Grid>
-              <Grid item xs={12}>
+              <Grid item size={{ xs: 12 }}>
                 <TextField
                   fullWidth
                   placeholder="Address"
@@ -788,38 +798,43 @@ const MembersList = () => {
                   onChange={handleEditFormChange}
                   multiline
                   rows={2}
-                 sx={{
-                  "& .MuiOutlinedInput-root": {
-                    backgroundColor: "rgba(200, 200, 200, 0.15)",
-                    backdropFilter: "blur(10px)",
-                    border: "1px solid rgba(255, 255, 255, 0.3)",
-                    borderRadius: "8px",
+                  sx={{
+                    "& .MuiOutlinedInput-root": {
+                      backgroundColor: "rgba(200, 200, 200, 0.15)",
+                      backdropFilter: "blur(10px)",
+                      border: "1px solid rgba(255, 255, 255, 0.3)",
+                      borderRadius: "8px",
 
-                    "&:hover": {
-                      backgroundColor: "rgba(255, 255, 255, 0.15)",
-                      border: "1px solid rgba(255, 255, 255, 0.4)",
+                      "&:hover": {
+                        backgroundColor: "rgba(255, 255, 255, 0.15)",
+                        border: "1px solid rgba(255, 255, 255, 0.4)",
+                      },
+
+                      "&.Mui-focused": {
+                        backgroundColor: "rgba(255, 255, 255, 0.2)",
+                        border: "1px solid rgba(255, 255, 255, 0.5)",
+                      },
+
+                      "& fieldset": {
+                        border: "none",
+                      },
                     },
 
-                    "&.Mui-focused": {
-                      backgroundColor: "rgba(255, 255, 255, 0.2)",
-                      border: "1px solid rgba(255, 255, 255, 0.5)",
-                    },
+                    "& textarea": {
+                      color: "white",
+                      whiteSpace: "nowrap",
+                      overflowX: "auto",
+                      fontSize: { xs: "12px", sm: "16px" },
 
-                    "& fieldset": {
-                      border: "none",
+                      "&::placeholder": {
+                        color: "rgba(255,255,255,0.7)",
+                        fontSize: { xs: "12px", sm: "16px" },
+                      },
                     },
-                  },
-
-                  "& input": {
-                    color: "white",
-                    "&::placeholder": {
-                      color: "rgba(255,255,255,0.7)",
-                    },
-                  },
-                }}
+                  }}
                 />
               </Grid>
-              <Grid item xs={12}>
+              <Grid item size={{ xs: 12 }}>
                 <FormControl fullWidth>
                   <Select
                     name="bloodGroup"
@@ -845,26 +860,37 @@ const MembersList = () => {
                       },
                       '& .MuiSelect-select': {
                         color: 'white',
-                        padding: '16.5px 14px'
+                        padding: '16.5px 14px',
+                        fontSize: { xs: "12px", sm: "16px" },
+
                       },
                       '& .MuiSelect-select::placeholder': {
-                        color: 'rgba(255, 255, 255, 0.7)'
+                        color: 'rgba(255, 255, 255, 0.7)',
+                        fontSize: { xs: "12px", sm: "16px" },
+
                       }
                     }}
+                    MenuProps={{
+                      PaperProps: {
+                        sx: {
+                          maxHeight: 200,
+                        },
+                      },
+                    }}
                   >
-                    <MenuItem value="">Select Blood Group</MenuItem>
-                    <MenuItem value="A+">A+</MenuItem>
-                    <MenuItem value="A-">A-</MenuItem>
-                    <MenuItem value="B+">B+</MenuItem>
-                    <MenuItem value="B-">B-</MenuItem>
-                    <MenuItem value="AB+">AB+</MenuItem>
-                    <MenuItem value="AB-">AB-</MenuItem>
-                    <MenuItem value="O+">O+</MenuItem>
-                    <MenuItem value="O-">O-</MenuItem>
+                    <MenuItem value="" sx={{ fontSize: { xs: "12px", sm: "16px" } }}>Select Blood Group</MenuItem>
+                    <MenuItem value="A+" sx={{ fontSize: { xs: "12px", sm: "16px" } }}>A+</MenuItem>
+                    <MenuItem value="A-" sx={{ fontSize: { xs: "12px", sm: "16px" } }}>A-</MenuItem>
+                    <MenuItem value="B+" sx={{ fontSize: { xs: "12px", sm: "16px" } }}>B+</MenuItem>
+                    <MenuItem value="B-" sx={{ fontSize: { xs: "12px", sm: "16px" } }}>B-</MenuItem>
+                    <MenuItem value="AB+" sx={{ fontSize: { xs: "12px", sm: "16px" } }}>AB+</MenuItem>
+                    <MenuItem value="AB-" sx={{ fontSize: { xs: "12px", sm: "16px" } }}>AB-</MenuItem>
+                    <MenuItem value="O+" sx={{ fontSize: { xs: "12px", sm: "16px" } }}>O+</MenuItem>
+                    <MenuItem value="O-" sx={{ fontSize: { xs: "12px", sm: "16px" } }}>O-</MenuItem>
                   </Select>
                 </FormControl>
               </Grid>
-              <Grid item xs={12}>
+              <Grid item size={{ xs: 12 }}>
                 <TextField
                   fullWidth
                   placeholder="Age"
@@ -872,38 +898,40 @@ const MembersList = () => {
                   type="number"
                   value={editFormData.age}
                   onChange={handleEditFormChange}
-                     sx={{
-                  "& .MuiOutlinedInput-root": {
-                    backgroundColor: "rgba(200, 200, 200, 0.15)",
-                    backdropFilter: "blur(10px)",
-                    border: "1px solid rgba(255, 255, 255, 0.3)",
-                    borderRadius: "8px",
+                  sx={{
+                    "& .MuiOutlinedInput-root": {
+                      backgroundColor: "rgba(200, 200, 200, 0.15)",
+                      backdropFilter: "blur(10px)",
+                      border: "1px solid rgba(255, 255, 255, 0.3)",
+                      borderRadius: "8px",
 
-                    "&:hover": {
-                      backgroundColor: "rgba(255, 255, 255, 0.15)",
-                      border: "1px solid rgba(255, 255, 255, 0.4)",
+                      "&:hover": {
+                        backgroundColor: "rgba(255, 255, 255, 0.15)",
+                        border: "1px solid rgba(255, 255, 255, 0.4)",
+                      },
+
+                      "&.Mui-focused": {
+                        backgroundColor: "rgba(255, 255, 255, 0.2)",
+                        border: "1px solid rgba(255, 255, 255, 0.5)",
+                      },
+
+                      "& fieldset": {
+                        border: "none",
+                      },
                     },
 
-                    "&.Mui-focused": {
-                      backgroundColor: "rgba(255, 255, 255, 0.2)",
-                      border: "1px solid rgba(255, 255, 255, 0.5)",
+                    "& input": {
+                      color: "white",
+                      fontSize: { xs: "12px", sm: "16px" },
+                      "&::placeholder": {
+                        color: "rgba(255,255,255,0.7)",
+                        fontSize: { xs: "12px", sm: "16px" },
+                      },
                     },
-
-                    "& fieldset": {
-                      border: "none",
-                    },
-                  },
-
-                  "& input": {
-                    color: "white",
-                    "&::placeholder": {
-                      color: "rgba(255,255,255,0.7)",
-                    },
-                  },
-                }}
+                  }}
                 />
               </Grid>
-              <Grid item xs={12}>
+              <Grid item size={{ xs: 12 }}>
                 <FormControl fullWidth>
                   <Select
                     name="gender"
@@ -929,18 +957,19 @@ const MembersList = () => {
                       },
                       '& .MuiSelect-select': {
                         color: 'white',
-                        padding: '16.5px 14px'
+                        padding: '16.5px 14px',
+                        fontSize: { xs: "12px", sm: "16px" },
                       }
                     }}
                   >
-                    <MenuItem value="">Select Gender</MenuItem>
-                    <MenuItem value="male">Male</MenuItem>
-                    <MenuItem value="female">Female</MenuItem>
-                    <MenuItem value="other">Other</MenuItem>
+                    <MenuItem value="" sx={{ fontSize: { xs: "12px", sm: "16px" } }} >Select Gender</MenuItem>
+                    <MenuItem value="male" sx={{ fontSize: { xs: "12px", sm: "16px" } }}>Male</MenuItem>
+                    <MenuItem value="female" sx={{ fontSize: { xs: "12px", sm: "16px" } }}>Female</MenuItem>
+                    <MenuItem value="other" sx={{ fontSize: { xs: "12px", sm: "16px" } }}>Other</MenuItem>
                   </Select>
                 </FormControl>
               </Grid>
-              <Grid item xs={12}>
+              <Grid item size={{ xs: 12 }}>
                 <FormControl fullWidth>
                   <Select
                     name="membershipType"
@@ -966,31 +995,37 @@ const MembersList = () => {
                       },
                       '& .MuiSelect-select': {
                         color: 'white',
-                        padding: '16.5px 14px'
+                        padding: '16.5px 14px',
+                        fontSize: { xs: "12px", sm: "16px" },
                       }
                     }}
                   >
-                    <MenuItem value="">Select Membership Type</MenuItem>
-                    <MenuItem value="monthly">Monthly</MenuItem>
-                    <MenuItem value="quarterly">Quarterly</MenuItem>
-                    <MenuItem value="yearly">Yearly</MenuItem>
+                    <MenuItem value="" sx={{ fontSize: { xs: "12px", sm: "16px" } }}>Select Membership Type</MenuItem>
+                    <MenuItem value="monthly" sx={{ fontSize: { xs: "12px", sm: "16px" } }}>Monthly</MenuItem>
+                    <MenuItem value="quarterly" sx={{ fontSize: { xs: "12px", sm: "16px" } }}>Quarterly</MenuItem>
+                    <MenuItem value="yearly" sx={{ fontSize: { xs: "12px", sm: "16px" } }}>Yearly</MenuItem>
                   </Select>
                 </FormControl>
               </Grid>
             </Grid>
           </Box>
         </DialogContent>
-        <DialogActions sx={{ justifyContent: 'center', gap: 2, p: 3 }}>
+        <DialogActions sx={{
+          justifyContent: 'center', gap: 2, p: 3, display: "flex", flexDirection: { xs: "column", sm: "row" },
+        }}>
           <Button
             onClick={cancelEdit}
             variant="outlined"
             sx={{
+              width: { xs: 200, sm: 100 },
               borderColor: 'rgba(255, 255, 255, 0.5)',
               color: 'white',
               '&:hover': {
                 borderColor: 'rgba(255, 255, 255, 0.7)',
                 backgroundColor: 'rgba(200, 200, 200, 0.15)',
-              }
+
+              },
+
             }}
           >
             Cancel
@@ -999,6 +1034,7 @@ const MembersList = () => {
             onClick={confirmEdit}
             variant="contained"
             sx={{
+              width: { xs: 200, sm: 130 },
               background: 'linear-gradient(135deg, #263b46 0%, #141720 100%)',
               '&:hover': {
                 background: 'linear-gradient(135deg, #1a2833 0%, #0a0c14 100%)',
@@ -1009,35 +1045,7 @@ const MembersList = () => {
           </Button>
         </DialogActions>
       </Dialog>
-
-      {/* Footer */}
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'center',
-          py: 2,
-          px: 2,
-          mx: 'auto',
-          maxWidth: '600px',
-          backgroundColor: 'rgba(0, 0, 0, 0.3)',
-          borderTop: '1px solid rgba(255, 255, 255, 0.1)',
-          borderRadius: '50px',
-          mt: 4,
-          mb: 2
-        }}
-      >
-        <Typography
-          variant="body2"
-          sx={{
-            textAlign: 'center',
-            color: 'rgba(255, 255, 255, 0.6)',
-            fontSize: '0.75rem',
-            fontFamily: 'Times New Roman, serif'
-          }}
-        >
-          © 2026 | Areez Korai Gym Management System | All Rights Reserved
-        </Typography>
-      </Box>
+      <Footer />
     </Box>
   )
 }

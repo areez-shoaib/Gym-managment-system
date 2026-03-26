@@ -33,6 +33,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import PaymentsIcon from "@mui/icons-material/Payments";
 import ReceiptIcon from "@mui/icons-material/Receipt";
+import Footer from "./Footer";
 const Dashboard = () => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
@@ -204,7 +205,7 @@ const Dashboard = () => {
       <Container maxWidth="xl" sx={{ py: 4 }} >
         <Grid container spacing={3}>
           {/* Main Content */}
-          <Grid item size={{xs:12,md:3}}>
+          <Grid item size={{ xs: 12, md: 3 }}>
             {/* Stats Cards */}
             <Grid container spacing={3} sx={{ mb: 6, justifyContent: 'center', }}>
               <Grid item size={{ xs: 12, sm: 6, md: 12 }}>
@@ -494,9 +495,9 @@ const Dashboard = () => {
                   </Box>
                 </Paper>
               </Grid>
-              </Grid>
             </Grid>
-            <Grid item size={{xs:12,md:9}}>
+          </Grid>
+          <Grid item size={{ xs: 12, md: 9 }}>
             {!isMobile && (
               <Paper
                 elevation={3}
@@ -526,10 +527,11 @@ const Dashboard = () => {
 
                 <Grid container spacing={3} >
                   {menuItems.map((item, index) => (
-                    <Grid item size={{ xs: 12, md: 12 }} key={index} sx={{ width: '100%', minHeight: "20px" }} >
+                    <Grid item size={{ xs: 12, md: 12 }} key={index} sx={{ width: '100%', minHeight: "90px" }} >
                       <Paper
                         elevation={2}
                         sx={{
+                          height: "100%",
                           p: 1.5,
                           cursor: "pointer",
                           transition: "all 0.3s ease",
@@ -565,11 +567,11 @@ const Dashboard = () => {
                               sx={{
                                 backgroundColor: item.color,
                                 borderRadius: "50%",
-                                p: 0.5,
+                                p: 2,
                                 mr: 2,
                               }}
                             >
-                              <item.icon sx={{ fontSize: 20, color: "white" }} />
+                              <item.icon sx={{ fontSize: 30, color: "white" }} />
                             </Box>
                             <Box>
                               <Typography
@@ -608,39 +610,9 @@ const Dashboard = () => {
                 </Grid>
               </Paper>
             )}
-            </Grid>
           </Grid>
+        </Grid>
       </Container>
-
-      {/* Footer */}
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'center',
-          py: 2,
-          px: 2,
-          mx: 'auto',
-          maxWidth: '600px',
-          backgroundColor: 'rgba(0, 0, 0, 0.3)',
-          borderTop: '1px solid rgba(255, 255, 255, 0.1)',
-          borderRadius: '50px',
-          mt: 4,
-          mb: 2
-        }}
-      >
-        <Typography
-          variant="body2"
-          sx={{
-            textAlign: 'center',
-            color: 'rgba(255, 255, 255, 0.6)',
-            fontSize: '0.75rem',
-            fontFamily: 'Times New Roman, serif'
-          }}
-        >
-          © 2026 | Areez Korai Gym Management System | All Rights Reserved
-        </Typography>
-      </Box>
-
       {/* Logout Confirmation Modal */}
       <Dialog
         open={logoutModalOpen}
@@ -814,6 +786,7 @@ const Dashboard = () => {
           </ListItem>
         </List>
       </Drawer>
+      <Footer />
     </Box>
   );
 };

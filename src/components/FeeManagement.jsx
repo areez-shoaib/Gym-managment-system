@@ -33,6 +33,7 @@ import {
   AccessTime,
   People,
 } from "@mui/icons-material";
+import Footer from "./Footer";
 
 const FeeManagement = () => {
   const navigate = useNavigate();
@@ -142,14 +143,14 @@ const FeeManagement = () => {
   };
 
   return (
-<Box
-  sx={{
-    minHeight: "100vh",
-    display: "flex",
-    flexDirection: "column",
-    background: "linear-gradient(135deg, #263b46 0%, #141720 100%)",
-  }}
->
+    <Box
+      sx={{
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        background: "linear-gradient(135deg, #263b46 0%, #141720 100%)",
+      }}
+    >
       {/* Header */}
       <Paper
         elevation={3}
@@ -260,9 +261,11 @@ const FeeManagement = () => {
         <Grid container spacing={3} sx={{ mb: 4, justifyContent: "center" }}>
           <Grid
             item
-            xs={12}
-            sm={6}
-            lg={4}
+            size={{
+              xs: 12,
+              sm: 4,
+              lg: 4
+            }}
             sx={{ display: "flex", justifyContent: "center" }}
           >
             <Paper
@@ -280,8 +283,6 @@ const FeeManagement = () => {
                   backgroundColor: "rgba(255, 255, 255, 0.2)",
                 },
                 width: "100%",
-                minWidth: 250,
-                maxWidth: 300,
                 height: "100%",
                 display: "flex",
                 flexDirection: "column",
@@ -294,7 +295,7 @@ const FeeManagement = () => {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "space-between",
-                  flexDirection: { xs: "column", sm: "row" },
+                  flexDirection: "row",
                   gap: 2,
                   textAlign: "center",
                 }}
@@ -347,9 +348,11 @@ const FeeManagement = () => {
 
           <Grid
             item
-            xs={12}
-            sm={6}
-            lg={4}
+            size={{
+              xs: 12,
+              sm: 4,
+              lg: 4
+            }}
             sx={{ display: "flex", justifyContent: "center" }}
           >
             <Paper
@@ -367,8 +370,7 @@ const FeeManagement = () => {
                   backgroundColor: "rgba(255, 255, 255, 0.2)",
                 },
                 width: "100%",
-                minWidth: 250,
-                maxWidth: 300,
+
                 height: "100%",
                 display: "flex",
                 flexDirection: "column",
@@ -381,7 +383,7 @@ const FeeManagement = () => {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "space-between",
-                  flexDirection: { xs: "column", sm: "row" },
+                  flexDirection: "row",
                   gap: 2,
                   textAlign: "center",
                 }}
@@ -445,9 +447,11 @@ const FeeManagement = () => {
 
           <Grid
             item
-            xs={12}
-            sm={6}
-            lg={4}
+            size={{
+              xs: 12,
+              sm: 4,
+              lg: 4
+            }}
             sx={{ display: "flex", justifyContent: "center" }}
           >
             <Paper
@@ -465,8 +469,7 @@ const FeeManagement = () => {
                   backgroundColor: "rgba(255, 255, 255, 0.2)",
                 },
                 width: "100%",
-                minWidth: 250,
-                maxWidth: 300,
+
                 height: "100%",
                 display: "flex",
                 flexDirection: "column",
@@ -479,7 +482,7 @@ const FeeManagement = () => {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "space-between",
-                  flexDirection: { xs: "column", sm: "row" },
+                  flexDirection: "row",
                   gap: 2,
                   textAlign: "center",
                 }}
@@ -555,7 +558,9 @@ const FeeManagement = () => {
               <Typography
                 variant="h6"
                 gutterBottom
-                sx={{ color: "white", fontWeight: "bold" }}
+                sx={{
+                  color: "white", fontWeight: "bold", fontSize: { xs: "16px", sm: "20px" },
+                }}
               >
                 Member Fee Status
               </Typography>
@@ -673,6 +678,8 @@ const FeeManagement = () => {
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   fontWeight: "bold",
+                  fontSize: { xs: "16px", sm: "20px" },
+
                 }}
               >
                 Recent Payments
@@ -803,14 +810,14 @@ const FeeManagement = () => {
                 <Typography
                   variant="body2"
                   fontWeight="medium"
-                  sx={{ fontFamily: "Times New Roman, serif" }}
+                  sx={{ fontFamily: "Times New Roman, serif", fontSize: { xs: "12px", sm: "16px" }, }}
                 >
                   {selectedMember.name}
                 </Typography>
                 <Typography
                   variant="caption"
                   color="text.secondary"
-                  sx={{ fontFamily: "Times New Roman, serif" }}
+                  sx={{ fontFamily: "Times New Roman, serif", fontSize: { xs: "12px", sm: "16px" }, }}
                 >
                   {selectedMember.id} • Membership:{" "}
                   {selectedMember.membershipType}
@@ -862,8 +869,10 @@ const FeeManagement = () => {
                   "& input": {
                     color: "white",
                     fontFamily: "Times New Roman, serif",
+                    fontSize: { xs: "12px", sm: "16px" },
                     "&::placeholder": {
                       color: "rgba(255,255,255,0.7)",
+                      fontSize: { xs: "12px", sm: "16px" },
                     },
                   },
                 }}
@@ -909,8 +918,10 @@ const FeeManagement = () => {
                   "& input": {
                     color: "white",
                     fontFamily: "Times New Roman, serif",
+                    fontSize: { xs: "12px", sm: "16px" },
                     "&::placeholder": {
                       color: "rgba(255,255,255,0.7)",
+                      fontSize: { xs: "12px", sm: "16px" },
                     },
                   },
                 }}
@@ -952,8 +963,10 @@ const FeeManagement = () => {
                   "& input": {
                     color: "white",
                     fontFamily: "Times New Roman, serif",
+                    fontSize: { xs: "12px", sm: "16px" },
                     "&::placeholder": {
                       color: "rgba(255,255,255,0.7)",
+                      fontSize: { xs: "12px", sm: "16px" },
                     },
                   },
                 }}
@@ -992,17 +1005,25 @@ const FeeManagement = () => {
                     "& .MuiSelect-select": {
                       color: "white",
                       fontFamily: "Times New Roman, serif",
+                      fontSize: { xs: "12px", sm: "16px" },
                     },
 
                     "& .MuiSvgIcon-root": {
                       color: "white",
                     },
                   }}
+                  MenuProps={{
+                    PaperProps: {
+                      sx: {
+                        maxHeight: 200,
+                      },
+                    },
+                  }}
                 >
-                  <MenuItem value="cash">Cash</MenuItem>
-                  <MenuItem value="card">Card</MenuItem>
-                  <MenuItem value="upi">UPI</MenuItem>
-                  <MenuItem value="bank">Bank Transfer</MenuItem>
+                  <MenuItem value="cash" sx={{ fontSize: { xs: "12px", sm: "16px" } }}>Cash</MenuItem>
+                  <MenuItem value="card" sx={{ fontSize: { xs: "12px", sm: "16px" } }}>Card</MenuItem>
+                  <MenuItem value="upi" sx={{ fontSize: { xs: "12px", sm: "16px" } }}>UPI</MenuItem>
+                  <MenuItem value="bank" sx={{ fontSize: { xs: "12px", sm: "16px" } }}>Bank Transfer</MenuItem>
                 </Select>
               </FormControl>
             </Box>
@@ -1040,35 +1061,7 @@ const FeeManagement = () => {
           </DialogActions>
         </Dialog>
       </Container>
-
-      {/* Footer */}
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          py: 2,
-          px: 2,
-          mx: "auto",
-          maxWidth: "600px",
-          backgroundColor: "rgba(0, 0, 0, 0.3)",
-          borderTop: "1px solid rgba(255, 255, 255, 0.1)",
-          borderRadius: "50px",
-          mt: 4,
-          mb: 2,
-        }}
-      >
-        <Typography
-          variant="body2"
-          sx={{
-            textAlign: "center",
-            color: "rgba(255, 255, 255, 0.6)",
-            fontSize: "0.75rem",
-            fontFamily: "Times New Roman, serif",
-          }}
-        >
-          © 2026 | Areez Korai Gym Management System | All Rights Reserved
-        </Typography>
-      </Box>
+      <Footer />
     </Box>
   );
 };

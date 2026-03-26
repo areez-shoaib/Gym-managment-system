@@ -184,7 +184,7 @@ const EditMember = () => {
           <Box component="form" onSubmit={handleSubmit}>
             <Grid container spacing={3}>
               {/* Member ID (Read-only) */}
-              <Grid item xs={12} sm={6}>
+              <Grid item size={{xs:12}}>
                 <TextField
                   fullWidth
                   label="Member ID"
@@ -200,7 +200,7 @@ const EditMember = () => {
               </Grid>
 
               {/* Name */}
-              <Grid item xs={12} sm={6}>
+              <Grid item size={{xs:12}}>
                 <TextField
                   fullWidth
                   label="Full Name *"

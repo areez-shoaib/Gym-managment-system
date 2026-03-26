@@ -338,6 +338,7 @@ const MemberRegistration = () => {
                     color: "white",
                     "&::placeholder": {
                       color: "rgba(255,255,255,0.7)",
+                      fontSize: { xs: "12px", sm: "16px" }
                     },
                   },
                 }}
@@ -380,6 +381,7 @@ const MemberRegistration = () => {
                     color: "white",
                     "&::placeholder": {
                       color: "rgba(255,255,255,0.7)",
+                      fontSize: { xs: "12px", sm: "16px" }
                     },
                   },
                 }}
@@ -423,6 +425,7 @@ const MemberRegistration = () => {
                     color: "white",
                     "&::placeholder": {
                       color: "rgba(255,255,255,0.7)",
+                      fontSize: { xs: "12px", sm: "16px" }
                     },
                   },
                 }}
@@ -466,6 +469,7 @@ const MemberRegistration = () => {
                     color: "white",
                     "&::placeholder": {
                       color: "rgba(255,255,255,0.7)",
+                      fontSize: { xs: "12px", sm: "16px" }
                     },
                   },
                 }}
@@ -505,10 +509,14 @@ const MemberRegistration = () => {
                     },
                   },
 
-                  "& input": {
+                  "& textarea": {
                     color: "white",
+                    whiteSpace: "nowrap", // if you want no wrapping
+                    overflowX: "auto",    // horizontal scroll instead of wrap
+
                     "&::placeholder": {
                       color: "rgba(255,255,255,0.7)",
+                      fontSize: { xs: "12px", sm: "16px" },
                     },
                   },
                 }}
@@ -525,9 +533,14 @@ const MemberRegistration = () => {
                   renderValue={(selected) => {
                     if (!selected) {
                       return (
-                        <span style={{ color: "rgba(255, 255, 255, 0.36)" }}>
+                        <Typography
+                          sx={{
+                            color: "rgba(255, 255, 255, 0.36)",
+                            fontSize: { xs: "12px", sm: "16px" },
+                          }}
+                        >
                           Select Gender
-                        </span>
+                        </Typography>
                       );
                     }
                     return selected;
@@ -548,6 +561,8 @@ const MemberRegistration = () => {
                     "& .MuiSelect-select": {
                       color: "white",
                       padding: "10px 14px",
+                      fontSize: { xs: "12px", sm: "16px" },
+
                     },
                     "& .MuiSelect-select.MuiSelect-selectMenu": {
                       color: formData.gender
@@ -556,12 +571,12 @@ const MemberRegistration = () => {
                     },
                   }}
                 >
-                  <MenuItem value="" disabled>
+                  <MenuItem value="" sx={{ fontSize: { xs: "12px", sm: "16px" } }} disabled>
                     Select Gender
                   </MenuItem>
-                  <MenuItem value="male">Male</MenuItem>
-                  <MenuItem value="female">Female</MenuItem>
-                  <MenuItem value="other">Other</MenuItem>
+                  <MenuItem value="male" sx={{ fontSize: { xs: "12px", sm: "16px" } }}>Male</MenuItem>
+                  <MenuItem value="female" sx={{ fontSize: { xs: "12px", sm: "16px" } }}>Female</MenuItem>
+                  <MenuItem value="other" sx={{ fontSize: { xs: "12px", sm: "16px" } }}>Other</MenuItem>
                 </Select>
                 {errors.gender && (
                   <Typography
@@ -586,9 +601,14 @@ const MemberRegistration = () => {
                   renderValue={(selected) => {
                     if (!selected) {
                       return (
-                        <span style={{ color: "rgba(255, 255, 255, 0.36)" }}>
+                        <Typography
+                          sx={{
+                            color: "rgba(255, 255, 255, 0.36)",
+                            fontSize: { xs: "12px", sm: "16px" },
+                          }}
+                        >
                           Select Blood Group
-                        </span>
+                        </Typography>
                       );
                     }
                     return selected;
@@ -609,6 +629,9 @@ const MemberRegistration = () => {
                     "& .MuiSelect-select": {
                       color: "white",
                       padding: "10px 14px",
+                      fontSize: { xs: "12px", sm: "16px" },
+
+
                     },
                     "& .MuiSelect-select.MuiSelect-selectMenu": {
                       color: formData.bloodGroup
@@ -616,18 +639,25 @@ const MemberRegistration = () => {
                         : "rgba(255,255,255,0.7)",
                     },
                   }}
+                  MenuProps={{
+                    PaperProps: {
+                      sx: {
+                        maxHeight: 200,
+                      },
+                    },
+                  }}
                 >
-                  <MenuItem value="" disabled>
+                  <MenuItem value="" sx={{ fontSize: { xs: "12px", sm: "16px" } }} disabled>
                     Select Blood Group
                   </MenuItem>
-                  <MenuItem value="A+">A+</MenuItem>
-                  <MenuItem value="A-">A-</MenuItem>
-                  <MenuItem value="B+">B+</MenuItem>
-                  <MenuItem value="B-">B-</MenuItem>
-                  <MenuItem value="AB+">AB+</MenuItem>
-                  <MenuItem value="AB-">AB-</MenuItem>
-                  <MenuItem value="O+">O+</MenuItem>
-                  <MenuItem value="O-">O-</MenuItem>
+                  <MenuItem value="A+" sx={{ fontSize: { xs: "12px", sm: "16px" } }} >A+</MenuItem>
+                  <MenuItem value="A-" sx={{ fontSize: { xs: "12px", sm: "16px" } }}>A-</MenuItem>
+                  <MenuItem value="B+" sx={{ fontSize: { xs: "12px", sm: "16px" } }}>B+</MenuItem>
+                  <MenuItem value="B-" sx={{ fontSize: { xs: "12px", sm: "16px" } }}>B-</MenuItem>
+                  <MenuItem value="AB+" sx={{ fontSize: { xs: "12px", sm: "16px" } }}>AB+</MenuItem>
+                  <MenuItem value="AB-" sx={{ fontSize: { xs: "12px", sm: "16px" } }}>AB-</MenuItem>
+                  <MenuItem value="O+" sx={{ fontSize: { xs: "12px", sm: "16px" } }}>O+</MenuItem>
+                  <MenuItem value="O-" sx={{ fontSize: { xs: "12px", sm: "16px" } }}>O-</MenuItem>
                 </Select>
                 {errors.bloodGroup && (
                   <Typography
@@ -676,8 +706,11 @@ const MemberRegistration = () => {
 
                   "& input": {
                     color: "white",
+                    fontSize: { xs: "12px", sm: "16px" },
                     "&::placeholder": {
                       color: "rgba(255,255,255,0.7)",
+                      fontSize: { xs: "12px", sm: "16px" },
+
                     },
                   },
                 }}
@@ -694,9 +727,14 @@ const MemberRegistration = () => {
                   renderValue={(selected) => {
                     if (!selected) {
                       return (
-                        <span style={{ color: "rgba(255, 255, 255, 0.36)" }}>
+                        <Typography
+                          sx={{
+                            color: "rgba(255, 255, 255, 0.36)",
+                            fontSize: { xs: "12px", sm: "16px" },
+                          }}
+                        >
                           Select Membership Type
-                        </span>
+                        </Typography>
                       );
                     }
                     return selected;
@@ -719,6 +757,8 @@ const MemberRegistration = () => {
                     },
                     "& .MuiSelect-select": {
                       color: "white",
+                      fontSize: { xs: "12px", sm: "16px" },
+
                     },
                     "& .MuiSelect-select.MuiSelect-selectMenu": {
                       color:
@@ -733,13 +773,14 @@ const MemberRegistration = () => {
                       },
                     },
                   }}
+
                 >
-                  <MenuItem value="" disabled>
+                  <MenuItem value="" sx={{ fontSize: { xs: "12px", sm: "16px" } }} disabled>
                     Select Membership Type
                   </MenuItem>
-                  <MenuItem value="monthly">Monthly</MenuItem>
-                  <MenuItem value="quarterly">Quarterly</MenuItem>
-                  <MenuItem value="yearly">Yearly</MenuItem>
+                  <MenuItem value="monthly" sx={{ fontSize: { xs: "12px", sm: "16px" } }}>Monthly</MenuItem>
+                  <MenuItem value="quarterly" sx={{ fontSize: { xs: "12px", sm: "16px" } }}>Quarterly</MenuItem>
+                  <MenuItem value="yearly" sx={{ fontSize: { xs: "12px", sm: "16px" } }}>Yearly</MenuItem>
                 </Select>
               </FormControl>
 
@@ -776,8 +817,12 @@ const MemberRegistration = () => {
 
                   "& input": {
                     color: "white",
+                    fontSize: { xs: "12px", sm: "16px" },
+
                     "&::placeholder": {
                       color: "rgba(255,255,255,0.7)",
+                      fontSize: { xs: "12px", sm: "16px" },
+
                     },
                   },
                 }}
@@ -804,24 +849,26 @@ const MemberRegistration = () => {
                 <Button
                   variant="outlined"
                   onClick={() => navigate("/dashboard")}
-                      sx={{
-              background: 'linear-gradient(135deg, #263b46 0%, #141720 100%)',
-              color:"white",
-              '&:hover': {
-                background: 'linear-gradient(135deg, #1a2833 0%, #0a0c14 100%)',
-              }
-            }}
+                  sx={{
+                    background: 'linear-gradient(135deg, #263b46 0%, #141720 100%)',
+                    color: "white",
+                    fontSize: { xs: "12px", sm: "16px" },
+                    '&:hover': {
+                      background: 'linear-gradient(135deg, #1a2833 0%, #0a0c14 100%)',
+                    }
+                  }}
                 >
                   Cancel
                 </Button>
 
-                <Button type="submit" variant="outlined"     sx={{
-              background: 'linear-gradient(135deg, #263b46 0%, #141720 100%)',
-              color:"white",
-              '&:hover': {
-                background: 'linear-gradient(135deg, #1a2833 0%, #0a0c14 100%)',
-              }
-            }}>
+                <Button type="submit" variant="outlined" sx={{
+                  background: 'linear-gradient(135deg, #263b46 0%, #141720 100%)',
+                  color: "white",
+                  fontSize: { xs: "12px", sm: "16px" },
+                  '&:hover': {
+                    background: 'linear-gradient(135deg, #1a2833 0%, #0a0c14 100%)',
+                  }
+                }}>
                   Register Member
                 </Button>
               </Box>
