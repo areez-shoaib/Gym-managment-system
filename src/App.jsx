@@ -1,177 +1,182 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { useState } from 'react'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import { ThemeProvider, createTheme, CssBaseline } from '@mui/material'
+import { AuthProvider, useAuth } from './context/AuthContext'
 import Login from './components/Login'
-import Dashboard from './components/Dashboard'
-import MemberRegistration from './components/MemberRegistration'
-import MembersList from './components/MembersList'
-import EditMember from './components/EditMember'
-import FeeManagement from './components/FeeManagement'
-import Expenses from './components/Expenses'
-import { AuthProvider } from './context/AuthContext'
+import Layout from './components/Layout'
+// Admin pages
+import Dashboard from './pages/admin/Dashboard'
+import MemberRegistration from './pages/admin/MemberRegistration'
+import MembersList from './pages/admin/MembersList'
+import EditMember from './pages/admin/EditMember'
+import FeeManagement from './pages/admin/FeeManagement'
+import Expenses from './pages/admin/Expenses'
+import Supplements from './pages/admin/Supplements'
+import AdminNotifications from './pages/admin/Notifications'
+// Member pages
+import MemberDashboard from './pages/member/MemberDashboard'
+import MemberProfile from './pages/member/MemberProfile'
+import MemberAttendance from './pages/member/MemberAttendance'
+import MemberFees from './pages/member/MemberFees'
+import WorkoutNotepad from './pages/member/WorkoutNotepad'
+import MemberSupplements from './pages/member/MemberSupplements'
 
-// Create a custom theme with professional dark colors
-const theme = createTheme({
-  palette: {
-    mode: 'light',
-    primary: {
-      main: '#263b46',
-      light: '#3a5268',
-      dark: '#1a2833',
-      contrastText: '#ffffff',
-    },
-    secondary: {
-      main: '#141720',
-      light: '#2a2d3a',
-      dark: '#0a0c14',
-      contrastText: '#ffffff',
-    },
-    success: {
-      main: '#10b981',
-      light: '#059669',
-      dark: '#047857',
-    },
-    warning: {
-      main: '#f59e0b',
-      light: '#d97706',
-      dark: '#b45309',
-    },
-    error: {
-      main: '#ef4444',
-      light: '#dc2626',
-      dark: '#b91c1c',
-    },
-    info: {
-      main: '#3b82f6',
-      light: '#2563eb',
-      dark: '#1d4ed8',
-    },
-    background: {
-      default: '#f8fafc',
-      paper: '#ffffff',
-    },
-    text: {
-      primary: '#141720',
-      secondary: '#64748b',
-    },
-  },
-  typography: {
-    fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
-    h1: {
-      fontWeight: 700,
-    },
-    h2: {
-      fontWeight: 600,
-    },
-    h3: {
-      fontWeight: 600,
-    },
-    h4: {
-      fontWeight: 600,
-    },
-    h5: {
-      fontWeight: 600,
-    },
-    h6: {
-      fontWeight: 600,
-    },
-  },
-  shape: {
-    borderRadius: 12,
-  },
-  components: {
-    MuiButton: {
-      styleOverrides: {
-        root: {
-          textTransform: 'none',
-          fontWeight: 600,
-          borderRadius: 8,
-        },
-        contained: {
-          boxShadow: '0 4px 6px rgba(38, 59, 70, 0.1)',
-        },
-      },
-    },
-    MuiCard: {
-      styleOverrides: {
-        root: {
-          backdropFilter: 'blur(10px)',
-          backgroundColor: 'rgba(255, 255, 255, 0.95)',
-          border: '1px solid rgba(38, 59, 70, 0.1)',
-          borderRadius: 12,
-          boxShadow: '0 10px 25px rgba(38, 59, 70, 0.1)',
-        },
-      },
-    },
-    MuiPaper: {
-      styleOverrides: {
-        root: {
-          backdropFilter: 'blur(10px)',
-          backgroundColor: 'rgba(255, 255, 255, 0.95)',
-          border: '1px solid rgba(38, 59, 70, 0.1)',
-          borderRadius: 12,
-        },
-        elevation1: {
-          boxShadow: '0 2px 4px rgba(38, 59, 70, 0.1)',
-        },
-        elevation3: {
-          boxShadow: '0 4px 6px rgba(38, 59, 70, 0.1)',
-        },
-        elevation6: {
-          boxShadow: '0 10px 25px rgba(38, 59, 70, 0.1)',
-        },
-      },
-    },
-    MuiTextField: {
-      styleOverrides: {
-        root: {
-          '& .MuiOutlinedInput-root': {
-            backdropFilter: 'blur(10px)',
-            backgroundColor: 'rgba(255, 255, 255, 0.8)',
-            borderRadius: 8,
-            '&:hover': {
-              borderColor: '#263b46',
-            },
-            '&.Mui-focused': {
-              borderColor: '#263b46',
-              boxShadow: '0 0 0 2px rgba(38, 59, 70, 0.2)',
-            },
-          },
-        },
-      },
-    },
-    MuiTableHead: {
-      styleOverrides: {
-        root: {
-          backgroundColor: 'rgba(38, 59, 70, 0.05)',
-        },
-      },
-    },
-    MuiChip: {
-      styleOverrides: {
-        root: {
-          fontWeight: 600,
-          borderRadius: 6,
-        },
-      },
-    },
-  },
-})
+const ProtectedRoute = ({ children, allowedRole }) => {
+  const { isAuthenticated, user, loading } = useAuth()
+  if (loading) return null
+  if (!isAuthenticated) return <Navigate to="/" replace />
+  if (allowedRole && user?.role !== allowedRole) {
+    return <Navigate to={user?.role === 'admin' ? '/dashboard' : '/member-dashboard'} replace />
+  }
+  return children
+}
+
+const AppRoutes = ({ darkMode, onToggleDark }) => {
+  const { isAuthenticated, user } = useAuth()
+
+  return (
+    <Routes>
+      <Route path="/" element={
+        isAuthenticated
+          ? <Navigate to={user?.role === 'admin' ? '/dashboard' : '/member-dashboard'} replace />
+          : <Login />
+      } />
+
+      {/* Admin routes */}
+      <Route path="/dashboard" element={
+        <ProtectedRoute allowedRole="admin">
+          <Layout darkMode={darkMode} onToggleDark={onToggleDark}>
+            <Dashboard darkMode={darkMode} />
+          </Layout>
+        </ProtectedRoute>
+      } />
+      <Route path="/members" element={
+        <ProtectedRoute allowedRole="admin">
+          <Layout darkMode={darkMode} onToggleDark={onToggleDark}>
+            <MembersList darkMode={darkMode} />
+          </Layout>
+        </ProtectedRoute>
+      } />
+      <Route path="/register-member" element={
+        <ProtectedRoute allowedRole="admin">
+          <Layout darkMode={darkMode} onToggleDark={onToggleDark}>
+            <MemberRegistration darkMode={darkMode} />
+          </Layout>
+        </ProtectedRoute>
+      } />
+      <Route path="/edit-member/:memberId" element={
+        <ProtectedRoute allowedRole="admin">
+          <Layout darkMode={darkMode} onToggleDark={onToggleDark}>
+            <EditMember darkMode={darkMode} />
+          </Layout>
+        </ProtectedRoute>
+      } />
+      <Route path="/fees" element={
+        <ProtectedRoute allowedRole="admin">
+          <Layout darkMode={darkMode} onToggleDark={onToggleDark}>
+            <FeeManagement darkMode={darkMode} />
+          </Layout>
+        </ProtectedRoute>
+      } />
+      <Route path="/expenses" element={
+        <ProtectedRoute allowedRole="admin">
+          <Layout darkMode={darkMode} onToggleDark={onToggleDark}>
+            <Expenses darkMode={darkMode} />
+          </Layout>
+        </ProtectedRoute>
+      } />
+
+      <Route path="/supplements" element={
+        <ProtectedRoute allowedRole="admin">
+          <Layout darkMode={darkMode} onToggleDark={onToggleDark}>
+            <Supplements darkMode={darkMode} />
+          </Layout>
+        </ProtectedRoute>
+      } />
+      <Route path="/notifications" element={
+        <ProtectedRoute allowedRole="admin">
+          <Layout darkMode={darkMode} onToggleDark={onToggleDark}>
+            <AdminNotifications darkMode={darkMode} />
+          </Layout>
+        </ProtectedRoute>
+      } />
+
+      {/* Member routes */}
+      <Route path="/member-dashboard" element={
+        <ProtectedRoute allowedRole="member">
+          <Layout darkMode={darkMode} onToggleDark={onToggleDark}>
+            <MemberDashboard darkMode={darkMode} />
+          </Layout>
+        </ProtectedRoute>
+      } />
+      <Route path="/member-profile" element={
+        <ProtectedRoute allowedRole="member">
+          <Layout darkMode={darkMode} onToggleDark={onToggleDark}>
+            <MemberProfile darkMode={darkMode} />
+          </Layout>
+        </ProtectedRoute>
+      } />
+      <Route path="/member-attendance" element={
+        <ProtectedRoute allowedRole="member">
+          <Layout darkMode={darkMode} onToggleDark={onToggleDark}>
+            <MemberAttendance darkMode={darkMode} />
+          </Layout>
+        </ProtectedRoute>
+      } />
+      <Route path="/member-fees" element={
+        <ProtectedRoute allowedRole="member">
+          <Layout darkMode={darkMode} onToggleDark={onToggleDark}>
+            <MemberFees darkMode={darkMode} />
+          </Layout>
+        </ProtectedRoute>
+      } />
+      <Route path="/member-workout" element={
+        <ProtectedRoute allowedRole="member">
+          <Layout darkMode={darkMode} onToggleDark={onToggleDark}>
+            <WorkoutNotepad darkMode={darkMode} />
+          </Layout>
+        </ProtectedRoute>
+      } />
+      <Route path="/member-supplements" element={
+        <ProtectedRoute allowedRole="member">
+          <Layout darkMode={darkMode} onToggleDark={onToggleDark}>
+            <MemberSupplements darkMode={darkMode} />
+          </Layout>
+        </ProtectedRoute>
+      } />
+
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
+  )
+}
 
 function App() {
+  const [darkMode, setDarkMode] = useState(false)
+
+  const theme = createTheme({
+    palette: {
+      mode: darkMode ? 'dark' : 'light',
+      primary: { main: '#ff6b35' },
+      background: {
+        default: darkMode ? '#0f0f1a' : '#f5f5f5',
+        paper: darkMode ? '#1a1a2e' : '#ffffff',
+      },
+    },
+    typography: {
+      fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
+    },
+    shape: { borderRadius: 12 },
+    components: {
+      MuiButton: { styleOverrides: { root: { textTransform: 'none', fontWeight: 600 } } },
+    },
+  })
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <AuthProvider>
         <Router>
-          <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/register-member" element={<MemberRegistration />} />
-            <Route path="/members" element={<MembersList />} />
-            <Route path="/edit-member/:memberId" element={<EditMember />} />
-            <Route path="/fees" element={<FeeManagement />} />
-            <Route path="/expenses" element={<Expenses />} />
-          </Routes>
+          <AppRoutes darkMode={darkMode} onToggleDark={() => setDarkMode(d => !d)} />
         </Router>
       </AuthProvider>
     </ThemeProvider>
