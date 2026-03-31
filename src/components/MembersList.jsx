@@ -286,7 +286,7 @@ const MembersList = () => {
         <Paper
           elevation={3}
           sx={{
-            p: { xs: 2, sm: 3 },
+            p: { xs: 1.5, sm: 3 },
             mb: 3,
             backgroundColor: 'rgba(38, 59, 70, 0.15)',
             backdropFilter: 'blur(20px)',
@@ -304,7 +304,7 @@ const MembersList = () => {
             sx={{
               '& .MuiInputBase-input': {
                 fontSize: { xs: '0.875rem', sm: '1rem' },
-                py: { xs: 1, sm: 1.5 },
+                py: { xs: 0.8, sm: 1.5 },
               },
               '& .MuiInputBase-root': {
                 backgroundColor: 'rgba(255, 255, 255, 0.1)',
@@ -317,14 +317,14 @@ const MembersList = () => {
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
-                  <Search sx={{ fontSize: { xs: 18, sm: 20 }, color: 'rgba(255, 255, 255, 0.7)' }} />
+                  <Search sx={{ fontSize: { xs: 16, sm: 20 }, color: 'rgba(255, 255, 255, 0.7)' }} />
                 </InputAdornment>
               ),
               sx: {
                 color: 'white',
                 '&::placeholder': {
                   color: 'rgba(255, 255, 255, 0.5)',
-                  fontSize: { xs: '0.875rem', sm: '1rem' },
+                  fontSize: { xs: '0.67rem', sm: '1rem' },
                 },
               },
             }}
@@ -345,21 +345,21 @@ const MembersList = () => {
           <TableContainer>
             <Table>
               <TableHead>
-                <TableRow>
-                  <TableCell sx={{ color: 'white', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Member ID</TableCell>
-                  <TableCell sx={{ color: 'white', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Name</TableCell>
-                  <TableCell sx={{ color: 'white', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Email</TableCell>
-                  <TableCell sx={{ color: 'white', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Phone</TableCell>
-                  <TableCell sx={{ color: 'white', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Membership</TableCell>
-                  <TableCell sx={{ color: 'white', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Fee Status</TableCell>
-                  <TableCell sx={{ color: 'white', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Join Date</TableCell>
-                  <TableCell sx={{ color: 'white', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Actions</TableCell>
+                <TableRow >
+                  <TableCell sx={{ fontSize: { xs: "12px", md: "14px" }, color: 'white', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Member ID</TableCell>
+                  <TableCell sx={{ fontSize: { xs: "12px", md: "14px" }, color: 'white', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Name</TableCell>
+                  <TableCell sx={{ fontSize: { xs: "12px", md: "14px" }, color: 'white', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Email</TableCell>
+                  <TableCell sx={{ fontSize: { xs: "12px", md: "14px" }, color: 'white', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Phone</TableCell>
+                  <TableCell sx={{ fontSize: { xs: "12px", md: "14px" }, color: 'white', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Membership</TableCell>
+                  <TableCell sx={{ fontSize: { xs: "12px", md: "14px" }, color: 'white', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Fee Status</TableCell>
+                  <TableCell sx={{ fontSize: { xs: "12px", md: "14px" }, color: 'white', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Join Date</TableCell>
+                  <TableCell sx={{ fontSize: { xs: "12px", md: "14px" }, color: 'white', fontWeight: 'bold', whiteSpace: 'nowrap' }}>Actions</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
                 {filteredMembers.length === 0 ? (
                   <TableRow>
-                    <TableCell colSpan={8} sx={{ textAlign: 'center', py: 4, color: 'rgba(255, 255, 255, 0.7)' }}>
+                    <TableCell colSpan={8} sx={{ textAlign: 'center', py: { xs: 2, sm: 4 }, color: 'rgba(255, 255, 255, 0.7)', fontSize: { xs: "12px", sm: "14px" } }}>
                       {searchTerm ? 'No members found matching your search.' : 'No members registered yet.'}
                     </TableCell>
                   </TableRow>
@@ -426,7 +426,7 @@ const MembersList = () => {
             <Paper
               elevation={3}
               sx={{
-                p: 3,
+                p: { xs: 1, sm: 3 },
                 backgroundColor: 'rgba(255, 255, 255, 0.15)',
                 backdropFilter: 'blur(20px)',
                 border: '1px solid rgba(255, 255, 255, 0.2)',
@@ -446,7 +446,7 @@ const MembersList = () => {
                 textAlign: 'center'
               }}
             >
-              <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.9)' }} gutterBottom>
+              <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.9)', fontSize: { xs: "12px", sm: "14px" } }} gutterBottom>
                 Total Members
               </Typography>
               <Typography
@@ -456,7 +456,7 @@ const MembersList = () => {
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   fontWeight: 'bold',
-                  fontSize: { xs: '1.5rem', sm: '2rem', md: '2.25rem' }
+                  fontSize: { xs: '1rem', sm: '2rem', md: '2.25rem' }
                 }}
               >
                 {members.length}
@@ -468,7 +468,7 @@ const MembersList = () => {
             <Paper
               elevation={3}
               sx={{
-                p: 3,
+                p: { xs: 1, sm: 3 },
                 backgroundColor: 'rgba(255, 255, 255, 0.15)',
                 backdropFilter: 'blur(20px)',
                 border: '1px solid rgba(255, 255, 255, 0.2)',
@@ -487,7 +487,7 @@ const MembersList = () => {
                 textAlign: 'center'
               }}
             >
-              <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.9)' }} gutterBottom>
+              <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.9)', fontSize: { xs: "12px" }, sm: "14px" }} gutterBottom>
                 Paid Members
               </Typography>
               <Typography
@@ -495,7 +495,7 @@ const MembersList = () => {
                 sx={{
                   color: 'success.main',
                   fontWeight: 'bold',
-                  fontSize: { xs: '1.5rem', sm: '2rem', md: '2.25rem' }
+                  fontSize: { xs: '1rem', sm: '2rem', md: '2.25rem' }
                 }}
               >
                 {members.filter(m => getMemberFeeStatus(m.id) === 'paid').length}
@@ -507,7 +507,7 @@ const MembersList = () => {
             <Paper
               elevation={3}
               sx={{
-                p: 3,
+                p: { xs: 1, sm: 3 },
                 backgroundColor: 'rgba(255, 255, 255, 0.15)',
                 backdropFilter: 'blur(20px)',
                 border: '1px solid rgba(255, 255, 255, 0.2)',
@@ -526,7 +526,7 @@ const MembersList = () => {
                 textAlign: 'center'
               }}
             >
-              <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.9)' }} gutterBottom>
+              <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.9)',fontSize:{xs:"12px",sm:"14px"} }} gutterBottom>
                 Pending Members
               </Typography>
               <Typography
@@ -534,7 +534,7 @@ const MembersList = () => {
                 sx={{
                   color: 'warning.main',
                   fontWeight: 'bold',
-                  fontSize: { xs: '1.5rem', sm: '2rem', md: '2.25rem' }
+                  fontSize: { xs: '1rem', sm: '2rem', md: '2.25rem' }
                 }}
               >
                 {members.filter(m => getMemberFeeStatus(m.id) === 'inactive').length}

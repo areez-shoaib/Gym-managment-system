@@ -271,7 +271,7 @@ const FeeManagement = () => {
             <Paper
               elevation={3}
               sx={{
-                p: 3,
+                p:{xs:1,sm:2,md:3},
                 backgroundColor: "rgba(255, 255, 255, 0.15)",
                 backdropFilter: "blur(20px)",
                 border: "1px solid rgba(255, 255, 255, 0.2)",
@@ -303,7 +303,7 @@ const FeeManagement = () => {
                 <Box>
                   <Typography
                     variant="body2"
-                    sx={{ color: "rgba(255, 255, 255, 0.9)" }}
+                    sx={{ color: "rgba(255, 255, 255, 0.9)",fontSize:{xs:"12px",sm:"16px"}}}
                     gutterBottom
                   >
                     Total Revenue
@@ -317,6 +317,7 @@ const FeeManagement = () => {
                       WebkitBackgroundClip: "text",
                       WebkitTextFillColor: "transparent",
                       fontWeight: "bold",
+                      fontSize:{xs:"12px",sm:"26px"}
                     }}
                   >
                     <span style={{}}>Rs :</span>
@@ -328,8 +329,8 @@ const FeeManagement = () => {
                     backgroundColor: "rgba(255, 255, 255, 0.2)",
                     borderRadius: "50%",
                     p: { xs: 1.5, sm: 2 },
-                    width: { xs: 48, sm: 56, md: 64 },
-                    height: { xs: 48, sm: 56, md: 64 },
+                    width: { xs: 40, sm: 56, md: 64 },
+                    height: { xs: 40, sm: 56, md: 64 },
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -358,7 +359,7 @@ const FeeManagement = () => {
             <Paper
               elevation={3}
               sx={{
-                p: 3,
+                p:{xs:1,sm:2,md:3},
                 backgroundColor: "rgba(255, 255, 255, 0.15)",
                 backdropFilter: "blur(20px)",
                 border: "1px solid rgba(255, 255, 255, 0.2)",
@@ -391,7 +392,7 @@ const FeeManagement = () => {
                 <Box>
                   <Typography
                     variant="body2"
-                    sx={{ color: "rgba(255, 255, 255, 0.9)" }}
+                    sx={{ color: "rgba(255, 255, 255, 0.9)" ,fontSize:{xs:"12px",sm:"16px"}}}
                     gutterBottom
                   >
                     Pending Fees
@@ -405,6 +406,7 @@ const FeeManagement = () => {
                       WebkitBackgroundClip: "text",
                       WebkitTextFillColor: "transparent",
                       fontWeight: "bold",
+                      fontSize:{xs:"12px",sm:"26px"}
                     }}
                   >
                     <span
@@ -427,8 +429,8 @@ const FeeManagement = () => {
                     backgroundColor: "rgba(255, 255, 255, 0.2)",
                     borderRadius: "50%",
                     p: { xs: 1.5, sm: 2 },
-                    width: { xs: 48, sm: 56, md: 64 },
-                    height: { xs: 48, sm: 56, md: 64 },
+                    width: { xs: 40, sm: 56, md: 64 },
+                    height: { xs: 40, sm: 56, md: 64 },
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -457,7 +459,7 @@ const FeeManagement = () => {
             <Paper
               elevation={3}
               sx={{
-                p: 3,
+                p:{xs:1,sm:2,md:3},
                 backgroundColor: "rgba(255, 255, 255, 0.15)",
                 backdropFilter: "blur(20px)",
                 border: "1px solid rgba(255, 255, 255, 0.2)",
@@ -494,6 +496,7 @@ const FeeManagement = () => {
                       color: "rgba(255, 255, 255, 0.9)",
                       fontFamily: "Times New Roman, serif",
                       fontWeight: "bold",
+                      fontSize:{xs:"12px",sm:"16px"}
                     }}
                     gutterBottom
                   >
@@ -507,6 +510,7 @@ const FeeManagement = () => {
                       WebkitBackgroundClip: "text",
                       WebkitTextFillColor: "transparent",
                       fontWeight: "bold",
+                      fontSize:{xs:"12px",sm:"26px"}
                     }}
                   >
                     {fees.length}
@@ -517,8 +521,8 @@ const FeeManagement = () => {
                     backgroundColor: "rgba(255, 255, 255, 0.2)",
                     borderRadius: "50%",
                     p: { xs: 1.5, sm: 2 },
-                    width: { xs: 48, sm: 56, md: 64 },
-                    height: { xs: 48, sm: 56, md: 64 },
+                    width: { xs: 40, sm: 56, md: 64 },
+                    height: { xs: 40, sm: 56, md: 64 },
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -542,7 +546,7 @@ const FeeManagement = () => {
             <Paper
               elevation={3}
               sx={{
-                p: 3,
+                p:{xs:1.5,sm:3},
                 backgroundColor: "rgba(255, 255, 255, 0.15)",
                 backdropFilter: "blur(20px)",
                 border: "1px solid rgba(255, 255, 255, 0.2)",
@@ -559,7 +563,7 @@ const FeeManagement = () => {
                 variant="h6"
                 gutterBottom
                 sx={{
-                  color: "white", fontWeight: "bold", fontSize: { xs: "16px", sm: "20px" },
+                  color: "white", fontWeight: "bold", fontSize: { xs: "14px", sm: "20px" },
                 }}
               >
                 Member Fee Status
@@ -578,7 +582,7 @@ const FeeManagement = () => {
                     variant="body2"
                     sx={{
                       textAlign: "center",
-                      py: 4,
+                      py: {xs:2,sm:4},
                       color: "rgba(255, 255, 255, 0.7)",
                     }}
                   >
@@ -594,7 +598,7 @@ const FeeManagement = () => {
                           display: "flex",
                           alignItems: "center",
                           justifyContent: "space-between",
-                          p: 2,
+                          p:{xs:1.5,sm:2},
                           backgroundColor: "rgba(255, 255, 255, 0.5)",
                           borderRadius: 2,
                           "&:hover": {
@@ -606,14 +610,14 @@ const FeeManagement = () => {
                           <Typography
                             variant="body1"
                             fontWeight="medium"
-                            sx={{ fontFamily: "Times New Roman, serif" }}
+                            sx={{ fontFamily: "Times New Roman, serif" ,fontSize:{xs:"12px",sm:"16px"}}}
                           >
                             {member.name}
                           </Typography>
                           <Typography
                             variant="body2"
                             color="text.secondary"
-                            sx={{ fontFamily: "Times New Roman, serif" }}
+                            sx={{ fontFamily: "Times New Roman, serif",fontSize:{xs:"12px",sm:"16px"} }}
                           >
                             {member.id}
                           </Typography>
@@ -625,7 +629,7 @@ const FeeManagement = () => {
                             label={status === "paid" ? "Paid" : "Pending"}
                             size="small"
                             color={status === "paid" ? "success" : "warning"}
-                            sx={{ fontWeight: "bold" }}
+                            sx={{ fontWeight: "bold",fontSize:{xs:"12px",sm:"14px"} }}
                           />
                           <Button
                             size="small"
@@ -638,6 +642,7 @@ const FeeManagement = () => {
                                 background:
                                   "linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%)",
                               },
+                              fontSize:{xs:"12px",sm:"16px"}
                             }}
                           >
                             Collect Fee
@@ -656,7 +661,7 @@ const FeeManagement = () => {
             <Paper
               elevation={3}
               sx={{
-                p: 3,
+                p: {xs:1.5,sm:3},
                 backgroundColor: "rgba(255, 255, 255, 0.15)",
                 backdropFilter: "blur(20px)",
                 border: "1px solid rgba(255, 255, 255, 0.2)",
@@ -678,7 +683,7 @@ const FeeManagement = () => {
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   fontWeight: "bold",
-                  fontSize: { xs: "16px", sm: "20px" },
+                  fontSize: { xs: "14px", sm: "20px" },
 
                 }}
               >
@@ -688,19 +693,19 @@ const FeeManagement = () => {
                 <Table>
                   <TableHead>
                     <TableRow>
-                      <TableCell sx={{ color: "white", fontWeight: "bold" }}>
+                      <TableCell sx={{fontSize:{xs:"12px",sm:"14px"}, color: "white", fontWeight: "bold" }}>
                         Member
                       </TableCell>
-                      <TableCell sx={{ color: "white", fontWeight: "bold" }}>
+                      <TableCell sx={{fontSize:{xs:"12px",sm:"14px"}, color: "white", fontWeight: "bold" }}>
                         Month
                       </TableCell>
-                      <TableCell sx={{ color: "white", fontWeight: "bold" }}>
+                      <TableCell sx={{fontSize:{xs:"12px",sm:"14px"}, color: "white", fontWeight: "bold" }}>
                         Date
                       </TableCell>
-                      <TableCell sx={{ color: "white", fontWeight: "bold" }}>
+                      <TableCell sx={{fontSize:{xs:"12px",sm:"14px"}, color: "white", fontWeight: "bold" }}>
                         Amount
                       </TableCell>
-                      <TableCell sx={{ color: "white", fontWeight: "bold" }}>
+                      <TableCell sx={{fontSize:{xs:"12px",sm:"14px"}, color: "white", fontWeight: "bold" }}>
                         Type
                       </TableCell>
                     </TableRow>
@@ -712,8 +717,9 @@ const FeeManagement = () => {
                           colSpan={5}
                           sx={{
                             textAlign: "center",
-                            py: 4,
+                            py: {xs:2,sm:4},
                             color: "rgba(255, 255, 255, 0.7)",
+                            fontSize:{xs:"12px",sm:"14px"},
                           }}
                         >
                           No payments recorded yet

@@ -212,7 +212,7 @@ const Dashboard = () => {
                 <Paper
                   elevation={3}
                   sx={{
-                    p: 3,
+                    p: { xs: 1.5, sm: 3 },
                     backgroundColor: "rgba(200, 200, 200, 0.15)",
                     border: "1px solid rgba(255, 255, 255, 0.2)",
                     boxShadow: "0 20px 40px rgba(38, 59, 70, 0.15)",
@@ -270,7 +270,7 @@ const Dashboard = () => {
                       sx={{
                         background: "linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)",
                         borderRadius: "50%",
-                        p: 2,
+                        p: { xs: 1, sm: 2 },
                         boxShadow: "0 4px 15px rgba(59, 130, 246, 0.3)",
                       }}
                     >
@@ -284,7 +284,7 @@ const Dashboard = () => {
                 <Paper
                   elevation={3}
                   sx={{
-                    p: 3,
+                    p: { xs: 1.5, sm: 3 },
                     backgroundColor: "rgba(200, 200, 200, 0.15)",
                     border: "1px solid rgba(255, 255, 255, 0.2)",
                     boxShadow: "0 20px 40px rgba(38, 59, 70, 0.15)",
@@ -342,7 +342,7 @@ const Dashboard = () => {
                       sx={{
                         background: "linear-gradient(135deg, #10b981 0%, #059669 100%)",
                         borderRadius: "50%",
-                        p: 2,
+                        p: { xs: 1, sm: 2 },
                         boxShadow: "0 4px 15px rgba(16, 185, 129, 0.3)",
                       }}
                     >
@@ -356,7 +356,7 @@ const Dashboard = () => {
                 <Paper
                   elevation={3}
                   sx={{
-                    p: 3,
+                    p: { xs: 1.5, sm: 3 },
                     backgroundColor: "rgba(200, 200, 200, 0.15)",
                     border: "1px solid rgba(255, 255, 255, 0.2)",
                     boxShadow: "0 20px 40px rgba(38, 59, 70, 0.15)",
@@ -414,7 +414,7 @@ const Dashboard = () => {
                       sx={{
                         background: "linear-gradient(135deg, #f59e0b 0%, #d97706 100%)",
                         borderRadius: "50%",
-                        p: 2,
+                        p: { xs: 1, sm: 2 },
                         boxShadow: "0 4px 15px rgba(245, 158, 11, 0.3)",
                       }}
                     >
@@ -428,7 +428,7 @@ const Dashboard = () => {
                 <Paper
                   elevation={3}
                   sx={{
-                    p: 3,
+                    p: { xs: 1.5, sm: 3 },
                     backgroundColor: "rgba(200, 200, 200, 0.15)",
                     border: "1px solid rgba(255, 255, 255, 0.2)",
                     boxShadow: "0 20px 40px rgba(38, 59, 70, 0.15)",
@@ -486,7 +486,7 @@ const Dashboard = () => {
                       sx={{
                         background: "linear-gradient(135deg, #ef4444 0%, #dc2626 100%)",
                         borderRadius: "50%",
-                        p: 2,
+                        p: { xs: 1, sm: 2 },
                         boxShadow: "0 4px 15px rgba(239, 68, 68, 0.3)",
                       }}
                     >
@@ -512,7 +512,7 @@ const Dashboard = () => {
                 }}
               >
                 <Typography
-                  variant="h4"
+                  variant={isMobile ? "h6" : "h4"}
                   gutterBottom
                   sx={{
                     background: "linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%)",
@@ -707,12 +707,13 @@ const Dashboard = () => {
               WebkitTextFillColor: "transparent",
               fontWeight: "bold",
               fontFamily: "new times roman,serif",
+              fontSize: { xs: "18px", sm: "20px" }
             }}
           >
             Quick Actions
           </Typography>
         </Box>
-        <List sx={{ p: 2 }}>
+        <List sx={{ p: { xs: 1, sm: 2 } }}>
           {menuItems.map((item, index) => (
             <ListItem
               key={index}
@@ -733,7 +734,7 @@ const Dashboard = () => {
                 },
               }}
             >
-              <ListItemIcon sx={{ color: 'white', minWidth: 40 }}>
+              <ListItemIcon sx={{ color: 'white', minWidth: { xs: 20, sm: 40 }, pr: 1 }}>
                 <item.icon />
               </ListItemIcon>
               <ListItemText
@@ -744,9 +745,11 @@ const Dashboard = () => {
                     color: 'white',
                     fontFamily: 'new times roman,serif',
                     fontWeight: 'medium',
+                    fontSize: { xs: "14px", sm: "16px" }
                   },
                   '& .MuiListItemText-secondary': {
                     color: 'rgba(255, 255, 255, 0.7)',
+                    fontSize: { xs: "12px", sm: "14px" }
                   },
                 }}
               />
@@ -758,7 +761,6 @@ const Dashboard = () => {
               setDrawerOpen(false);
             }}
             sx={{
-              mt: 2,
               borderRadius: 2,
               cursor: 'pointer',
               transition: 'all 0.3s ease',
@@ -770,7 +772,7 @@ const Dashboard = () => {
               },
             }}
           >
-            <ListItemIcon sx={{ color: 'white', minWidth: 40 }}>
+            <ListItemIcon sx={{ color: 'white', minWidth: { xs: 20, sm: 40 } }}>
               <LogoutIcon />
             </ListItemIcon>
             <ListItemText
