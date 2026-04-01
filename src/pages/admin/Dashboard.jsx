@@ -62,10 +62,10 @@ const Dashboard = ({ darkMode }) => {
   return (
     <Box>
       {/* Header row */}
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 3 }}>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 3, flexWrap: 'wrap', gap: 1.5 }}>
         <Box>
-          <Typography variant="h5" fontWeight={700} color={textPrimary}>Overview</Typography>
-          <Typography variant="body2" color={textSecondary}>Welcome back, here's what's happening today.</Typography>
+          <Typography variant="h5" fontWeight={700} color={textPrimary} fontSize={{ xs: 18, md: 22 }}>Overview</Typography>
+          <Typography variant="body2" color={textSecondary} fontSize={{ xs: 11, md: 13 }}>Welcome back, here's what's happening today.</Typography>
         </Box>
         <Button
           variant="contained" startIcon={<PersonAddIcon />}
@@ -77,12 +77,12 @@ const Dashboard = ({ darkMode }) => {
       </Box>
 
       {/* Stat Cards */}
-      <Grid container spacing={2.5} sx={{ mb: 3 }}>
+      <Grid container spacing={{ xs: 1.5, md: 2.5 }} sx={{ mb: 3 }}>
         {statCards.map((card, i) => (
-          <Grid item xs={12} sm={6} lg={3} key={i}>
-            <Paper sx={{ p: 2.5, borderRadius: 3, bgcolor: cardBg, border: `1px solid ${borderColor}`, boxShadow: darkMode ? 'none' : '0 2px 12px rgba(0,0,0,0.06)' }}>
-              <Typography variant="body2" color={textSecondary} mb={1}>{card.label}</Typography>
-              <Typography variant="h5" fontWeight={700} color={textPrimary} mb={1}>{card.value}</Typography>
+          <Grid item xs={6} sm={6} lg={3} key={i}>
+            <Paper sx={{ p: { xs: 1.5, md: 2.5 }, borderRadius: 3, bgcolor: cardBg, border: `1px solid ${borderColor}`, boxShadow: darkMode ? 'none' : '0 2px 12px rgba(0,0,0,0.06)' }}>
+              <Typography variant="body2" color={textSecondary} mb={1} fontSize={{ xs: 10, md: 13 }}>{card.label}</Typography>
+              <Typography fontWeight={700} color={textPrimary} mb={1} fontSize={{ xs: 14, md: 22 }}>{card.value}</Typography>
               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 <Chip
                   size="small"
@@ -107,7 +107,7 @@ const Dashboard = ({ darkMode }) => {
       {/* Charts Row */}
       <Grid container spacing={2.5} sx={{ mb: 3 }}>
         {/* Revenue Bar Chart */}
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={8} lg={6} xl={6}>
           <Paper sx={{ p: 3, borderRadius: 3, bgcolor: cardBg, border: `1px solid ${borderColor}`, boxShadow: darkMode ? 'none' : '0 2px 12px rgba(0,0,0,0.06)' }}>
             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2.5 }}>
               <Typography fontWeight={600} color={textPrimary}>Revenue Overview</Typography>
@@ -130,7 +130,7 @@ const Dashboard = ({ darkMode }) => {
         </Grid>
 
         {/* Recent Activity */}
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={4} lg={6} xl={6}>
           <Paper sx={{ p: 3, borderRadius: 3, bgcolor: cardBg, border: `1px solid ${borderColor}`, boxShadow: darkMode ? 'none' : '0 2px 12px rgba(0,0,0,0.06)', height: '100%' }}>
             <Typography fontWeight={600} color={textPrimary} mb={2}>Recent Activity</Typography>
             {recentActivity.length === 0 ? (

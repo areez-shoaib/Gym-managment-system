@@ -107,16 +107,18 @@ const FeeManagement = ({ darkMode }) => {
     <Box>
       {success && <Alert severity="success" sx={{ mb: 2, borderRadius: 2 }}>{success}</Alert>}
 
-      <Box sx={{ mb: 3 }}>
-        <Typography variant="h5" fontWeight={700} color={textPrimary}>Fee Management</Typography>
-        <Typography variant="body2" color={textSecondary}>Manage member fees and payments</Typography>
+      <Box sx={{ mb: 3, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: 1 }}>
+        <Box>
+          <Typography variant="h5" fontWeight={700} color={textPrimary} fontSize={{ xs: 16, md: 22 }}>Fee Management</Typography>
+          <Typography variant="body2" color={textSecondary} fontSize={{ xs: 11, md: 13 }}>Manage member fees and payments</Typography>
+        </Box>
       </Box>
 
       {/* Stat Cards */}
-      <Grid container spacing={2.5} sx={{ mb: 3 }}>
+      <Grid container spacing={2.5} sx={{ mb: 3, width: '100%', flexGrow: 1 }}>
         {statCards.map((card, i) => (
-          <Grid item xs={12} sm={4} key={i}>
-            <Paper sx={{ p: 2.5, borderRadius: 3, bgcolor: cardBg, border: `1px solid ${borderColor}`, boxShadow: darkMode ? 'none' : '0 2px 12px rgba(0,0,0,0.06)' }}>
+          <Grid item xs={4} key={i}>
+            <Paper sx={{ p: 2.5, borderRadius: 1, bgcolor: cardBg, border: `1px solid ${borderColor}`, boxShadow: darkMode ? 'none' : '0 2px 12px rgba(0,0,0,0.06)' }}>
               <Typography variant="body2" color={textSecondary} mb={1}>{card.label}</Typography>
               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 <Typography variant="h5" fontWeight={700} color={textPrimary}>{card.value}</Typography>
@@ -130,7 +132,7 @@ const FeeManagement = ({ darkMode }) => {
       </Grid>
 
       {/* Member Fee Status */}
-      <Paper sx={{ p: 3, borderRadius: 3, bgcolor: cardBg, border: `1px solid ${borderColor}`, mb: 3, boxShadow: darkMode ? 'none' : '0 2px 12px rgba(0,0,0,0.06)' }}>
+      <Paper sx={{ p: 3, borderRadius: 1, bgcolor: cardBg, border: `1px solid ${borderColor}`, mb: 3, boxShadow: darkMode ? 'none' : '0 2px 12px rgba(0,0,0,0.06)' }}>
         <Typography fontWeight={600} color={textPrimary} mb={2}>Member Fee Status</Typography>
         {members.length === 0 ? (
           <Box sx={{ textAlign: 'center', py: 4 }}>
@@ -172,7 +174,7 @@ const FeeManagement = ({ darkMode }) => {
       </Paper>
 
       {/* Recent Payments */}
-      <Paper sx={{ p: 3, borderRadius: 3, bgcolor: cardBg, border: `1px solid ${borderColor}`, boxShadow: darkMode ? 'none' : '0 2px 12px rgba(0,0,0,0.06)' }}>
+      <Paper sx={{ p: 3, borderRadius: 1, bgcolor: cardBg, border: `1px solid ${borderColor}`, boxShadow: darkMode ? 'none' : '0 2px 12px rgba(0,0,0,0.06)' }}>
         <Typography fontWeight={600} color={textPrimary} mb={2}>Recent Payments</Typography>
         <TableContainer>
           <Table>

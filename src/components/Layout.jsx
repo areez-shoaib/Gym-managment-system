@@ -23,6 +23,7 @@ import NoteAltIcon from '@mui/icons-material/NoteAlt'
 import LocalPharmacyIcon from '@mui/icons-material/LocalPharmacy'
 import NotificationsIcon from '@mui/icons-material/Notifications'
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone'
+import ChatIcon from '@mui/icons-material/Chat'
 import DoneAllIcon from '@mui/icons-material/DoneAll'
 import { getNotifications, markAllRead, markOneRead } from '../utils/notifications'
 
@@ -35,6 +36,7 @@ const adminNavItems = [
   { label: 'Fee Management', icon: <PaymentsIcon />, path: '/fees' },
   { label: 'Expenses', icon: <ReceiptIcon />, path: '/expenses' },
   { label: 'Supplements', icon: <LocalPharmacyIcon />, path: '/supplements' },
+  { label: 'Chat', icon: <ChatIcon />, path: '/chat' },
   { label: 'Notifications', icon: <NotificationsNoneIcon />, path: '/notifications' },
 ]
 
@@ -45,6 +47,7 @@ const memberNavItems = [
   { label: 'Fee Status', icon: <PaymentsIcon />, path: '/member-fees' },
   { label: 'Workout Notepad', icon: <NoteAltIcon />, path: '/member-workout' },
   { label: 'Supplements', icon: <LocalPharmacyIcon />, path: '/member-supplements' },
+  { label: 'Chat', icon: <ChatIcon />, path: '/member-chat' },
 ]
 
 const typeColor = (type) => {
@@ -157,7 +160,7 @@ const Layout = ({ children, darkMode, onToggleDark }) => {
         <AppBar position="sticky" elevation={0} sx={{ bgcolor: darkMode ? '#13131f' : '#ffffff', borderBottom: darkMode ? '1px solid rgba(255,255,255,0.06)' : '1px solid rgba(0,0,0,0.08)', color: darkMode ? 'white' : '#1a1a2e' }}>
           <Toolbar sx={{ gap: 1 }}>
             {isMobile && <IconButton onClick={() => setMobileOpen(true)} color="inherit"><MenuIcon /></IconButton>}
-            <Typography fontWeight={700} fontSize={18} sx={{ flex: 1 }}>
+            <Typography fontWeight={700} fontSize={{ xs: 14, md: 18 }} sx={{ flex: 1 }}>
               {navItems.find(n => n.path === location.pathname)?.label || 'Dashboard'}
             </Typography>
 
@@ -180,7 +183,7 @@ const Layout = ({ children, darkMode, onToggleDark }) => {
               {/* Dropdown */}
               {notifOpen && (
                 <Paper elevation={8} sx={{
-                  position: 'absolute', right: 0, top: 44, width: 340, zIndex: 9999,
+                  position: 'absolute', right: 0, top: 44, width: { xs: 280, sm: 340 }, zIndex: 9999,
                   borderRadius: 1, overflow: 'hidden',
                   bgcolor: darkMode ? '#1a1a2e' : '#fff',
                   border: darkMode ? '1px solid rgba(255,255,255,0.08)' : '1px solid rgba(0,0,0,0.1)',

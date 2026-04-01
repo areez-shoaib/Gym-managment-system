@@ -156,14 +156,18 @@ const Login = () => {
       } else { setError('Invalid email or password') }
     } else {
       const members = JSON.parse(localStorage.getItem('members') || '[]')
-      const found = members.find(m => m.email === email && m.password === password)
+      // login via email+password OR memberId+loginCode
+      const found = members.find(m =>
+        (m.email === email && m.password === password) ||
+        (m.memberId === email && m.loginCode === password)
+      )
       if (found) {
-        login({ email, name: found.name, role: 'member' })
+        login({ email: found.email, name: found.name, role: 'member', memberId: found.memberId })
         navigate('/member-dashboard')
       } else if (email === CREDENTIALS.member.email && password === CREDENTIALS.member.password) {
         login({ email, name: CREDENTIALS.member.name, role: 'member' })
         navigate('/member-dashboard')
-      } else { setError('Invalid email or password') }
+      } else { setError('Invalid credentials') }
     }
   }
 
@@ -197,9 +201,9 @@ const Login = () => {
             {error && <Alert severity="error" sx={{ mb: 2 }}>{error}</Alert>}
 
             <Box component="form" onSubmit={handleSubmit}>
-              <TextField fullWidth label="Email" type="email" value={email}
+              <TextField fullWidth label={role === 'member' ? 'Email or Member ID' : 'Email'} type="text" value={email}
                 onChange={(e) => setEmail(e.target.value)} required sx={inputSx} margin="normal" />
-              <TextField fullWidth label="Password" value={password}
+              <TextField fullWidth label={role === 'member' ? 'Password or Login Code' : 'Password'} value={password}
                 type={showPassword ? 'text' : 'password'}
                 onChange={(e) => setPassword(e.target.value)} required margin="normal" sx={inputSx}
                 slotProps={{ input: { endAdornment: (

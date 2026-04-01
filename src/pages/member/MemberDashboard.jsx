@@ -56,15 +56,15 @@ const MemberDashboard = ({ darkMode }) => {
       </Paper>
 
       {/* Stat Cards */}
-      <Grid container spacing={2.5} sx={{ mb: 3 }}>
+      <Grid container spacing={{ xs: 1.5, md: 2.5 }} sx={{ mb: 3 }}>
         {statCards.map((card, i) => (
-          <Grid item xs={12} sm={6} lg={3} key={i}>
-            <Paper sx={{ p: 2.5, borderRadius: 3, bgcolor: cardBg, border: `1px solid ${borderColor}`, boxShadow: darkMode ? 'none' : '0 2px 12px rgba(0,0,0,0.06)' }}>
+          <Grid item xs={6} sm={6} lg={3} key={i}>
+            <Paper sx={{ p: { xs: 1.5, md: 2.5 }, borderRadius: 3, bgcolor: cardBg, border: `1px solid ${borderColor}`, boxShadow: darkMode ? 'none' : '0 2px 12px rgba(0,0,0,0.06)' }}>
               <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                 <Box>
-                  <Typography variant="body2" color={textSecondary} mb={0.5}>{card.label}</Typography>
-                  <Typography variant="h5" fontWeight={700} color={textPrimary}>{card.value}</Typography>
-                  <Typography variant="caption" color={card.color} fontWeight={500}>{card.sub}</Typography>
+                  <Typography variant="body2" color={textSecondary} mb={0.5} fontSize={{ xs: 10, md: 13 }}>{card.label}</Typography>
+                  <Typography fontWeight={700} color={textPrimary} fontSize={{ xs: 14, md: 22 }}>{card.value}</Typography>
+                  <Typography variant="caption" color={card.color} fontWeight={500} fontSize={{ xs: 10, md: 12 }}>{card.sub}</Typography>
                 </Box>
                 <Box sx={{ width: 42, height: 42, borderRadius: '50%', bgcolor: `${card.color}20`, display: 'flex', alignItems: 'center', justifyContent: 'center', color: card.color }}>
                   {card.icon}

@@ -126,10 +126,10 @@ const Expenses = ({ darkMode }) => {
     <Box>
       {success && <Alert severity="success" sx={{ mb: 2, borderRadius: 2 }}>{success}</Alert>}
 
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 3 }}>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 3, flexWrap: 'wrap', gap: 1 }}>
         <Box>
-          <Typography variant="h5" fontWeight={700} color={textPrimary}>Expenses</Typography>
-          <Typography variant="body2" color={textSecondary}>Track and manage gym expenses</Typography>
+          <Typography variant="h5" fontWeight={700} color={textPrimary} fontSize={{ xs: 16, md: 22 }}>Expenses</Typography>
+          <Typography variant="body2" color={textSecondary} fontSize={{ xs: 11, md: 13 }}>Track and manage gym expenses</Typography>
         </Box>
         <Button variant="contained" startIcon={<AddIcon />} onClick={() => setShowForm(true)}
           sx={{ background: 'linear-gradient(135deg, #ff6b35, #e85d04)', borderRadius: 2, fontWeight: 600, '&:hover': { background: '#e85d04' } }}>
@@ -141,7 +141,7 @@ const Expenses = ({ darkMode }) => {
       <Grid container spacing={2.5} sx={{ mb: 3 }}>
         {statCards.map((card, i) => (
           <Grid item xs={12} sm={4} key={i}>
-            <Paper sx={{ p: 2.5, borderRadius: 3, bgcolor: cardBg, border: `1px solid ${borderColor}`, boxShadow: darkMode ? 'none' : '0 2px 12px rgba(0,0,0,0.06)' }}>
+            <Paper sx={{ p: 2.5, borderRadius: 1, bgcolor: cardBg, border: `1px solid ${borderColor}`, boxShadow: darkMode ? 'none' : '0 2px 12px rgba(0,0,0,0.06)' }}>
               <Typography variant="body2" color={textSecondary} mb={1}>{card.label}</Typography>
               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 <Typography variant="h5" fontWeight={700} color={textPrimary}>{card.value}</Typography>
@@ -154,10 +154,10 @@ const Expenses = ({ darkMode }) => {
         ))}
       </Grid>
 
-      <Grid container spacing={2.5}>
+      <Grid container spacing={2.5} direction="column">
         {/* Expenses Table */}
-        <Grid item xs={12} md={8}>
-          <Paper sx={{ p: 3, borderRadius: 3, bgcolor: cardBg, border: `1px solid ${borderColor}`, boxShadow: darkMode ? 'none' : '0 2px 12px rgba(0,0,0,0.06)' }}>
+        <Grid item xs={12}>
+          <Paper sx={{ p: 3, borderRadius: 1, bgcolor: cardBg, border: `1px solid ${borderColor}`, boxShadow: darkMode ? 'none' : '0 2px 12px rgba(0,0,0,0.06)' }}>
             <Typography fontWeight={600} color={textPrimary} mb={2}>All Expenses</Typography>
             <TableContainer>
               <Table>
@@ -203,8 +203,8 @@ const Expenses = ({ darkMode }) => {
         </Grid>
 
         {/* Category Breakdown */}
-        <Grid item xs={12} md={4}>
-          <Paper sx={{ p: 3, borderRadius: 3, bgcolor: cardBg, border: `1px solid ${borderColor}`, boxShadow: darkMode ? 'none' : '0 2px 12px rgba(0,0,0,0.06)' }}>
+        <Grid item xs={12}>
+          <Paper sx={{ p: 3, borderRadius: 1, bgcolor: cardBg, border: `1px solid ${borderColor}`, boxShadow: darkMode ? 'none' : '0 2px 12px rgba(0,0,0,0.06)' }}>
             <Typography fontWeight={600} color={textPrimary} mb={2}>By Category</Typography>
             {Object.keys(expensesByCategory).length === 0 ? (
               <Typography variant="body2" color={textSecondary} sx={{ textAlign: 'center', py: 4 }}>No expenses recorded</Typography>

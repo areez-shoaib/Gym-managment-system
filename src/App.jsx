@@ -13,6 +13,7 @@ import FeeManagement from './pages/admin/FeeManagement'
 import Expenses from './pages/admin/Expenses'
 import Supplements from './pages/admin/Supplements'
 import AdminNotifications from './pages/admin/Notifications'
+import AdminChat from './pages/admin/Chat'
 // Member pages
 import MemberDashboard from './pages/member/MemberDashboard'
 import MemberProfile from './pages/member/MemberProfile'
@@ -20,6 +21,7 @@ import MemberAttendance from './pages/member/MemberAttendance'
 import MemberFees from './pages/member/MemberFees'
 import WorkoutNotepad from './pages/member/WorkoutNotepad'
 import MemberSupplements from './pages/member/MemberSupplements'
+import MemberChat from './pages/member/MemberChat'
 
 const ProtectedRoute = ({ children, allowedRole }) => {
   const { isAuthenticated, user, loading } = useAuth()
@@ -100,6 +102,13 @@ const AppRoutes = ({ darkMode, onToggleDark }) => {
           </Layout>
         </ProtectedRoute>
       } />
+      <Route path="/chat" element={
+        <ProtectedRoute allowedRole="admin">
+          <Layout darkMode={darkMode} onToggleDark={onToggleDark}>
+            <AdminChat darkMode={darkMode} />
+          </Layout>
+        </ProtectedRoute>
+      } />
 
       {/* Member routes */}
       <Route path="/member-dashboard" element={
@@ -141,6 +150,13 @@ const AppRoutes = ({ darkMode, onToggleDark }) => {
         <ProtectedRoute allowedRole="member">
           <Layout darkMode={darkMode} onToggleDark={onToggleDark}>
             <MemberSupplements darkMode={darkMode} />
+          </Layout>
+        </ProtectedRoute>
+      } />
+      <Route path="/member-chat" element={
+        <ProtectedRoute allowedRole="member">
+          <Layout darkMode={darkMode} onToggleDark={onToggleDark}>
+            <MemberChat darkMode={darkMode} />
           </Layout>
         </ProtectedRoute>
       } />
